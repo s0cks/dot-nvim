@@ -1,0 +1,4 @@
+globals = {
+  'Snacks',
+  'vim',
+}
