@@ -21,7 +21,7 @@ require('lazy').setup({
   spec = {
     { import = 'ui' },
     require('blink'),
-    require('treesitter'),
+    require('ts'),
     require('lsp'),
     { import = 'plugins' },
     { import = 'linting' },
