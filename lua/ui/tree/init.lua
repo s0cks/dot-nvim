@@ -9,7 +9,6 @@ return {
     'folke/snacks.nvim',
   },
   keys = require('ui.tree.keys'),
-  opts = require('ui.tree.config'),
   config = function(_, opts)
     vim.diagnostic.config({
       signs = {
@@ -21,6 +20,7 @@ return {
         },
       },
     })
-    require('neo-tree').setup(opts or {})
+    local config = vim.tbl_deep_extend('force', opts or {}, require('ui.tree.config'))
+    require('neo-tree').setup(config)
   end,
 }
