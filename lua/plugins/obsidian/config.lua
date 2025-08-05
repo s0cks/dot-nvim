@@ -1,20 +1,6 @@
-local all_workspaces = {
-  'Personal',
-  'Work',
-  'Prette',
-}
-
-local workspaces = {}
-
-for _, name in ipairs(all_workspaces) do
-  table.insert(workspaces, {
-    name = name,
-    path = '~/Obsidian/' .. name,
-  })
-end
-
+local vault = require('plugins.obsidian.vault')
 return {
-  workspaces = workspaces,
+  workspaces = vault.get_workspaces(),
   completion = {
     blink = true,
   },
