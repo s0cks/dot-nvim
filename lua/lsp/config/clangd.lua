@@ -1,10 +1,12 @@
 local lspconfig = require('lspconfig')
 
-local M = {}
+return function()
+  local make_default_capabilities = require('lsp.capabilities')
+  local capabilities = make_default_capabilities()
 
-function M:make_capabilities(overrides)
   return {
-    capabilities = overrides,
+    capabilities = capabilities,
+    settings = {},
     cmd = {
       '/usr/bin/clangd',
       '--background-index',
@@ -19,15 +21,8 @@ function M:make_capabilities(overrides)
       clangdFileStatus = true,
       semanticHighlighting = true,
     },
-    filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
-    root_dir = lspconfig.util.root_pattern('.clangd', '.clang-tidy', '.clang-format', 'compile_commands.json', 'compile_flags.txt', 'configure.ac', '.git'),
+    filetypes = { 'c', 'cpp', 'cc', 'objc', 'objcpp', 'cuda', 'proto' },
+    -- root_dir = lspconfig.util.root_pattern('.clangd', '.clang-tidy', '.clang-format', 'compile_commands.json', 'compile_flags.txt', 'configure.ac', '.git'),
     single_file_support = true,
   }
 end
-
-function M:make_settings(settings)
-  --- TODO: @s0cks implement
-  return settings
-end
-
-return M

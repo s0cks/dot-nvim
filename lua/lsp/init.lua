@@ -53,6 +53,7 @@ return {
         bashls = {},
         ts_ls = {},
         jsonls = {},
+        clangd = {},
       },
     },
     config = function(_, opts)
