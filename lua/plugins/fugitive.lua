@@ -7,7 +7,7 @@ return {
   keys = {
     {
       '<leader>Gp',
-      ':Git push',
+      ':Git push<CR>',
       'n',
       desc = 'Git push',
     },
