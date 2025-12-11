@@ -30,5 +30,16 @@
   "Lazy Flexoki Package": {
     "prefix": "lazy-pkg-flexoki",
     "body": "'kepano/flexoki-neovim'"
+  },
+  "Lazy Keymap": {
+    "prefix": "lazy-keymap",
+    "body": [
+      "{",
+      "'$1',",
+      "$0,",
+      "'$2',",
+      "desc = '$3',",
+      "},"
+    ]
   }
 }
