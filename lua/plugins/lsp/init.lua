@@ -42,11 +42,14 @@ local function bind_lsp_actions()
 end
 
 return {
+  'b0o/schemastore.nvim',
   ---@type LazyPluginSpec
   {
     'neovim/nvim-lspconfig',
     version = '*',
-    dependencies = {},
+    dependencies = {
+      'b0o/schemastore.nvim',
+    },
     opts = {
       servers = {
         lua_ls = {},

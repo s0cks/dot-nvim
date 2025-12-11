@@ -7,11 +7,14 @@ return function()
   return {
     capabilities = capabilities,
     settings = {
-      json = {
-        schemas = require('schemastore').json.schemas({
-          extra = {},
+      yaml = {
+        schemaStore = {
+          enable = false,
+          url = '',
+        },
+        schemas = require('schemastore').yaml.schemas({
+          extras = {},
         }),
-        validate = { enable = true },
       },
     },
   }
