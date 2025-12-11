@@ -1,10 +1,16 @@
 return {
+  --- Nerdy
+  --- NerdFont picker using snacks.nvim picker
+  ---@url https://github.com/2kabhishek/nerdy.nvim
+  ---@type LazyPluginSpec
   {
     '2kabhishek/nerdy.nvim',
     dependencies = {
       'folke/snacks.nvim',
     },
+    event = 'VeryLazy',
     cmd = 'Nerdy',
+    opts = {},
   },
   {
     'gbprod/yanky.nvim',
@@ -55,9 +61,9 @@ return {
     lazy = false,
     opts = {},
   },
+  ---@url https://github.com/ThePrimeagen/harpoon
+  ---@type LazyPluginSpec
   {
-    ---@url https://github.com/ThePrimeagen/harpoon
-    ---@type LazyPluginSpec
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
     dependencies = {
@@ -87,9 +93,9 @@ return {
       },
     },
   },
+  ---@url https://github.com/TobinPalmer/Tip.nvim
+  ---@type LazyPluginSpec
   {
-    ---@url https://github.com/TobinPalmer/Tip.nvim
-    ---@type LazyPluginSpec
     'TobinPalmer/Tip.nvim',
     event = 'VimEnter',
     opts = {
@@ -101,9 +107,9 @@ return {
       require('tip').setup(opts or {})
     end,
   },
+  ---@url https://github.com/ellisonleao/carbon-now.nvim
+  ---@type LazyPluginSpec
   {
-    ---@url https://github.com/ellisonleao/carbon-now.nvim
-    ---@type LazyPluginSpec
     'ellisonleao/carbon-now.nvim',
     lazy = true,
     cmd = 'CarbonNow',
@@ -136,34 +142,33 @@ return {
       },
     },
   },
+  ---@url https://github.com/j-hui/fidget.nvim
+  ---@type LazyPluginSpec
   {
-
-    ---@url https://github.com/j-hui/fidget.nvim
-    ---@type LazyPluginSpec
     'j-hui/fidget.nvim',
     version = '*',
     dependencies = {},
     opts = {},
   },
+  ---@url https://github.com/JohnnyJumper/neotypist.nvim
+  ---@type LazyPluginSpec
   {
-    ---@url https://github.com/JohnnyJumper/neotypist.nvim
-    ---@type LazyPluginSpec
     'JohnnyJumper/neotypist.nvim',
     version = '*',
     event = 'VeryLazy',
     opts = {},
   },
+  ---@url https://github.com/ellisonleao/dotenv.nvim
+  ---@type LazyPluginSpec
   {
-    ---@url https://github.com/ellisonleao/dotenv.nvim
-    ---@type LazyPluginSpec
     'ellisonleao/dotenv.nvim',
     opts = {
       enable_on_load = true,
     },
   },
+  ---@url https://github.com/mikavilpas/yazi.nvim
+  ---@type LazyPluginSpec
   {
-    ---@url https://github.com/mikavilpas/yazi.nvim
-    ---@type LazyPluginSpec
     'mikavilpas/yazi.nvim',
     event = 'VeryLazy',
     dependencies = {
@@ -188,9 +193,9 @@ return {
       vim.g.loaded_netrwPlugin = 1
     end,
   },
+  ---@url https://github.com/tris203/hawtkeys.nvim
+  ---@type LazyPluginSpec
   {
-    ---@url https://github.com/tris203/hawtkeys.nvim
-    ---@type LazyPluginSpec
     'tris203/hawtkeys.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -208,9 +213,9 @@ return {
       },
     },
   },
+  ---@url https://github.com/folke/persistence.nvim
+  ---@type LazyPluginSpec
   {
-    ---@url https://github.com/folke/persistence.nvim
-    ---@type LazyPluginSpec
     'folke/persistence.nvim',
     event = 'BufReadPre',
     opts = {
@@ -253,9 +258,9 @@ return {
       },
     },
   },
+  ---@url https://github.com/NitroVim/foldergen.nvim
+  ---@type LazyPluginSpec
   {
-    ---@url https://github.com/NitroVim/foldergen.nvim
-    ---@type LazyPluginSpec
     'NitroVim/foldergen.nvim',
     event = 'VeryLazy',
     opts = {},
