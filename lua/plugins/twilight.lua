@@ -16,6 +16,7 @@ end
 ---@type LazyPluginSpec
 return {
   'folke/twilight.nvim',
+  cmd = 'Twilight',
   opts = {},
   init = function()
     Snacks.toggle

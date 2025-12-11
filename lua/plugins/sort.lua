@@ -1,5 +1,6 @@
 return {
   'sQVe/sort.nvim',
+  cmd = 'Sort',
   opts = {
     -- Delimiter priority order.
     delimiters = {

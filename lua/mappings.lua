@@ -51,3 +51,9 @@ map_repl('n', 'node', {
 map_repl('r', 'irb', {
   desc = 'Open a Ruby REPL in Kitty',
 })
+
+map('n', '<leader>fC', function()
+  Snacks.picker.commands()
+end, {
+  desc = 'Search commands w/ Snacks picker',
+})

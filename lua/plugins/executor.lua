@@ -26,11 +26,14 @@ local presets = {
   },
 }
 
+local LogLevel = vim.log.levels
+
 ---@type LazyPluginSpec
 return {
   's0cks/executor.nvim',
   dependencies = {
     'MunifTanjim/nui.nvim',
+    'j-hui/fidget.nvim',
   },
   opts = {
     -- View details of the task run in a split, rather than a popup window.
@@ -89,16 +92,17 @@ return {
     preset_commands = presets,
   },
   init = function()
+    local fidget = require('fidget')
     vim.api.nvim_create_autocmd('User', {
       pattern = 'ExecutorRunStarted',
       callback = function()
-        vim.notify('executor started')
+        fidget.notify('Executor task started', LogLevel.INFO)
       end,
     })
     vim.api.nvim_create_autocmd('User', {
       pattern = 'ExecutorRunFinished',
       callback = function()
-        vim.notify('executor finished')
+        fidget.notify('Executor task finished', LogLevel.INFO)
       end,
     })
   end,
@@ -158,6 +162,14 @@ return {
         end,
         'n',
         desc = 'Execute Taskfile task using executor',
+      },
+      {
+        '<leader>exh',
+        function()
+          executor.commands.show_history()
+        end,
+        'n',
+        desc = 'Show executor history',
       },
     }
   end,
