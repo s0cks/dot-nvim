@@ -5,7 +5,9 @@ return {
     'MunifTanjim/nui.nvim',
     'folke/snacks.nvim',
   },
-  opts = {},
+  opts = {
+    enabled = false,
+  },
   init = function()
     local hardtime = require('hardtime')
     Snacks.toggle

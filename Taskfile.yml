@@ -4,4 +4,7 @@ silent: true
 tasks:
   default:
     cmds:
+    - echo "This is a test"
+  say-hello-world:
+    cmds:
     - echo "Hello World"

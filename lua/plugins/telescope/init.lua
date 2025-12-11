@@ -12,11 +12,28 @@ return {
         ['ui-select'] = {},
       },
     },
-    init = function()
-      local telescope = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', telescope.find_files, { desc = 'Telescope find files' })
-      vim.keymap.set('n', '<leader>fgr', telescope.live_grep, { desc = 'Telescope live grep' })
-    end,
+    keys = {
+      {
+        '<leader>f',
+        group = 'Search using  Telescope',
+      },
+      {
+        '<leader>ff',
+        function()
+          require('telescope.builtin').find_files()
+        end,
+        'n',
+        desc = 'Find files using  Telescope',
+      },
+      {
+        '<leader>fgr',
+        function()
+          require('telescope.builtin').live_grep()
+        end,
+        'n',
+        desc = 'Find ripgrep +  Telescope',
+      },
+    },
   },
   {
     'nvim-telescope/telescope-ui-select.nvim',

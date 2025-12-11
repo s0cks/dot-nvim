@@ -1,3 +1,32 @@
+-- local function load_presets()
+--   local p = vim.fn.expand('%:p:h') .. '/executor-presets.json'
+--   local file = io.open(p, 'r')
+--   if not file then
+--     error("couldn't open file: " .. p)
+--   end
+--
+--   local content = file:read('*a')
+--   file:close()
+--
+--   local success, decoded_json = pcall(vim.json.decode, content)
+--   if not success then
+--     error('failed to decode json: ' .. decoded_json)
+--     return nil
+--   end
+--   return decoded_json
+-- end
+
+local presets = {
+  ['/'] = {
+    'task default',
+    {
+      partial = true,
+      cmd = 'task ',
+    },
+  },
+}
+
+---@type LazyPluginSpec
 return {
   'google/executor.nvim',
   dependencies = {
@@ -56,90 +85,66 @@ return {
         style = 'rounded',
       },
     },
-    statusline = {
-      prefix = 'Executor: ',
-      icons = {
-        in_progress = '…',
-        failed = '✖ ',
-        passed = '✓',
-      },
-    },
-    preset_commands = {
-      ['/'] = {
-        {
-          partial = true,
-          cmd = 'task ',
-        },
-        'task default',
-      },
-    },
+    statusline = nil,
+    preset_commands = presets,
   },
-  keys = {
-    {
-      '<leader>ex',
-      group = 'Executor',
-    },
-    {
-      '<leader>exv',
-      function()
-        require('executor').commands.toggle_detail()
-      end,
-      'n',
-      desc = 'Toggle executor details',
-    },
-    {
-      '<leader>exh',
-      function()
-        require('executor').commands.show_history()
-      end,
-      'n',
-      desc = 'Show executor history',
-    },
-    {
-      '<leader>exp',
-      function()
-        require('executor').commands.show_presets()
-      end,
-      'n',
-      desc = 'Show executor presets',
-    },
-    {
-      '<leader>exo',
-      function()
-        require('executor').commands.run_one_off()
-      end,
-      'n',
-      desc = 'Run executor w/ one off command',
-    },
-    {
-      '<leader>exr',
-      function()
-        require('executor').commands.run()
-      end,
-      'n',
-      desc = 'Run executor w/ previous command',
-    },
-    {
-      '<leader>exR',
-      function()
-        require('executor').commands.run_with_new_command()
-      end,
-      'n',
-      desc = 'Run executor w/ new command',
-    },
-    {
-      '<leader>exT',
-      function()
-        local function exec_task(name)
-          require('executor').commands.run_one_off('task ' .. name)
-        end
 
-        Snacks.input({
-          prompt = 'Execute task',
-        }, exec_task)
-      end,
-      'n',
-      desc = 'Execute task using executor',
-    },
-  },
+  keys = function()
+    local executor = require('executor')
+
+    return {
+      {
+        '<leader>ex',
+        group = 'Executor',
+      },
+      {
+        '<leader>ex',
+        function()
+          executor.commands.toggle_detail()
+        end,
+        'n',
+        desc = 'Toggle executor details',
+      },
+      {
+        '<leader>exp',
+        function()
+          executor.commands.show_presets()
+        end,
+        'n',
+        desc = 'Show executor presets',
+      },
+      {
+        '<leader>exo',
+        function()
+          executor.commands.run_one_off()
+        end,
+        'n',
+        desc = 'Run executor w/ one off command',
+      },
+      {
+        '<leader>exr',
+        function()
+          executor.commands.run()
+        end,
+        'n',
+        desc = 'Run executor w/ previous command',
+      },
+      {
+        '<leader>exR',
+        function()
+          executor.commands.run_with_new_command()
+        end,
+        'n',
+        desc = 'Run executor w/ new command',
+      },
+      {
+        '<leader>ext',
+        function()
+          require('task.picker').find_and_execute()
+        end,
+        'n',
+        desc = 'Execute Taskfile task using executor',
+      },
+    }
+  end,
 }
