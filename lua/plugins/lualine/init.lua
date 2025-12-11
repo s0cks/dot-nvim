@@ -5,5 +5,5 @@ return {
     'kepano/flexoki-neovim',
   },
   event = 'VeryLazy',
-  opts = require('ui.lualine.config'),
+  opts = require('plugins.lualine.config'),
 }

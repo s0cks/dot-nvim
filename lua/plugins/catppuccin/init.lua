@@ -3,5 +3,5 @@ return {
   priority = 1000,
   name = 'catppuccin',
   version = '*',
-  opts = require('ui.catppuccin.config'),
+  opts = require('plugins.catppuccin.config'),
 }

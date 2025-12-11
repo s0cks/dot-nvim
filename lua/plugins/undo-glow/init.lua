@@ -1,8 +1,8 @@
 return {
   'y3owk1n/undo-glow.nvim',
   version = '*',
-  opts = require('ui.undo-glow.config'),
-  keys = require('ui.undo-glow.keys'),
+  opts = require('plugins.undo-glow.config'),
+  keys = require('plugins.undo-glow.keys'),
   init = function()
     vim.api.nvim_create_autocmd('TextYankPost', {
       desc = 'Highlight when yanking (copying) text',

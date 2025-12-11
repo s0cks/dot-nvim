@@ -4,6 +4,6 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
-  keys = require('ui.comments.todo.keys'),
-  opts = require('ui.comments.todo.config'),
+  keys = require('plugins.comments.todo.keys'),
+  opts = require('plugins.comments.todo.config'),
 }

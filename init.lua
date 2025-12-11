@@ -28,7 +28,6 @@ require('lazy').setup({
         vim.cmd([[colorscheme flexoki-dark]])
       end,
     },
-    { import = 'ui' },
     { import = 'plugins' },
   },
   install = {
