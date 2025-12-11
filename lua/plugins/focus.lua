@@ -1,0 +1,27 @@
+---@type LazyPluginSpec
+return {
+  'nvim-focus/focus.nvim',
+  version = '*',
+  cmd = {
+    'FocusToggle',
+    'FocusEnable',
+    'FocusDisable',
+    'FocusSplitNicely',
+    'FocusSplitCycle',
+    'FocusEnableWindow',
+    'FocusDisableWindow',
+    'FocusToggleWindow',
+    'FocusEnableBuffer',
+    'FocusDisableBuffer',
+    'FocusToggleBuffer',
+    'FocusSplitLeft',
+    'FocusSplitDown',
+    'FocusSplitUp',
+    'FocusSplitRight',
+    'FocusEqualise',
+    'FocusMaximise',
+    'FocusMaxOrEqual',
+  },
+  opts = {},
+  config = true,
+}
