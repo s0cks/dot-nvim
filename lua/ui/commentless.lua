@@ -1,4 +1,3 @@
----@url https://github.com/soemre/commentless.nvim
 ---@type LazyPluginSpec
 return {
   'soemre/commentless.nvim',
