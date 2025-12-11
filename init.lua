@@ -30,13 +30,7 @@ require('lazy').setup({
       end,
     },
     { import = 'ui' },
-    require('blink'),
-    require('ts'),
-    require('lsp'),
     { import = 'plugins' },
-    { import = 'linting' },
-    require('formatting'),
-    require('debugger'),
   },
   install = {
     colorscheme = { 'flexoki-dark' },
