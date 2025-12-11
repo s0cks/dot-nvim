@@ -9,18 +9,18 @@ return {
     'folke/snacks.nvim',
   },
   keys = require('ui.tree.keys'),
+  opts = require('ui.tree.config'),
   config = function(_, opts)
-    local config = vim.tbl_deep_extend('force', opts or {}, require('ui.tree.config'))
     vim.diagnostic.config({
       signs = {
         text = {
-          [vim.diagnostic.severity.ERROR] = '',
-          [vim.diagnostic.severity.WARN] = '',
-          [vim.diagnostic.severity.INFO] = '',
-          [vim.diagnostic.severity.HINT] = '󰌵',
+          [vim.diagnostic.severity.ERROR] = '',
+          [vim.diagnostic.severity.WARN] = '',
+          [vim.diagnostic.severity.INFO] = '',
+          [vim.diagnostic.severity.HINT] = '',
         },
       },
     })
-    require('neo-tree').setup(config)
+    require('neo-tree').setup(opts or {})
   end,
 }

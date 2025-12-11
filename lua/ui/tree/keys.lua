@@ -2,6 +2,6 @@ return {
   {
     '\\',
     '<cmd>Neotree toggle<cr>',
-    desc = 'neotree reveal',
+    desc = ' Open Neotree',
   },
 }
