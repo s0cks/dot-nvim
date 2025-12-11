@@ -49,6 +49,7 @@ return {
     version = '*',
     dependencies = {
       'b0o/schemastore.nvim',
+      'folke/neoconf.nvim',
     },
     opts = {
       servers = {
