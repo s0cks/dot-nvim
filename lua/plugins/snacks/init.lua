@@ -4,7 +4,6 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    indent = { enabled = true },
     notifier = { enabled = true },
     scope = {},
     image = {},
