@@ -1,11 +1,12 @@
+local vault = require('plugins.obsidian.vault')
 return {
   {
     'obsidian-nvim/obsidian.nvim',
     version = '*',
     lazy = true,
     event = {
-      'BufReadPre ' .. vim.fn.expand('~') .. '/Obsidian/*.md',
-      'BufNewFile ' .. vim.fn.expand('~') .. '/Obsidian/*.md',
+      'BufReadPre ' .. vault.path .. '/*.md',
+      'BufNewFile ' .. vault.path .. '/*.md',
     },
     dependencies = {
       'nvim-lua/plenary.nvim',
