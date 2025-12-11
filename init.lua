@@ -19,7 +19,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   spec = {
-
     {
       'kepano/flexoki-neovim',
       name = 'flexoki',
@@ -39,12 +38,9 @@ require('lazy').setup({
     require('formatting'),
     require('debugger'),
   },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
   install = {
     colorscheme = { 'flexoki-dark' },
     missing = true,
   },
-  -- automatically check for plugin updates
-  checker = { enabled = true, notify = false },
+  checker = { enabled = false, notify = false },
 })
