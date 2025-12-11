@@ -2,6 +2,16 @@
 
 Repository for Neovim configuration
 
+Fix the following:
+- autocomplete.nvim 
+- automkdir.nvim 
+- dotenv.nvim 
+- helpview.nvim 
+- marks.nvim 
+- nvim-autopairs 
+- nvim-surround 
+- yanky.nvim 
+
 ## Plugins to install
 
 Install the following:
