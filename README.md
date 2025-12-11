@@ -1,5 +1,7 @@
 # Neovim
 
+This is a test of null-ls no-really diagnostic
+
 Repository for Neovim configuration
 
 Fix the following:
