@@ -33,3 +33,12 @@ Possibles:
 - https://github.com/code-biscuits/nvim-biscuits
 - https://github.com/natecraddock/workspaces.nvim
 
+Screensaver plugin?
+
+### tree-sitter related
+
+- https://dotfyle.com/plugins/kiyoon/treesitter-indent-object.nvim
+- https://dotfyle.com/plugins/nfrid/treesitter-utils
+- https://dotfyle.com/plugins/Mr-LLLLL/treesitter-outer
+- https://dotfyle.com/plugins/brianhuster/nvim-treesitter-endwise
+
