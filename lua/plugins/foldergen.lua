@@ -5,8 +5,8 @@ return {
   opts = {},
   keys = {
     {
-      '<leader>Gfs',
-      '<cmd>FolderGen<cr>',
+      '<leader>gfs',
+      ':FolderGen<cr>',
       'n',
       desc = 'Generate folder structure from text',
     },
