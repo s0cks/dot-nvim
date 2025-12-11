@@ -41,4 +41,5 @@ Screensaver plugin?
 - https://dotfyle.com/plugins/nfrid/treesitter-utils
 - https://dotfyle.com/plugins/Mr-LLLLL/treesitter-outer
 - https://dotfyle.com/plugins/brianhuster/nvim-treesitter-endwise
-
+- https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context
+- https://dotfyle.com/plugins/Wansmer/sibling-swap.nvim
