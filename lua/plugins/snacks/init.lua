@@ -22,8 +22,10 @@ return {
     scratch = {},
     scroll = { enabled = true },
     zen = {},
+    dashboard = require('plugins.snacks.dashboard'),
   },
   keys = {
+    -- TODO(@s0cks): move to toggles
     {
       '<leader>zm',
       function()
@@ -32,7 +34,11 @@ return {
       { desc = 'Toggle Zen Mode' },
     },
     {
-      '<leader>.',
+      '<leader>S',
+      group = 'Scratch',
+    },
+    {
+      '<leader>So',
       function()
         Snacks.scratch()
       end,
@@ -40,21 +46,16 @@ return {
       desc = 'Toggle scratch buffer',
     },
     {
-      '<leader>S',
+      '<leader>Ss',
       function()
         Snacks.scratch.select()
       end,
       'n',
-      desc = 'Select scratch buffer',
-    },
-    {
-      '<leader>to',
-      function() end,
-      'n',
-      desc = 'Open toggles',
+      desc = 'Search scratch buffers',
     },
   },
   init = function()
+    vim.is_testing = false
     vim.api.nvim_create_autocmd('User', {
       pattern = 'VeryLazy',
       callback = function()

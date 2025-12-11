@@ -9,8 +9,8 @@ return {
   opts = {},
   keys = {
     {
-      '<leader>tz',
-      ':Telescope zoxide list<cr>',
+      '<leader>fz',
+      '<cmd>Telescope zoxide list<cr>',
       'z',
       desc = 'Search Zoxide using Telescope 🔭',
     },

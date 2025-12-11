@@ -10,6 +10,7 @@ local hl_palette = {
 return {
   'mvllow/modes.nvim',
   version = '*',
+  event = 'VeryLazy',
   dependencies = {
     'kepano/flexoki-neovim',
   },
