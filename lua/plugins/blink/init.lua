@@ -11,10 +11,18 @@ return {
     'allaman/emoji.nvim',
     'Kaiser-Yang/blink-cmp-git',
     'MahanRahmati/blink-nerdfont.nvim',
+    'marcoSven/blink-cmp-yanky',
     --- theming
     'xzbdmw/colorful-menu.nvim',
   },
   version = '^1.*',
   opts = require('plugins.blink.config'),
   opts_extend = { 'sources.default' },
+  init = function()
+    local c = require('flexoki.palette').palette()
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindYank', {
+      fg = c['pu'],
+      bold = true,
+    })
+  end,
 }

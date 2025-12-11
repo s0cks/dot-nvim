@@ -49,6 +49,7 @@ return {
       'lsp',
       'path',
       'snippets',
+      'yank',
       'buffer',
       'emoji',
       'gitmoji',

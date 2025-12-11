@@ -4,6 +4,7 @@ local ALL_PROVIDERS = {
   'gitmoji',
   'env',
   'emoji',
+  'yank',
 }
 
 local M = {}
