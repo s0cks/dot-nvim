@@ -10,8 +10,7 @@
   },
   "diagnostics": {
     "globals": [
-      "vim",
-      "Snacks"
+      "vim"
     ],
     "ignoredFiles": "Disable"
   },
