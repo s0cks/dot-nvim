@@ -42,14 +42,6 @@ return {
     lazy = false,
     opts = {},
   },
-  ---@url https://github.com/JohnnyJumper/neotypist.nvim
-  ---@type LazyPluginSpec
-  {
-    'JohnnyJumper/neotypist.nvim',
-    version = '*',
-    event = 'VeryLazy',
-    opts = {},
-  },
   ---@url https://github.com/ellisonleao/dotenv.nvim
   ---@type LazyPluginSpec
   {
