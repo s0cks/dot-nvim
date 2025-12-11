@@ -18,12 +18,11 @@ end
 ---@type LazyPluginSpec
 return {
   'jim-fx/sudoku.nvim',
-  event = 'VeryLazy',
+  cmd = 'Sudoku',
   version = '*',
   dependencies = {
     'catppuccin/nvim',
   },
-  cmd = 'Sudoku',
   opts = {
     custom_highlights = generate_custom_highlights(),
   },
