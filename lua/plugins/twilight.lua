@@ -1,5 +1,30 @@
+local M = {}
+M.get = function()
+  return M.enabled
+end
+M.set = function(value)
+  local twilight = require('twilight')
+  if value then
+    M.enabled = true
+    twilight.enable()
+  else
+    M.enabled = false
+    twilight.disable()
+  end
+end
+
 ---@type LazyPluginSpec
 return {
   'folke/twilight.nvim',
   opts = {},
+  init = function()
+    Snacks.toggle
+      .new({
+        id = 'twilight',
+        name = 'Twilight',
+        get = M.get,
+        set = M.set,
+      })
+      :map('<leader>Tt')
+  end,
 }
