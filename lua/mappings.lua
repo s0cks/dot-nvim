@@ -13,6 +13,11 @@ map('n', '<leader>Gl', function()
 end, {
   desc = 'Open git log in kitty window',
 })
+map('n', '<leader>Gcz', function()
+  Snacks.terminal.open({ 'git', 'cz' }, { auto_close = true })
+end, {
+  desc = 'Open git cz in Snacks terminal',
+})
 
 --- REPLs
 

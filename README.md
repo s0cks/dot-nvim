@@ -53,3 +53,19 @@ Screensaver plugin?
 - https://dotfyle.com/plugins/brianhuster/nvim-treesitter-endwise
 - https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context
 - https://dotfyle.com/plugins/Wansmer/sibling-swap.nvim
+
+
+    ○ alpha-nvim 
+    ○ autocomplete.nvim 
+    ○ automkdir.nvim 
+    ○ bufferline.nvim 
+    ○ catppuccin 
+    ○ dotenv.nvim 
+    ○ helpview.nvim 
+    ○ lualine.nvim 
+    ○ marks.nvim 
+    ○ nvim-surround 
+    ○ nvim-treesitter-endwise 
+    ○ termim.nvim 
+    ○ troublesum.nvim 
+

@@ -1,4 +1,4 @@
----TODO(@s0cks): This should probably be converted over to lazy load on command rather than VeryLazy event
+---TODO: This should probably be converted over to lazy load on command rather than VeryLazy event
 ---@type LazyPluginSpec
 return {
   'trevorhauter/gitportal.nvim',

@@ -28,7 +28,7 @@ local presets = {
 
 ---@type LazyPluginSpec
 return {
-  'google/executor.nvim',
+  's0cks/executor.nvim',
   dependencies = {
     'MunifTanjim/nui.nvim',
   },
@@ -88,6 +88,20 @@ return {
     statusline = nil,
     preset_commands = presets,
   },
+  init = function()
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'ExecutorRunStarted',
+      callback = function()
+        vim.notify('executor started')
+      end,
+    })
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'ExecutorRunFinished',
+      callback = function()
+        vim.notify('executor finished')
+      end,
+    })
+  end,
 
   keys = function()
     local executor = require('executor')
