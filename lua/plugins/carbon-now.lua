@@ -1,10 +1,7 @@
---- Carbon Now - Code snapshot utility
----@url https://github.com/ellisonleao/carbon-now.nvim
 ---@type LazyPluginSpec
 return {
   'ellisonleao/carbon-now.nvim',
   cmd = 'CarbonNow',
-  event = 'VeryLazy',
   opts = {
     base_url = 'https://carbon.now.sh/',
     options = {
