@@ -36,16 +36,7 @@ return {
         setup = false,
       },
     }, -- needed even when using default config
-    init = function()
-      vim.opt.foldlevel = 99
-      vim.opt.foldlevelstart = 2
-      vim.opt.foldcolumn = '1'
-      vim.opt.foldmethod = 'expr'
-      vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.opt.fillchars.eob = ' '
-      vim.opt.fillchars.foldstart = 'nf-fa-chevron_down'
-      vim.opt.fillchars.foldstop = 'nf-fa-chevron_up'
-    end,
+    init = function() end,
   },
   {
     ---@url https://github.com/soemre/commentless.nvim

@@ -10,7 +10,8 @@
   },
   "diagnostics": {
     "globals": [
-      "vim"
+      "vim",
+      "BufferSticks"
     ],
     "ignoredFiles": "Disable"
   },

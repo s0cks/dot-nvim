@@ -20,9 +20,9 @@ return {
     {
       '<leader>?',
       function()
-        require('which-key').show({ global = false, loop = true })
+        require('which-key').show({ global = false })
       end,
-      desc = 'Buffer Local Keymaps (which-key)',
+      desc = 'Open which-key',
     },
   },
 }

@@ -9,6 +9,25 @@ return {
       end,
       desc = 'Jump to buffer',
     },
+    {
+      '<leader>bq',
+      function()
+        BufferSticks.close()
+      end,
+      desc = 'Close buffer',
+    },
+    {
+      '<leader>bp',
+      function()
+        BufferSticks.list({
+          action = function(buffer, leave)
+            print('selected: ' .. buffer.name)
+            leave()
+          end,
+        })
+      end,
+      desc = 'Pick buffer',
+    },
   },
   opts = {
     filter = {
