@@ -20,6 +20,14 @@ local config = {
     -- Disable sections and component separators
     component_separators = '',
     section_separators = '',
+    disabled_filetypes = {
+      'dashboard',
+      'snacks_dashboard',
+      'alpha',
+      'NvimTree',
+      'neo-tree',
+      'lspinfo',
+    },
     theme = {
       -- We are going to use lualine_c an lualine_x as left and
       -- right section. Both are highlighted by c theme .  So we
@@ -181,6 +189,23 @@ ins_left({
   color = { fg = palette.text, gui = 'bold' },
 })
 
+ins_right({
+  'executor',
+  icon = '',
+  color = function()
+    local c = require('flexoki.palette').palette()
+    local status = require('executor').current_status()
+    if status == 'IN_PROGRESS' then
+      return c.pu
+    elseif status == 'PASSED' then
+      return c.gr
+    elseif status == 'FAILED' then
+      return c.re
+    else
+      return c.tx2
+    end
+  end,
+})
 -- Add components to right sections
 ins_right({
   'o:encoding', -- option component same as &encoding in viml
