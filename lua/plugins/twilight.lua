@@ -17,6 +17,9 @@ end
 return {
   'folke/twilight.nvim',
   cmd = 'Twilight',
+  deps = {
+    'folke/snacks.nvim',
+  },
   opts = {},
   init = function()
     Snacks.toggle
