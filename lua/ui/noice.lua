@@ -3,8 +3,16 @@ return {
   event = 'VeryLazy',
   dependencies = {
     'MunifTanjim/nui.nvim',
+    'kepano/flexoki-neovim',
   },
   opts = {
+    cmdline = {
+      format = {
+        cmdline = {
+          title = 'neovim',
+        },
+      },
+    },
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
       override = {
@@ -21,4 +29,13 @@ return {
       lsp_doc_border = false, -- add a border to hover docs and signature help
     },
   },
+  init = function()
+    local c = require('flexoki.palette').palette()
+    vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', {
+      fg = c['tx'],
+    })
+    vim.api.nvim_set_hl(0, 'NoiceCmdlineIcon', {
+      fg = c['tx'],
+    })
+  end,
 }
