@@ -14,5 +14,21 @@
   "LuaDoc type LazyPluginSpec": {
     "prefix": "doc-type-lazypluginspec",
     "body": "---@type LazyPluginSpec$0"
+  },
+  "Load Telescope Extension": {
+    "prefix": "tele-load-ext",
+    "body": "require('telescope').load_extension('$1')$0"
+  },
+  "Lazy Telescope Package": {
+    "prefix": "lazy-pkg-tele",
+    "body": "'nvim-telescope/telescope.nvim'"
+  },
+  "Lazy Snacks Package": {
+    "prefix": "lazy-pkg-snacks",
+    "body": "'folke/snacks.nvim'"
+  },
+  "Lazy Flexoki Package": {
+    "prefix": "lazy-pkg-flexoki",
+    "body": "'kepano/flexoki-neovim'"
   }
 }
