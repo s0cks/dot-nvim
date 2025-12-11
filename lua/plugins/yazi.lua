@@ -9,14 +9,20 @@ return {
   },
   keys = {
     {
+      '<leader>-',
+      ':Yazi<cr>',
+      { 'n', 'v' },
+      desc = 'Open yazi at the current file',
+    },
+    {
       '<leader>.',
-      '<cmd>Yazi cwd<cr>',
-      'n',
-      desc = 'Open Yazi in the current working directory',
+      ':Yazi cwd<cr>',
+      { 'n', 'v' },
+      desc = 'Open Yazi in project root',
     },
   },
   opts = {
-    open_for_directories = false,
+    open_for_directories = true,
     keymaps = {
       show_help = '<f1>',
     },

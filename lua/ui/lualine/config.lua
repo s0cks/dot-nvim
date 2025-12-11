@@ -1,5 +1,3 @@
-local palette = require('flexoki.palette').palette()
-
 local conditions = {
   buffer_not_empty = function()
     return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
@@ -15,6 +13,7 @@ local conditions = {
 }
 
 -- Config
+local palette = require('flexoki.palette').palette()
 local config = {
   options = {
     -- Disable sections and component separators
@@ -24,10 +23,10 @@ local config = {
       'dashboard',
       'snacks_dashboard',
       'alpha',
-      'NvimTree',
-      'neo-tree',
       'lspinfo',
     },
+    ignore_focus = {},
+    globalstatus = true,
     theme = {
       -- We are going to use lualine_c an lualine_x as left and
       -- right section. Both are highlighted by c theme .  So we
@@ -78,19 +77,6 @@ local function ins_right(component)
 end
 
 ins_left({
-  function()
-    return '▊'
-  end,
-  color = {
-    fg = palette.bl,
-  }, -- Sets highlighting of component
-  padding = {
-    left = 0,
-    right = 1,
-  }, -- We don't need space before this
-})
-
-ins_left({
   -- mode component
   function()
     return ''
@@ -125,12 +111,6 @@ ins_left({
 })
 
 ins_left({
-  -- filesize component
-  'filesize',
-  cond = conditions.buffer_not_empty,
-})
-
-ins_left({
   'filename',
   cond = conditions.buffer_not_empty,
   color = {
@@ -142,14 +122,6 @@ ins_left({
 ins_left({ 'location' })
 
 ins_left({
-  'progress',
-  color = {
-    fg = palette.tx,
-    gui = 'bold',
-  },
-})
-
-ins_left({
   'diagnostics',
   sources = { 'nvim_diagnostic' },
   symbols = { error = ' ', warn = ' ', info = ' ' },
@@ -158,6 +130,49 @@ ins_left({
     warn = { fg = palette.ye },
     info = { fg = palette.tx2 },
   },
+})
+
+---@alias ExecutorStatus
+---| 'IN_PROGRESS'
+---| 'NEVER_RUN'
+---| 'PASSED'
+---| 'FAILED'
+
+---@type table<ExecutorStatus, any>
+local EXECUTOR_STATUS_COLORS = {
+  NEVER_RUN = palette['tx2'],
+  IN_PROGRESS = palette['pu'],
+  PASSED = palette['gr'],
+  FAILED = palette['re'],
+}
+
+ins_left({
+  function()
+    local executor = require('executor')
+    local status = executor.current_status()
+
+    local last = executor.last_command()
+    last = string.sub(last.cmd, 0, 20)
+
+    if status == 'IN_PROGRESS' then
+      return ''
+    elseif status == 'PASSED' or status == 'FAILED' then
+      return last .. '....'
+    end
+
+    return 'executor'
+  end,
+  icon = '$',
+  cond = function()
+    local status = require('executor').current_status()
+    return status ~= 'NEVER_RUN'
+  end,
+  color = function()
+    local status = require('executor').current_status()
+    return {
+      fg = EXECUTOR_STATUS_COLORS[status] and EXECUTOR_STATUS_COLORS[status] or palette['tx2'],
+    }
+  end,
 })
 
 -- Insert mid section. You can make any number of sections in neovim :)
@@ -189,23 +204,6 @@ ins_left({
   color = { fg = palette.text, gui = 'bold' },
 })
 
-ins_right({
-  'executor',
-  icon = '',
-  color = function()
-    local c = require('flexoki.palette').palette()
-    local status = require('executor').current_status()
-    if status == 'IN_PROGRESS' then
-      return c.pu
-    elseif status == 'PASSED' then
-      return c.gr
-    elseif status == 'FAILED' then
-      return c.re
-    else
-      return c.tx2
-    end
-  end,
-})
 -- Add components to right sections
 ins_right({
   'o:encoding', -- option component same as &encoding in viml
@@ -237,14 +235,6 @@ ins_right({
     removed = { fg = palette.re },
   },
   cond = conditions.hide_in_width,
-})
-
-ins_right({
-  function()
-    return '▊'
-  end,
-  color = { fg = palette.bl },
-  padding = { left = 1 },
 })
 
 return config

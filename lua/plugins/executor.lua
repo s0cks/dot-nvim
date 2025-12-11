@@ -42,9 +42,9 @@ return {
 
     notifications = {
       -- Show a popup notification when a task is started.
-      task_started = true,
+      task_started = false,
       -- Show a popup notification when a task is completed.
-      task_completed = true,
+      task_completed = false,
       -- Border styles
       border = {
         padding = {
