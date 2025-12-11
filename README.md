@@ -28,6 +28,21 @@ Install the following:
 - https://github.com/rebelot/heirline.nvim
 - https://github.com/Zeioth/heirline-components.nvim
 - https://github.com/wurli/visimatch.nvim
+- https://dotfyle.com/plugins/declancm/cinnamon.nvim
+- https://dotfyle.com/plugins/karb94/neoscroll.nvim
+- https://dotfyle.com/plugins/Olical/conjure
+- https://dotfyle.com/plugins/MaximilianLloyd/ascii.nvim
+- https://dotfyle.com/plugins/tamton-aquib/zone.nvim
+- https://dotfyle.com/plugins/stefanlogue/hydrate.nvim
+- https://dotfyle.com/plugins/cenk1cenk2/jq.nvim
+- https://dotfyle.com/plugins/atomicptr/BufClose.nvim
+- https://github.com/kevinhwang91/nvim-bqf
+- https://github.com/letieu/harpoon-lualine
+- https://dotfyle.com/plugins/QuentinGruber/pomodoro.nvim
+- https://github.com/chrisgrieser/nvim-scissors
+- https://github.com/akinsho/toggleterm.nvim
+- https://github.com/mikesmithgh/kitty-scrollback.nvim
+- https://github.com/numToStr/Navigator.nvim
 
 Possibles:
 - https://github.com/bfredl/nvim-luadev
@@ -44,6 +59,29 @@ Possibles:
 - https://github.com/roobert/hoversplit.nvim
 - https://github.com/code-biscuits/nvim-biscuits
 - https://github.com/natecraddock/workspaces.nvim
+- https://github.com/monaqa/dial.nvim
+- https://github.com/kiyoon/treesitter-indent-object.nvim
+- https://github.com/LiadOz/nvim-dap-repl-highlights
+- https://github.com/vuki656/package-info.nvim
+- https://github.com/nvim-neotest/neotest#supported-runners
+- https://github.com/m-demare/hlargs.nvim
+- https://github.com/jinh0/eyeliner.nvim
+- https://github.com/folke/ts-comments.nvim
+- https://github.com/LudoPinelli/comment-box.nvim
+- https://github.com/nvzone/minty
+- https://github.com/TaDaa/vimade
+- https://github.com/bennypowers/nvim-regexplainer
+- https://github.com/mvllow/modes.nvim
+- https://github.com/b0o/SchemaStore.nvim
+- https://github.com/RRethy/nvim-treesitter-endwise
+- https://github.com/danymat/neogen
+- https://github.com/sphamba/smear-cursor.nvim
+- https://github.com/gelguy/wilder.nvim
+- https://github.com/jake-stewart/multicursor.nvim
+- https://github.com/anuvyklack/hydra.nvim#side-scroll
+- https://github.com/jamestthompson3/nvim-remote-containers
+- https://github.com/ggandor/leap.nvim
+- https://github.com/SmiteshP/nvim-navic
 
 Screensaver plugin?
 
