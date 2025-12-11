@@ -1,6 +1,8 @@
 local vault = require('plugins.obsidian.vault')
 return {
   {
+    ---@url https://github.com/obsidian-nvim/obsidian.nvim
+    ---@type LazyPluginSpec
     'obsidian-nvim/obsidian.nvim',
     version = '*',
     lazy = true,

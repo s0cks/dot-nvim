@@ -8,17 +8,35 @@ return {
       'folke/which-key.nvim',
     },
     opts = {},
-    init = function()
-      local wk = require('which-key')
-
-      wk.add({
-        { '<leader>c', group = 'Comment Box' },
-        { '<leader>cb', '<cmd>CBlcbox4<cr>', desc = 'Left center box #4', mode = { 'n', 'v' } },
-        { '<leader>ct', '<cmd>CBllline<cr>', desc = 'Titled line', mode = { 'n', 'v' } },
-        { '<leader>cl', '<cmd>CBline<cr>', desc = 'Simple line', mode = { 'n', 'v' } },
-        { '<leader>cm', '<cmd>CBllbox14<cr>', desc = 'Marked box', mode = { 'n', 'v' } },
-        { '<leader>cd', '<cmd>CBd<cr>', desc = 'Delete box', mode = { 'n', 'v' } },
-      })
-    end,
+    keys = {
+      {
+        '<leader>cb',
+        group = 'Comment Box',
+      },
+      {
+        '<leader>cbtl',
+        '<cmd>CBllline<cr>',
+        { 'n', 'v' },
+        desc = 'Insert titled line box',
+      },
+      {
+        '<leader>cbl',
+        '<cmd>CBline<cr>',
+        { 'n', 'v' },
+        desc = 'Insert simple line box',
+      },
+      {
+        '<leader>cbm',
+        '<cmd>CBllbox14<cr>',
+        { 'n', 'v' },
+        desc = 'Insert marked box',
+      },
+      {
+        '<leader>cbd',
+        '<cmd>CBd<cr>',
+        { 'n', 'v' },
+        desc = 'Delete box',
+      },
+    },
   },
 }

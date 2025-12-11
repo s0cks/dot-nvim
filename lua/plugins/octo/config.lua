@@ -1,3 +1,0 @@
-return {
-  picker = 'fzf-lua',
-}

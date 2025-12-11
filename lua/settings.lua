@@ -41,4 +41,24 @@ vim.opt.listchars = {
 vim.schedule(function()
   vim.cmd.colorscheme('catppuccin')
   vim.o.clipboard = 'unnamedplus'
+
+  -- vim.api.nvim_create_autocmd('BufEnter', {
+  --   callback = function()
+  --     vim.system({ 'task', '--list-all' }, { text = true }, function(result)
+  --       if result.code == 0 then
+  --         vim.notify('found valid Taskfile.yml', 'debug')
+  --         vim.notify('tasks: ' .. result.stdout)
+  --       else
+  --         vim.notify('failed to find valid Taskfile.yml', 'warn')
+  --       end
+  --     end)
+  --   end,
+  -- })
+  --
+  -- vim.keymap.set('n', '<leader>rt', function()
+  --   vim.fn.inputsave()
+  --   local task = vim.fn.input('Task to execute')
+  --   vim.fn.inputrestore()
+  --   require('termim').open('task ' .. task, 'float', true)
+  -- end, { desc = '' })
 end)

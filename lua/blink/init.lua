@@ -12,6 +12,7 @@ return {
     dependencies = {
       'saghen/blink.compat',
       'rafamadriz/friendly-snippets',
+      'L3MON4D3/LuaSnip',
       --- providers
       'bydlw98/blink-cmp-env',
       'Dynge/gitmoji.nvim',

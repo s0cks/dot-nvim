@@ -1,0 +1,18 @@
+{
+  "LuaDoc url": {
+    "prefix": "doc-url",
+    "body": "---@url $1$0"
+  },
+  "LuaDoc url  GitHub": {
+    "prefix": "doc-url-gh",
+    "body": "---@url https://github.com/$0"
+  },
+  "LuaDoc type": {
+    "prefix": "doc-type",
+    "body": "---@type $1$0"
+  },
+  "LuaDoc type LazyPluginSpec": {
+    "prefix": "doc-type-lazypluginspec",
+    "body": "---@type LazyPluginSpec$0"
+  }
+}

@@ -1,7 +1,7 @@
 local vault = vim.fn.expand('~') .. '/Obsidian'
 
 local M = {}
-M.path = vim.fn.expand('~') .. '/Obsidian'
+M.path = vault
 
 function M.get_workspaces()
   local workspaces = {}
