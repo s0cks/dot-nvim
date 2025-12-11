@@ -53,7 +53,8 @@ return {
       'buffer',
       'emoji',
       'gitmoji',
-      'nerdfont',
+      -- TODO(@s0cks): #1
+      -- 'nerdfont',
       'env',
     },
     providers = require('plugins.blink.providers'),
