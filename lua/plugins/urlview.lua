@@ -2,5 +2,7 @@
 return {
   'axieax/urlview.nvim',
   cmd = 'UrlView',
-  opts = {},
+  opts = {
+    default_action = 'system',
+  },
 }
