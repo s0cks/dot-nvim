@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "runtime": {
+    "version": "LuaJIT"
+  },
+  "completion": {
+    "callSnippet": "Both",
+    "keywordSnippet": "Disable",
+    "displayContext": 5
+  },
+  "diagnostics": {
+    "globals": [
+      "vim",
+      "Snacks"
+    ],
+    "ignoredFiles": "Disable"
+  },
+  "hint": {
+    "enable": true,
+    "setType": true,
+    "arrayIndex": "Enable"
+  },
+  "hover": {
+    "enumsLimit": 10,
+    "previewFields": 10
+  }
+}
