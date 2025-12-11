@@ -28,20 +28,6 @@ return {
     },
   },
   {
-    ---@url https://github.com/pwntester/octo.nvim
-    ---@type LazyPluginSpec
-    'pwntester/octo.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'ibhagwan/fzf-lua',
-      'nvim-tree/nvim-web-devicons',
-    },
-    opts = {
-      picker = 'telescope',
-    },
-  },
-  {
     ---@url https://github.com/rktjmp/paperplanes.nvim
     ---@type LazyPluginSpec
     'rktjmp/paperplanes.nvim',
