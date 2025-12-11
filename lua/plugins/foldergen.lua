@@ -1,19 +1,17 @@
---- FolderGen - Text to folder structure generator
----@url https://github.com/NitroVim/foldergen.nvim
 ---@type LazyPluginSpec
 return {
   'NitroVim/foldergen.nvim',
-  event = 'VeryLazy',
+  cmd = 'FolderGen',
   opts = {},
   keys = {
     {
       '<leader>Gfs',
-      ':FolderGen<cr>',
+      '<cmd>FolderGen<cr>',
       'n',
       desc = 'Generate folder structure from text',
     },
   },
-  config = function()
+  init = function()
     vim.api.nvim_create_user_command('FolderGen', function()
       require('foldergen').generate_from_text()
     end, {})
