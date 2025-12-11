@@ -1,4 +1,4 @@
-local palette = require('catppuccin.palettes').get_palette('mocha')
+local palette = require('flexoki.palette').palette()
 
 local conditions = {
   buffer_not_empty = function()
@@ -26,14 +26,14 @@ local config = {
       -- are just setting default looks o statusline
       normal = {
         c = {
-          fg = palette.text,
-          bg = palette.base,
+          fg = palette.tx,
+          bg = palette.bg,
         },
       },
       inactive = {
         c = {
-          fg = palette.text,
-          bg = palette.base,
+          fg = palette.tx,
+          bg = palette.bg,
         },
       },
     },
@@ -74,7 +74,7 @@ ins_left({
     return '▊'
   end,
   color = {
-    fg = palette.blue,
+    fg = palette.bl,
   }, -- Sets highlighting of component
   padding = {
     left = 0,
@@ -90,26 +90,26 @@ ins_left({
   color = function()
     -- auto change color according to neovims mode
     local mode_color = {
-      n = palette.red,
-      i = palette.green,
-      v = palette.blue,
-      [''] = palette.blue,
-      V = palette.blue,
-      c = palette.lavender,
-      no = palette.red,
-      s = palette.yellow,
-      S = palette.yellow,
-      [''] = palette.yellow,
-      ic = palette.yellow,
-      R = palette.lavender,
-      Rv = palette.lavender,
-      cv = palette.red,
-      ce = palette.red,
-      r = palette.blue,
-      rm = palette.blue,
-      ['r?'] = palette.blue,
-      ['!'] = palette.red,
-      t = palette.red,
+      n = palette.re,
+      i = palette.gr,
+      v = palette.bl,
+      [''] = palette.bl,
+      V = palette.bl,
+      c = palette.pu,
+      no = palette.re,
+      s = palette.ye,
+      S = palette.ye,
+      [''] = palette.ye,
+      ic = palette.ye,
+      R = palette.pu,
+      Rv = palette.pu,
+      cv = palette.re,
+      ce = palette.re,
+      r = palette.bl,
+      rm = palette.bl,
+      ['r?'] = palette.bl,
+      ['!'] = palette.re,
+      t = palette.re,
     }
     return { fg = mode_color[vim.fn.mode()] }
   end,
@@ -126,7 +126,7 @@ ins_left({
   'filename',
   cond = conditions.buffer_not_empty,
   color = {
-    fg = palette.overlay1,
+    fg = palette.tx2,
     gui = 'bold',
   },
 })
@@ -136,7 +136,7 @@ ins_left({ 'location' })
 ins_left({
   'progress',
   color = {
-    fg = palette.text,
+    fg = palette.tx,
     gui = 'bold',
   },
 })
@@ -146,9 +146,9 @@ ins_left({
   sources = { 'nvim_diagnostic' },
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
-    error = { fg = palette.red },
-    warn = { fg = palette.yellow },
-    info = { fg = palette.overlay1 },
+    error = { fg = palette.re },
+    warn = { fg = palette.ye },
+    info = { fg = palette.tx2 },
   },
 })
 
@@ -186,20 +186,20 @@ ins_right({
   'o:encoding', -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
-  color = { fg = palette.gren, gui = 'bold' },
+  color = { fg = palette.gr, gui = 'bold' },
 })
 
 ins_right({
   'fileformat',
   fmt = string.upper,
   icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = palette.green, gui = 'bold' },
+  color = { fg = palette.gr, gui = 'bold' },
 })
 
 ins_right({
   'branch',
   icon = '',
-  color = { fg = palette.lavender, gui = 'bold' },
+  color = { fg = palette.ye, gui = 'bold' },
 })
 
 ins_right({
@@ -207,9 +207,9 @@ ins_right({
   -- Is it me or the symbol for modified us really weird
   symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
   diff_color = {
-    added = { fg = palette.green },
-    modified = { fg = palette.yellow },
-    removed = { fg = palette.red },
+    added = { fg = palette.gr },
+    modified = { fg = palette.ye },
+    removed = { fg = palette.re },
   },
   cond = conditions.hide_in_width,
 })
@@ -218,7 +218,7 @@ ins_right({
   function()
     return '▊'
   end,
-  color = { fg = palette.blue },
+  color = { fg = palette.bl },
   padding = { left = 1 },
 })
 
