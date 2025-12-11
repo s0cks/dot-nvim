@@ -64,6 +64,15 @@ return {
         passed = '✓',
       },
     },
+    preset_commands = {
+      ['/'] = {
+        {
+          partial = true,
+          cmd = 'task ',
+        },
+        'task default',
+      },
+    },
   },
   keys = {
     {
@@ -117,6 +126,20 @@ return {
       end,
       'n',
       desc = 'Run executor w/ new command',
+    },
+    {
+      '<leader>exT',
+      function()
+        local function exec_task(name)
+          require('executor').commands.run_one_off('task ' .. name)
+        end
+
+        Snacks.input({
+          prompt = 'Execute task',
+        }, exec_task)
+      end,
+      'n',
+      desc = 'Execute task using executor',
     },
   },
 }
