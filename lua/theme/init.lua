@@ -1,18 +1,14 @@
-local colors = require('theme.colors')
 
-local M = {}
-M.colors = colors
-
----@param name string The name of the highlight
----@param hl vim.api.keyset.highlight
-local function set_global_hl(name, hl)
-  vim.api.nvim_set_hl(0, name, hl)
-end
-
-function M.setup()
-  set_global_hl('Identifier', {
-    fg = colors['pu'],
-  })
-end
-
-return M
+return {
+  'kepano/flexoki-neovim',
+  name = 'flexoki',
+  priority = 1000,
+  lazy = false,
+  opts = {},
+  init = function()
+    vim.cmd([[colorscheme flexoki-dark]])
+    local colors = require('theme.colors')
+    local utils = require('theme.utils')
+    utils.set_global_hl_fg('Identifier', colors['pu'])
+  end,
+}
