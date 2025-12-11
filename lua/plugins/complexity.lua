@@ -1,6 +1,6 @@
 return {
   '4DRIAN0RTIZ/complexity.nvim',
-  event = 'VeryLazy',
+  cmd = 'ShowComplexity',
   opts = {
     thresholds = {
       low = 10, -- CCN <= low is considered low complexity
