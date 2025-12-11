@@ -22,6 +22,7 @@ return {
     scratch = {},
     scroll = { enabled = true },
     zen = {},
+    lazygit = require('plugins.snacks.lazygit'),
     terminal = require('plugins.snacks.terminal'),
     dashboard = require('plugins.snacks.dashboard'),
   },
@@ -53,6 +54,14 @@ return {
       end,
       'n',
       desc = 'Search scratch buffers',
+    },
+    {
+      ';',
+      function()
+        Snacks.lazygit.open()
+      end,
+      'n',
+      desc = 'Open lazygit',
     },
   },
   init = function()
