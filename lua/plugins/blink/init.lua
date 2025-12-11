@@ -11,7 +11,8 @@ return {
       'Dynge/gitmoji.nvim',
       'allaman/emoji.nvim',
       'Kaiser-Yang/blink-cmp-git',
-      'MahanRahmati/blink-nerdfont.nvim',
+      -- TODO(@s0cks): #1 figure out what to do with this, it causes problems when writing json
+      -- 'MahanRahmati/blink-nerdfont.nvim',
       'marcoSven/blink-cmp-yanky',
       --- theming
       'xzbdmw/colorful-menu.nvim',

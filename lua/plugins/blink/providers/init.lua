@@ -1,6 +1,7 @@
 local ALL_PROVIDERS = {
   'git',
-  'nerdfont',
+  -- TODO(@s0cks): #1 do something w/ this
+  -- 'nerdfont',
   'gitmoji',
   'env',
   'emoji',
