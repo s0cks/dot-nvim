@@ -209,7 +209,7 @@ return {
     },
   },
   {
-    ---@url https://github.com/
+    ---@url https://github.com/folke/persistence.nvim
     ---@type LazyPluginSpec
     'folke/persistence.nvim',
     event = 'BufReadPre',
@@ -252,5 +252,25 @@ return {
         desc = 'Stop persistence, session wont be saved',
       },
     },
+  },
+  {
+    ---@url https://github.com/NitroVim/foldergen.nvim
+    ---@type LazyPluginSpec
+    'NitroVim/foldergen.nvim',
+    event = 'VeryLazy',
+    opts = {},
+    keys = {
+      {
+        '<leader>gf',
+        ':FolderGen<cr>',
+        'n',
+        desc = 'Generate folder structure from text',
+      },
+    },
+    config = function()
+      vim.api.nvim_create_user_command('FolderGen', function()
+        require('foldergen').generate_from_text()
+      end, {})
+    end,
   },
 }
