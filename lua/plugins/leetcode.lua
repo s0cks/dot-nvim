@@ -1,7 +1,7 @@
----@url https://github.com/kawre/leetcode.nvim
 ---@type LazyPluginSpec
 return {
   'kawre/leetcode.nvim',
+  cmd = 'Leet',
   build = ':TSUpdate html',
   dependencies = {
     'nvim-lua/plenary.nvim',
