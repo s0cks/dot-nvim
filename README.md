@@ -1,4 +1,4 @@
-# neovim
+# Neovim
 
 Repository for Neovim configuration
 
