@@ -22,16 +22,17 @@ return {
     scratch = {},
     scroll = { enabled = true },
     zen = {},
+    terminal = require('plugins.snacks.terminal'),
     dashboard = require('plugins.snacks.dashboard'),
   },
   keys = {
-    -- TODO(@s0cks): move to toggles
     {
-      '<leader>zm',
+      '<leader>Z',
       function()
         Snacks.zen()
       end,
-      { desc = 'Toggle Zen Mode' },
+      'n',
+      desc = 'Enter zen mode',
     },
     {
       '<leader>S',
