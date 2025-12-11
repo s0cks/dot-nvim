@@ -9,14 +9,14 @@ return {
   },
   keys = {
     {
-      '<leader>-',
-      ':Yazi<cr>',
+      '\\',
+      '<cmd>Yazi<cr>',
       { 'n', 'v' },
       desc = 'Open yazi at the current file',
     },
     {
       '<leader>.',
-      ':Yazi cwd<cr>',
+      '<cmd>Yazi cwd<cr>',
       { 'n', 'v' },
       desc = 'Open Yazi in project root',
     },
