@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 return {
   'alanfortlink/blackjack.nvim',
-  event = 'VeryLazy',
+  cmd = 'BlackJackNewGame',
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
