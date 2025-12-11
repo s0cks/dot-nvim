@@ -5,19 +5,8 @@ map('n', '<Esc><Esc><Esc>', ':qall!<CR>', {
   desc = 'Quit',
 })
 
-local kitty = require('kitty')
-
 --- git
-map('n', '<leader>Gl', function()
-  kitty.launch({ 'git', 'log' })
-end, {
-  desc = 'Open git log in kitty window',
-})
-map('n', '<leader>Gcz', function()
-  Snacks.terminal.open({ 'git', 'cz' }, { auto_close = true })
-end, {
-  desc = 'Open git cz in Snacks terminal',
-})
+require('mappings.git')
 
 --- REPLs
 
