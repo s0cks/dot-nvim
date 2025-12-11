@@ -1,6 +1,6 @@
 ---@type LazyPluginSpec
 return {
   'axieax/urlview.nvim',
-  event = 'VeryLazy',
+  cmd = 'UrlView',
   opts = {},
 }
