@@ -1,6 +1,7 @@
 require('strings')
 require('settings')
 require('mappings')
+require('filetypes')
 
 local utils = require('utils')
 -- Bootstrap lazy.vim
@@ -9,6 +10,10 @@ require('lazy').setup({
   spec = {
     require('theme'),
     { import = 'plugins' },
+    {
+      's0cks/taskfile.nvim',
+      opts = {},
+    },
   },
   install = {
     colorscheme = { 'flexoki-dark' },

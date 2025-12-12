@@ -4,7 +4,6 @@ local finders = require('telescope.finders')
 local pickers = require('telescope.pickers')
 local themes = require('telescope.themes')
 local conf = require('telescope.config').values
-local client = require('task.client')
 
 ---@class find_and_execute_opts
 ---@field prompt? string The prompt of the picker
@@ -25,24 +24,18 @@ function M.find_and_execute(opts)
   end
 
   local actions = require('task.actions')
+  local client = require('task.lsp_client')
 
   pickers
     .new(themes.get_dropdown({}), {
       prompt_title = opts.prompt,
       finder = finders.new_table({
         results = client.list_all_tasks(),
-        entry_maker = function(e)
-          return {
-            display = e.name .. ' ' .. e.desc,
-            ordinal = e.task,
-            value = e,
-          }
-        end,
       }),
       sorter = conf.generic_sorter({}),
       attach_mappings = function(_, map)
         map({ 'i', 'n' }, '<CR>', actions.execute_and_close(), { desc = 'Execute selected task' })
-        map({ 'i', 'n' }, '<S-CR>', actions.execute_and_close({ dry_run = true }), { desc = 'Execute selected task w/ dry-run mode enabled' })
+        map({ 'i', 'n' }, '<S-CR>', actions.execute_and_close(), { desc = 'Execute selected task w/ dry-run mode enabled' })
         return true
       end,
     })

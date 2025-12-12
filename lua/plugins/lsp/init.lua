@@ -58,6 +58,7 @@ return {
         ts_ls = {},
         jsonls = {},
         clangd = {},
+        taskfile = {},
       },
     },
     config = function(_, opts)

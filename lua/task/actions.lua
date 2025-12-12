@@ -1,26 +1,21 @@
 local M = {}
 
-local client = require('task.client')
 local actions = require('telescope.actions')
 
----@param opts? task.ExecuteOpts
-function M.execute(opts)
-  return function(bufnr)
+function M.execute()
+  return function()
     local selected = require('telescope.actions.state').get_selected_entry()
     if selected then
-      client.execute(selected.value, opts)
+      require('executor').commands.run_one_off('task ' .. selected.value)
     end
   end
 end
 
----@param opts? task.ExecuteOpts
-function M.execute_and_close(opts)
+function M.execute_and_close()
   return function(bufnr)
     local selected = require('telescope.actions.state').get_selected_entry()
     if selected then
-      ---@type task.TaskSpec
-      local task = selected.value
-      client.execute(task.task, opts)
+      require('executor').commands.run_one_off('task ' .. selected.value)
     end
     actions.close(bufnr)
   end
