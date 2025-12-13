@@ -55,7 +55,6 @@ Install the following:
 - https://github.com/natecraddock/workspaces.nvim
 - https://github.com/monaqa/dial.nvim
 - https://github.com/vuki656/package-info.nvim
-- https://github.com/nvim-neotest/neotest#supported-runners
 - https://github.com/m-demare/hlargs.nvim
 - https://github.com/jinh0/eyeliner.nvim
 - https://github.com/folke/ts-comments.nvim
@@ -67,8 +66,7 @@ Install the following:
 - https://github.com/sphamba/smear-cursor.nvim
 - https://github.com/gelguy/wilder.nvim
 - https://github.com/jake-stewart/multicursor.nvim
-- https://github.com/anuvyklack/hydra.nvim#side-scroll
-- https://github.com/jamestthompson3/nvim-remote-containers
+- https://github.com/anuvyklack/hydra.nvim
 - https://github.com/ggandor/leap.nvim
 - https://github.com/SmiteshP/nvim-navic
 
