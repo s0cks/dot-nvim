@@ -1,2 +1,7 @@
 lazy-lock.json
+.vale/*
 
+
+!.gitignore
+!.gitattributes
+!.gitkeep

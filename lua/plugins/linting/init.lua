@@ -14,7 +14,7 @@ return {
     },
     opts = {
       linters_by_ft = {
-        markdown = { 'markdownlint' },
+        markdown = { 'vale' },
         json = { 'jsonlint' },
         dockerfile = { 'hadolint' },
         terraform = { 'tflint' },
