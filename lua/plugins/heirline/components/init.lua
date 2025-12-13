@@ -11,5 +11,6 @@ M.Diagnostics = require('plugins.heirline.components.diagnostics')
 M.CurrentFile = require('plugins.heirline.components.current_file')
 M.Cursor = require('plugins.heirline.components.cursor')
 M.ExecutorStatus = require('plugins.heirline.components.executor')
+M.LspStatus = require('plugins.heirline.components.lsp')
 
 return M
