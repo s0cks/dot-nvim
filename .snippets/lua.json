@@ -31,6 +31,10 @@
     "prefix": "lazy-pkg-flexoki",
     "body": "'kepano/flexoki-neovim'"
   },
+  "Lazy Fidget Package": {
+    "prefix": "lazy-pkg-fidget",
+    "body": "'j-hui/fidget.nvim'"
+  },
   "Lazy Keymap": {
     "prefix": "lazy-keymap",
     "body": [
@@ -40,6 +44,35 @@
       "'$2',",
       "desc = '$3',",
       "},"
+    ]
+  },
+  "New Snacks Toggle": {
+    "prefix": "new-snacks-toggle",
+    "body": [
+      "Snacks.toggle.new(",
+      "---@type snacks.toggle.Opts",
+      "{",
+      "id = '$1',",
+      "name = '$2',",
+      "get = function()",
+      "---@TODO: implement",
+      "end,",
+      "set = function(value)",
+      "---@TODO: implement",
+      "end,",
+      "}",
+      ")$0"
+    ]
+  },
+  "Neovim autocmd by Filetype": {
+    "prefix": "nvim-autocmd-by-filetype",
+    "body": [
+      "vim.api.nvim_create_autocmd('FileType', {",
+      "pattern = { $1 },",
+      "callback = function()",
+      "$0",
+      "end,",
+      "})"
     ]
   }
 }
