@@ -1,4 +1,5 @@
 local M = {}
+M.enabled = false
 M.get = function()
   return M.enabled
 end
