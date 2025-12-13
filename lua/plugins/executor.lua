@@ -158,7 +158,7 @@ return {
       {
         '<leader>ext',
         function()
-          require('task.picker').find_and_execute()
+          require('taskfile.picker').task_picker()
         end,
         'n',
         desc = 'Execute Taskfile task using executor',
