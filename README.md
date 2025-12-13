@@ -23,6 +23,8 @@ NVIM_APPNAME=s0cks/dot-nvim/ nvim
 
 ## Plugins
 
+- This is a test
+
 ## Language Servers
 
 + cmake
