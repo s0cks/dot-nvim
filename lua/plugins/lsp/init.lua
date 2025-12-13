@@ -58,6 +58,7 @@ return {
         ts_ls = {},
         jsonls = {},
         clangd = {},
+        marksman = {},
       },
     },
     config = function(_, opts)
