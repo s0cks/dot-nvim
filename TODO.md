@@ -28,7 +28,6 @@ Install the following:
 - https://github.com/quolpr/quicktest.nvim
 - https://github.com/cbochs/grapple.nvim
 - https://github.com/Zeioth/heirline-components.nvim
-- https://github.com/wurli/visimatch.nvim
 - https://dotfyle.com/plugins/declancm/cinnamon.nvim
 - https://dotfyle.com/plugins/karb94/neoscroll.nvim
 - https://dotfyle.com/plugins/Olical/conjure
@@ -41,15 +40,11 @@ Install the following:
 - https://github.com/letieu/harpoon-lualine
 - https://dotfyle.com/plugins/QuentinGruber/pomodoro.nvim
 - https://github.com/chrisgrieser/nvim-scissors
-- https://github.com/akinsho/toggleterm.nvim
-- https://github.com/mikesmithgh/kitty-scrollback.nvim
 - https://github.com/numToStr/Navigator.nvim
 - https://github.com/bfredl/nvim-luadev
-- https://github.com/IndianBoy42/tree-sitter-just
 - https://github.com/potamides/pantran.nvim
 - https://github.com/m4xshen/hardtime.nvim
 - https://github.com/GnikDroy/projections.nvim
-- https://github.com/kiyoon/treesitter-indent-object.nvim
 - https://github.com/robitx/gp.nvim
 - https://github.com/XXiaoA/ns-textobject.nvim
 - https://github.com/niuiic/blink-cmp-rg.nvim
@@ -59,8 +54,6 @@ Install the following:
 - https://github.com/code-biscuits/nvim-biscuits
 - https://github.com/natecraddock/workspaces.nvim
 - https://github.com/monaqa/dial.nvim
-- https://github.com/kiyoon/treesitter-indent-object.nvim
-- https://github.com/LiadOz/nvim-dap-repl-highlights
 - https://github.com/vuki656/package-info.nvim
 - https://github.com/nvim-neotest/neotest#supported-runners
 - https://github.com/m-demare/hlargs.nvim
@@ -68,11 +61,8 @@ Install the following:
 - https://github.com/folke/ts-comments.nvim
 - https://github.com/LudoPinelli/comment-box.nvim
 - https://github.com/nvzone/minty
-- https://github.com/TaDaa/vimade
 - https://github.com/bennypowers/nvim-regexplainer
 - https://github.com/mvllow/modes.nvim
-- https://github.com/b0o/SchemaStore.nvim
-- https://github.com/RRethy/nvim-treesitter-endwise
 - https://github.com/danymat/neogen
 - https://github.com/sphamba/smear-cursor.nvim
 - https://github.com/gelguy/wilder.nvim
@@ -84,6 +74,12 @@ Install the following:
 
 Screensaver plugin?
 
+### TBD
+
+- https://github.com/wurli/visimatch.nvim
+- https://github.com/akinsho/toggleterm.nvim
+- https://github.com/mikesmithgh/kitty-scrollback.nvim
+
 ### tree-sitter related
 
 - https://dotfyle.com/plugins/kiyoon/treesitter-indent-object.nvim
@@ -92,8 +88,6 @@ Screensaver plugin?
 - https://dotfyle.com/plugins/brianhuster/nvim-treesitter-endwise
 - https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context
 - https://dotfyle.com/plugins/Wansmer/sibling-swap.nvim
-
-
-
-
-
+- https://github.com/IndianBoy42/tree-sitter-just
+- https://github.com/RRethy/nvim-treesitter-endwise
+- https://github.com/kiyoon/treesitter-indent-object.nvim

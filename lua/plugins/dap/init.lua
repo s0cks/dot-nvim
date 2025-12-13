@@ -1,4 +1,5 @@
----@url https://github.com/mfussenegger/nvim-dap
+---TODO(@s0cks): https://github.com/LiadOz/nvim-dap-repl-highlights
+
 ---@type LazyPluginSpec
 return {
   'mfussenegger/nvim-dap',
