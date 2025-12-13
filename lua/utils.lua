@@ -1,7 +1,8 @@
 local M = {}
 
----@param repo string The git repository to clone.
----@param dir string The directory to clone into
+--- Clone and install a vim plugin using git
+---@param repo string The repository to clone
+---@param dir string The directory to install to
 function M.clone_and_add_to_rtp(repo, dir)
   if not repo:starts_with('http(s)?://') then
     repo = 'https://github.com/' .. repo

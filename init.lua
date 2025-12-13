@@ -1,3 +1,6 @@
+---@author tazz
+---@license MIT
+
 require('strings')
 require('settings')
 require('mappings')
