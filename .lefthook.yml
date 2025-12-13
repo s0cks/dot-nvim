@@ -2,6 +2,7 @@
 prepare-commit-msg:
   commands:
     commitizen:
+      skip: rebase
       interactive: true
       run: npx cz --hook
       env:
