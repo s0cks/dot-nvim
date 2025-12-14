@@ -22,7 +22,8 @@ return {
       },
       formatters = {
         ruff = {
-          command = 'ruff format',
+          command = 'ruff',
+          args = { 'format' },
         },
       },
       default_format_opts = {
