@@ -18,7 +18,12 @@ return {
         zsh = { 'shfmt' },
         sh = { 'shfmt' },
         bash = { 'shfmt' },
-        python = { 'black' },
+        python = { 'ruff' },
+      },
+      formatters = {
+        ruff = {
+          command = 'ruff format',
+        },
       },
       default_format_opts = {
         lsp_format = 'fallback',
