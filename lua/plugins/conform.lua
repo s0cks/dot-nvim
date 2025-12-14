@@ -20,12 +20,6 @@ return {
         bash = { 'shfmt' },
         python = { 'ruff_format' },
       },
-      formatters = {
-        ruff = {
-          command = 'ruff',
-          args = { 'format' },
-        },
-      },
       default_format_opts = {
         lsp_format = 'fallback',
       },
