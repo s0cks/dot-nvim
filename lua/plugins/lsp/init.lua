@@ -59,6 +59,7 @@ return {
         jsonls = {},
         clangd = {},
         marksman = {},
+        pyright = {},
       },
     },
     config = function(_, opts)
