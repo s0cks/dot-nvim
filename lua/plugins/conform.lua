@@ -18,7 +18,7 @@ return {
         zsh = { 'shfmt' },
         sh = { 'shfmt' },
         bash = { 'shfmt' },
-        python = { 'ruff' },
+        python = { 'ruff_format' },
       },
       formatters = {
         ruff = {
