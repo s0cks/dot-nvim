@@ -18,6 +18,7 @@ return {
         zsh = { 'shfmt' },
         sh = { 'shfmt' },
         bash = { 'shfmt' },
+        python = { 'black' },
       },
       default_format_opts = {
         lsp_format = 'fallback',
