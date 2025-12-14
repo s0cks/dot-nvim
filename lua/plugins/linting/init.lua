@@ -23,6 +23,7 @@ return {
         zsh = { 'zsh' },
         sh = { 'shellcheck' },
         bash = { 'shellcheck' },
+        python = { 'ruff' },
       },
     },
     config = function()
