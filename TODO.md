@@ -57,7 +57,6 @@ Install the following:
 - https://github.com/jinh0/eyeliner.nvim
 - https://github.com/folke/ts-comments.nvim
 - https://github.com/LudoPinelli/comment-box.nvim
-- https://github.com/nvzone/minty
 - https://github.com/bennypowers/nvim-regexplainer
 - https://github.com/mvllow/modes.nvim
 - https://github.com/sphamba/smear-cursor.nvim
