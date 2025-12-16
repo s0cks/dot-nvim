@@ -1,5 +1,3 @@
-This is a test of null-ls no-really diagnostic
-
 Repository for Neovim configuration
 
 Fix the following:
@@ -9,7 +7,6 @@ Fix the following:
 - helpview.nvim 
 - marks.nvim 
 - nvim-autopairs 
-- nvim-surround 
 - yanky.nvim 
 - autocomplete.nvim
 - automkdir.nvim 

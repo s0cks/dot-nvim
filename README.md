@@ -1,4 +1,4 @@
-# Nvim 
+# Neovim 
 
 <a href="https://dotfyle.com/s0cks/dot-nvim"><img src="https://dotfyle.com/s0cks/dot-nvim/badges/plugins?style=flat" /></a>
 <a href="https://dotfyle.com/s0cks/dot-nvim"><img src="https://dotfyle.com/s0cks/dot-nvim/badges/leaderkey?style=flat" /></a>
@@ -15,17 +15,13 @@ Clone the repository and install the plugins:
 git clone git@github.com:s0cks/dot-nvim ~/.config/s0cks/dot-nvim
 ```
 
-Open Neovim with this config:
+Open Neovim with this configuration:
 
 ```sh
 NVIM_APPNAME=s0cks/dot-nvim/ nvim
 ```
 
-## Plugins
-
-- This is a test
-
-## Language Servers
+## LSPs
 
 + cmake
 + graphql
