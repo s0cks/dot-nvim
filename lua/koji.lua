@@ -3,6 +3,7 @@ local M = {}
 ---@class koji.Opts : snacks.terminal.Opts
 local default_opts = {
   interactive = true,
+  auto_close = true,
 }
 
 ---@param opts? koji.Opts
