@@ -20,7 +20,6 @@ return {
     win = {},
     gitbrowse = {},
     scratch = {},
-    scroll = { enabled = true },
     zen = {},
     lazygit = require('plugins.snacks.lazygit'),
     terminal = require('plugins.snacks.terminal'),
