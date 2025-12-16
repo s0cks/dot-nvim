@@ -12,9 +12,8 @@ return {
     --- adapters
     'alfaix/neotest-gtest',
   },
+  ---TODO(@s0cks): integrate test adapters
   opts = {
-    adapters = {
-      require('neotest-gtest').setup({}),
-    },
+    adapters = {},
   },
 }
