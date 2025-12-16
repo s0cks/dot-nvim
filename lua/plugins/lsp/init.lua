@@ -60,6 +60,7 @@ return {
         clangd = {},
         marksman = {},
         pyright = {},
+        gopls = {},
       },
     },
     config = function(_, opts)
