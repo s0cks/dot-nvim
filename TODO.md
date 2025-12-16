@@ -34,7 +34,6 @@ Install the following:
 - https://dotfyle.com/plugins/tamton-aquib/zone.nvim
 - https://dotfyle.com/plugins/stefanlogue/hydrate.nvim
 - https://dotfyle.com/plugins/cenk1cenk2/jq.nvim
-- https://dotfyle.com/plugins/atomicptr/BufClose.nvim
 - https://github.com/kevinhwang91/nvim-bqf
 - https://github.com/letieu/harpoon-lualine
 - https://github.com/chrisgrieser/nvim-scissors
