@@ -30,7 +30,6 @@ Install the following:
 - https://github.com/Zeioth/heirline-components.nvim
 - https://dotfyle.com/plugins/declancm/cinnamon.nvim
 - https://dotfyle.com/plugins/karb94/neoscroll.nvim
-- https://dotfyle.com/plugins/Olical/conjure
 - https://dotfyle.com/plugins/MaximilianLloyd/ascii.nvim
 - https://dotfyle.com/plugins/tamton-aquib/zone.nvim
 - https://dotfyle.com/plugins/stefanlogue/hydrate.nvim
@@ -38,7 +37,6 @@ Install the following:
 - https://dotfyle.com/plugins/atomicptr/BufClose.nvim
 - https://github.com/kevinhwang91/nvim-bqf
 - https://github.com/letieu/harpoon-lualine
-- https://dotfyle.com/plugins/QuentinGruber/pomodoro.nvim
 - https://github.com/chrisgrieser/nvim-scissors
 - https://github.com/numToStr/Navigator.nvim
 - https://github.com/bfredl/nvim-luadev
@@ -62,7 +60,6 @@ Install the following:
 - https://github.com/nvzone/minty
 - https://github.com/bennypowers/nvim-regexplainer
 - https://github.com/mvllow/modes.nvim
-- https://github.com/danymat/neogen
 - https://github.com/sphamba/smear-cursor.nvim
 - https://github.com/gelguy/wilder.nvim
 - https://github.com/jake-stewart/multicursor.nvim
