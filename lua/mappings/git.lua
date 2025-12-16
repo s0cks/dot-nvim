@@ -1,5 +1,11 @@
 local map = vim.keymap.set
 
+map('n', '<leader>Gk', function()
+  require('koji').koji()
+end, {
+  desc = 'Open koji to create a conventional commit',
+})
+
 ---@class map_git_opts : snacks.terminal.Opts
 ---@field desc? string
 ---@field mode? string
