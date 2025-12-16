@@ -14,11 +14,12 @@ return {
     },
     opts = {
       linters_by_ft = {
-        markdown = { 'vale' },
+        -- TODO(@s0cks): re-implement vale, it keeps crashing
+        -- text = { 'vale' },
+        -- markdown = { 'vale' },
         json = { 'jsonlint' },
         dockerfile = { 'hadolint' },
         terraform = { 'tflint' },
-        text = { 'vale' },
         lua = { 'luacheck' },
         zsh = { 'zsh' },
         sh = { 'shellcheck' },
