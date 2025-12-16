@@ -28,8 +28,6 @@ Install the following:
 - https://github.com/quolpr/quicktest.nvim
 - https://github.com/cbochs/grapple.nvim
 - https://github.com/Zeioth/heirline-components.nvim
-- https://dotfyle.com/plugins/declancm/cinnamon.nvim
-- https://dotfyle.com/plugins/karb94/neoscroll.nvim
 - https://dotfyle.com/plugins/MaximilianLloyd/ascii.nvim
 - https://dotfyle.com/plugins/tamton-aquib/zone.nvim
 - https://dotfyle.com/plugins/stefanlogue/hydrate.nvim
@@ -58,7 +56,6 @@ Install the following:
 - https://github.com/LudoPinelli/comment-box.nvim
 - https://github.com/bennypowers/nvim-regexplainer
 - https://github.com/mvllow/modes.nvim
-- https://github.com/sphamba/smear-cursor.nvim
 - https://github.com/gelguy/wilder.nvim
 - https://github.com/jake-stewart/multicursor.nvim
 - https://github.com/anuvyklack/hydra.nvim
@@ -72,6 +69,7 @@ Screensaver plugin?
 - https://github.com/wurli/visimatch.nvim
 - https://github.com/akinsho/toggleterm.nvim
 - https://github.com/mikesmithgh/kitty-scrollback.nvim
+- https://github.com/sphamba/smear-cursor.nvim
 
 ### tree-sitter related
 
