@@ -5,6 +5,7 @@ return {
   dependencies = {
     'kepano/flexoki-neovim',
     'lewis6991/gitsigns.nvim',
+    'quentingruber/pomodoro.nvim',
   },
   opts = function()
     return {

@@ -16,5 +16,6 @@ return {
   components.Git,
   components.ExecutorStatus,
   components.Align,
+  components.Pomodoro,
   components.LspStatus,
 }
