@@ -41,9 +41,16 @@ local function harpoon_picker(opts)
       preset = 'vertical',
     },
     win = {
+      input = {
+        keys = {
+          ['dd'] = function(item)
+            print('deleting ' .. vim.inspect(item))
+          end,
+        },
+      },
       list = {
         keys = {
-          ['<C-d>'] = function(item)
+          ['dd'] = function(item)
             print('deleting ' .. vim.inspect(item))
           end,
         },
