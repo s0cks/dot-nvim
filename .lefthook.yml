@@ -13,6 +13,10 @@ commit-msg:
       run: npx commitlint --edit {1}
 pre-commit:
   commands:
+    "generate README table of contents":
+      skip: rebase
+      glob: "(README).{md}"
+      run: doctoc {1}
     "detect secrets":
       files: git diff --name-only --diff-filter=d --staged
       run: gitleaks protect --no-banner --staged --redact --verbose 
