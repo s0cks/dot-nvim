@@ -27,4 +27,17 @@ function M.clone_and_add_to_rtp(repo, dir)
   vim.opt.rtp:prepend(dir)
 end
 
+function M.map_bft(ft, key, cb, desc)
+  local map = vim.keymap.set
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = ft,
+    callback = function()
+      map('n', key, cb, {
+        buffer = true,
+        desc = desc or '',
+      })
+    end,
+  })
+end
+
 return M
