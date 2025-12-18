@@ -6,8 +6,9 @@ local default_remove_opts = {}
 ---@param opts? harpoon.snacks.actions.RemoveOpts
 function M.remove(opts)
   opts = vim.tbl_deep_extend('force', default_remove_opts, opts or {})
-  return function(picker)
+  return function(picker, item)
     print('picker: ' .. vim.inspect(picker))
+    print('item: ' .. vim.inspect(item))
     local current = picker:current()
     if current then
       print('current: ' .. vim.inspect(current))
