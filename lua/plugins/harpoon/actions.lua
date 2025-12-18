@@ -7,6 +7,7 @@ local default_remove_opts = {}
 function M.remove(opts)
   opts = vim.tbl_deep_extend('force', default_remove_opts, opts or {})
   return function(picker)
+    print('picker: ' .. vim.inspect(picker))
     local current = picker:current()
     if current then
       print('current: ' .. vim.inspect(current))
