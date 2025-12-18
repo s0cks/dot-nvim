@@ -28,7 +28,7 @@ return {
       {
         '<leader>ht',
         function()
-          for idx, value in ipairs(harpoon:list()) do
+          for idx, value in ipairs(harpoon:list().items) do
             print(idx .. ': ' .. value)
           end
         end,
