@@ -1,3 +1,43 @@
+---@class GotoHarpoonOpts
+local default_goto_harpoon_opts = {}
+
+---@param opts? GotoHarpoonOpts The options for the action
+local function goto_harpoon(opts)
+  opts = vim.tbl_deep_extend('force', default_goto_harpoon_opts, opts or {})
+  return function(picker, item)
+    if item then
+      vim.schedule(function()
+        ---TODO(@s0cks): implement
+      end)
+    end
+  end
+end
+
+---@class HarpoonPickerOpts : snacks.picker.Config
+local default_harpoon_picker_opts = {}
+
+---@param opts? HarpoonPickerOpts The options for the picker
+local function harpoon_picker(opts)
+  opts = vim.tbl_deep_extend('force', default_harpoon_picker_opts, opts or {})
+  local finder = function()
+    return require('harpoon'):list().items
+  end
+
+  Snacks.picker.pick({
+    source = 'harpoons',
+    finder = finder,
+    title = 'Harpoons',
+    format = 'text',
+    layout = {
+      preset = 'vertical',
+    },
+    preview = 'none',
+    confirm = goto_harpoon(),
+  })
+end
+
+---
+---
 --- Harpoon - Bookmarks
 ---@url https://github.com/ThePrimeagen/harpoon
 ---@type LazyPluginSpec
@@ -28,9 +68,7 @@ return {
       {
         '<leader>ht',
         function()
-          for idx, value in ipairs(harpoon:list().items) do
-            print(idx .. ': ' .. vim.inspect(value))
-          end
+          harpoon_picker()
         end,
         'n',
         desc = 'Test harpoon',
