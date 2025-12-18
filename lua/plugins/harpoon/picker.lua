@@ -1,6 +1,9 @@
 ---@class harpoon.snacks.PickerOpts : snacks.picker.Config
 local default_harpoon_picker_opts = {}
 
+---TODO(@s0cks):
+---figure out how to delete currently selected items using picker
+
 ---@param opts? harpoon.snacks.PickerOpts
 return function(opts)
   opts = vim.tbl_deep_extend('force', default_harpoon_picker_opts, opts or {})
@@ -13,13 +16,6 @@ return function(opts)
     format = 'text',
     layout = {
       preset = 'vertical',
-    },
-    win = {
-      list = {
-        keys = {
-          ['dd'] = ha_actions.remove(),
-        },
-      },
     },
     confirm = ha_actions.goto(),
   })
