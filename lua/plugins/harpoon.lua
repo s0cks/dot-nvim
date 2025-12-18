@@ -20,8 +20,10 @@ local default_harpoon_picker_opts = {}
 local function harpoon_picker(opts)
   opts = vim.tbl_deep_extend('force', default_harpoon_picker_opts, opts or {})
   local finder = function()
+    local harpoon = require('harpoon')
+    print(vim.inspect(harpoon:list()))
     local items = {}
-    for _, item in require('harpoon'):list().items do
+    for _, item in harpoon:list().items do
       table.insert(items, {
         text = item.value,
         value = item,
