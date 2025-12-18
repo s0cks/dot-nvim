@@ -2,7 +2,7 @@
 local default_harpoon_picker_opts = {}
 
 ---@param opts? harpoon.snacks.PickerOpts
-local function harpoon_picker(opts)
+return function(opts)
   opts = vim.tbl_deep_extend('force', default_harpoon_picker_opts, opts or {})
   local ha_actions = require('plugins.harpoon.actions')
   local ha_finder = require('plugins.harpoon.finder')
