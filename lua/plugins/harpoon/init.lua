@@ -7,8 +7,9 @@ local function goto_harpoon(opts)
   return function(picker, item)
     if item then
       vim.schedule(function()
-        ---TODO(@s0cks): implement
+        vim.cmd.edit(vim.fn.fnameescape(item.file))
       end)
+      picker:close()
     end
   end
 end
