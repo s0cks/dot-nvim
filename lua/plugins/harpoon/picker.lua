@@ -15,11 +15,6 @@ return function(opts)
       preset = 'vertical',
     },
     win = {
-      input = {
-        keys = {
-          ['dd'] = ha_actions.remove(),
-        },
-      },
       list = {
         keys = {
           ['dd'] = ha_actions.remove(),
