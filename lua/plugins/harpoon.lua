@@ -63,33 +63,33 @@ return {
     tabline_prefix = '   ',
     tabline_suffix = '   ',
   },
-  keys = function()
-    local harpoon = require('harpoon')
-    return {
-      {
-        '<leader>ha',
-        function()
-          harpoon:list():add()
-        end,
-        'n',
-        desc = 'Add a 🔱 Harpoon Mark',
-      },
-      {
-        '<leader>ht',
-        function()
-          harpoon_picker()
-        end,
-        'n',
-        desc = 'Test harpoon',
-      },
-      {
-        '<leader>fh',
-        function()
-          harpoon.ui:toggle_quick_menu(harpoon:list())
-        end,
-        'n',
-        desc = 'Find 🔱 Harpoon Marks',
-      },
-    }
-  end,
+  keys = {
+
+    {
+      '<leader>ha',
+      function()
+        local harpoon = require('harpoon')
+        harpoon:list():add()
+      end,
+      'n',
+      desc = 'Add a 🔱 Harpoon Mark',
+    },
+    {
+      '<leader>ht',
+      function()
+        harpoon_picker()
+      end,
+      'n',
+      desc = 'Test harpoon',
+    },
+    {
+      '<leader>fh',
+      function()
+        local harpoon = require('harpoon')
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end,
+      'n',
+      desc = 'Find 🔱 Harpoon Marks',
+    },
+  },
 }
