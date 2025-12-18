@@ -23,14 +23,6 @@ git clone https://github.com/s0cks/dot-nvim.git ~/.config/nvim # or choose a dif
 nvim ~/.config/nvim       # or /path/to/dot-nvim
 ```
 
-## Test 2
-
-This is another test
-
-## Test
-
-This is a test
-
 ## License
 
 See [LICENSE](LICENSE)
