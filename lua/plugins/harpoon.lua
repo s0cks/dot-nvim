@@ -29,7 +29,7 @@ return {
         '<leader>ht',
         function()
           for idx, value in ipairs(harpoon:list().items) do
-            print(idx .. ': ' .. value)
+            print(idx .. ': ' .. vim.inspect(value))
           end
         end,
         'n',
