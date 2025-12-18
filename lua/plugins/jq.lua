@@ -33,6 +33,6 @@ return {
         filetype = 'yaml',
         arguments = '-r',
       })
-    end)
+    end, 'Query yaml document using yq')
   end,
 }
