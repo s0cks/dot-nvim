@@ -27,7 +27,9 @@ local function harpoon_picker(opts)
     source = 'harpoons',
     finder = finder,
     title = 'Harpoons',
-    format = 'text',
+    format = function(picker, item)
+      return item['value']
+    end,
     layout = {
       preset = 'vertical',
     },
