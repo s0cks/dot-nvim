@@ -32,7 +32,9 @@ return {
     'kepano/flexoki-neovim',
   },
   opts = {
-    enabled = false,
+    markdown = {
+      enable = false,
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd('FileType', {
