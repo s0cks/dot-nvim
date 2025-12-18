@@ -25,7 +25,7 @@ local function harpoon_picker(opts)
     for _, item in ipairs(harpoon:list().items) do
       table.insert(items, {
         text = item.value,
-        value = item.value,
+        file = item.value,
       })
     end
     return items
