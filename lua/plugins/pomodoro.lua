@@ -2,7 +2,13 @@
 return {
   'quentingruber/pomodoro.nvim',
   version = '*',
-  lazy = false,
+  cmd = {
+    'PomodoroStart',
+    'PomodoroDelayBreak',
+    'PomodoroSkipBreak',
+    'PomodoroForceBreak',
+    'PomodoroUI',
+  },
   opts = {
     start_at_launch = true,
     work_duration = 25,
