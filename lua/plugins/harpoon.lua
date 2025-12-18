@@ -26,6 +26,16 @@ return {
         desc = 'Add a 🔱 Harpoon Mark',
       },
       {
+        '<leader>ht',
+        function()
+          for idx, value in ipairs(harpoon:list()) do
+            print(idx .. ': ' .. value)
+          end
+        end,
+        'n',
+        desc = 'Test harpoon',
+      },
+      {
         '<leader>fh',
         function()
           harpoon.ui:toggle_quick_menu(harpoon:list())
