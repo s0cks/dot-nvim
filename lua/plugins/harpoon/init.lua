@@ -21,12 +21,11 @@ local function harpoon_picker(opts)
   opts = vim.tbl_deep_extend('force', default_harpoon_picker_opts, opts or {})
   local finder = function()
     local harpoon = require('harpoon')
-    print(vim.inspect(harpoon:list()))
     local items = {}
-    for _, item in harpoon:list().items do
+    for _, item in ipairs(harpoon:list().items) do
       table.insert(items, {
         text = item.value,
-        value = item,
+        value = item.value,
       })
     end
     return items
@@ -40,7 +39,6 @@ local function harpoon_picker(opts)
     layout = {
       preset = 'vertical',
     },
-    preview = 'none',
     confirm = goto_harpoon(),
   })
 end
