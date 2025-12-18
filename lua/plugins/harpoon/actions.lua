@@ -9,7 +9,7 @@ function M.remove(opts)
   return function(picker, item)
     print('picker: ' .. vim.inspect(picker))
     print('item: ' .. vim.inspect(item))
-    local current = picker:current()
+    local current = picker:get_cursor_item()
     if current then
       print('current: ' .. vim.inspect(current))
     end
