@@ -14,20 +14,25 @@ return {
     tabline_prefix = '   ',
     tabline_suffix = '   ',
   },
-  keys = {
-    {
-      '<leader>ha',
-      function()
-        require('harpoon'):list():add()
-      end,
-      'n',
-      desc = 'Add a 🔱 Harpoon Mark',
-    },
-    {
-      '<leader>hf',
-      ':Telescope harpoon marks<cr>',
-      'n',
-      desc = 'Browse 🔱 Harpoon Marks w/ 🔭 Telescope',
-    },
-  },
+  keys = function()
+    local harpoon = require('harpoon')
+    return {
+      {
+        '<leader>ha',
+        function()
+          harpoon:list():add()
+        end,
+        'n',
+        desc = 'Add a 🔱 Harpoon Mark',
+      },
+      {
+        '<leader>fh',
+        function()
+          harpoon.ui:toggle_quick_menu(harpoon:list())
+        end,
+        'n',
+        desc = 'Find 🔱 Harpoon Marks',
+      },
+    }
+  end,
 }
