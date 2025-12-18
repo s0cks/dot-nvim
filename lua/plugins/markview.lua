@@ -31,7 +31,9 @@ return {
     'saghen/blink.cmp',
     'kepano/flexoki-neovim',
   },
-  opts = {},
+  opts = {
+    enabled = false,
+  },
   init = function()
     vim.api.nvim_create_autocmd('FileType', {
       pattern = { 'md', 'markdown' },
