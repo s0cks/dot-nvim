@@ -5,22 +5,23 @@ return {
   dependencies = {
     'kepano/flexoki-neovim',
   },
+  oriority = 49,
   opts = function()
     local colors = require('theme.colors')
     return {
       colors = {
         bg = '', -- Optional bg param, defaults to Normal hl group
         copy = '#f5c359',
-        delete = '#c75c6a',
+        delete = colors['re'],
         change = '#c75c6a', -- Optional param, defaults to delete
         format = '#c79585',
-        insert = '#78ccc5',
-        replace = '#245361',
+        insert = colors['gr'],
+        replace = colors['cy'],
         select = colors['pu'], -- Optional param, defaults to visual
         visual = colors['pu'],
       },
       -- Set opacity for cursorline and number background
-      line_opacity = 0.65,
+      line_opacity = 0.25,
 
       -- Enable cursor highlights
       set_cursor = true,
