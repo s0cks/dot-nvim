@@ -25,16 +25,12 @@ Install the following:
 - https://github.com/kevinhwang91/nvim-bqf
 - https://github.com/letieu/harpoon-lualine
 - https://github.com/numToStr/Navigator.nvim
-- https://github.com/bfredl/nvim-luadev
-- https://github.com/potamides/pantran.nvim
 - https://github.com/GnikDroy/projections.nvim
 - https://github.com/robitx/gp.nvim
 - https://github.com/XXiaoA/ns-textobject.nvim
 - https://github.com/niuiic/blink-cmp-rg.nvim
 - https://github.com/vuki656/package-info.nvim
-- https://github.com/jinh0/eyeliner.nvim
 - https://github.com/folke/ts-comments.nvim
-- https://github.com/bennypowers/nvim-regexplainer
 - https://github.com/mvllow/modes.nvim
 - https://github.com/gelguy/wilder.nvim
 - https://github.com/jake-stewart/multicursor.nvim
@@ -82,3 +78,7 @@ Screensaver plugin?
 - https://github.com/chrisgrieser/nvim-scissors
 - https://github.com/m4xshen/hardtime.nvim
 - https://github.com/LudoPinelli/comment-box.nvim
+- https://github.com/bfredl/nvim-luadev
+- https://github.com/bennypowers/nvim-regexplainer
+- https://github.com/potamides/pantran.nvim
+- https://github.com/jinh0/eyeliner.nvim
