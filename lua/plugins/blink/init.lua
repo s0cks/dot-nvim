@@ -11,8 +11,6 @@ return {
       'Dynge/gitmoji.nvim',
       'allaman/emoji.nvim',
       'Kaiser-Yang/blink-cmp-git',
-      -- TODO(@s0cks): #1 figure out what to do with this, it causes problems when writing json
-      -- 'MahanRahmati/blink-nerdfont.nvim',
       'marcoSven/blink-cmp-yanky',
       --- theming
       'xzbdmw/colorful-menu.nvim',
@@ -36,6 +34,12 @@ return {
     opts = {
       static = {
         enabled = false,
+      },
+      blocked = {
+        -- default: 'terminal', 'quickfix', 'nofile', 'prompt'
+        buftypes = { include_defaults = true },
+        -- default: 'lspinfo', 'packer', 'checkhealth', 'help', 'man', 'gitcommit', 'dashboard', ''
+        filetypes = { include_defaults = true },
       },
       scope = {
         enabled = true,

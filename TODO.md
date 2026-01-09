@@ -31,16 +31,14 @@ Install the following:
 - https://github.com/niuiic/blink-cmp-rg.nvim
 - https://github.com/vuki656/package-info.nvim
 - https://github.com/folke/ts-comments.nvim
-- https://github.com/mvllow/modes.nvim
 - https://github.com/gelguy/wilder.nvim
 - https://github.com/jake-stewart/multicursor.nvim
-- https://github.com/anuvyklack/hydra.nvim
 - https://github.com/ggandor/leap.nvim
 - https://github.com/SmiteshP/nvim-navic
-- https://github.com/wurli/visimatch.nvim
-- https://github.com/akinsho/toggleterm.nvim
-- https://github.com/mikesmithgh/kitty-scrollback.nvim
-- https://github.com/sphamba/smear-cursor.nvim
+- https://dotfyle.com/plugins/MaximilianLloyd/ascii.nvim
+- https://dotfyle.com/plugins/tamton-aquib/zone.nvim
+- https://dotfyle.com/plugins/stefanlogue/hydrate.nvim
+- https://dotfyle.com/plugins/cenk1cenk2/jq.nvim
 
 ### tree-sitter related
 
@@ -56,10 +54,6 @@ Install the following:
 
 ### Misc
 
-- https://dotfyle.com/plugins/MaximilianLloyd/ascii.nvim
-- https://dotfyle.com/plugins/tamton-aquib/zone.nvim
-- https://dotfyle.com/plugins/stefanlogue/hydrate.nvim
-- https://dotfyle.com/plugins/cenk1cenk2/jq.nvim
 - https://github.com/moyiz/command-and-cursor.nvim
 - https://github.com/MisanthropicBit/winmove.nvim
 - https://github.com/roobert/hoversplit.nvim
@@ -77,3 +71,8 @@ Install the following:
 - https://github.com/bennypowers/nvim-regexplainer
 - https://github.com/potamides/pantran.nvim
 - https://github.com/jinh0/eyeliner.nvim
+- https://github.com/anuvyklack/hydra.nvim
+- https://github.com/wurli/visimatch.nvim
+- https://github.com/akinsho/toggleterm.nvim
+- https://github.com/mikesmithgh/kitty-scrollback.nvim
+- https://github.com/sphamba/smear-cursor.nvim
