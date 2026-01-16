@@ -2,7 +2,9 @@ local function format_current_buffer()
   require('conform').format({
     async = true,
     lsp_format = 'fallback',
-  })
+  }, function(err, edited)
+    require('fidget').notify('Formatted', vim.log.levels.INFO)
+  end)
 end
 
 return {
@@ -10,6 +12,10 @@ return {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
+    dependencies = {
+      'folke/snacks.nvim',
+      'j-hui/fidget.nvim',
+    },
     opts = {
       notify_on_error = true,
       formatters_by_ft = {
@@ -27,7 +33,6 @@ return {
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
           return
         end
-
         return { timeout_ms = 500 }
       end,
     },
@@ -40,26 +45,22 @@ return {
       },
     },
     init = function()
-      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
       vim.api.nvim_create_user_command('Format', format_current_buffer, { desc = ' Format current buffer' })
-
-      vim.api.nvim_create_user_command('FormatDisable', function(args)
-        if args.bang then
-          vim.b.disable_autoformat = true
-        else
-          vim.g.disable_autoformat = true
-        end
-      end, {
-        desc = 'Disable format-on-save',
-        bang = true,
-      })
-
-      vim.api.nvim_create_user_command('FormatEnable', function(args)
-        vim.b.disable_autoformat = false
-        vim.g.disable_autoformat = false
-      end, {
-        desc = 'Enable format-on-save',
-      })
+      Snacks.toggle
+        .new(
+          ---@type snacks.toggle.Opts
+          {
+            id = 'autoformat',
+            name = 'AutoFormat',
+            get = function()
+              return not vim.g.disable_autoformat
+            end,
+            set = function(state)
+              vim.g.disable_autoformat = not state
+            end,
+          }
+        )
+        :map('<leader>Taf')
     end,
   },
 }

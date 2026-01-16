@@ -1,13 +1,13 @@
 return {
   'XXiaoA/atone.nvim',
   cmd = 'Atone',
-  opts = {}, -- your configuration here
+  opts = {},
   keys = {
     {
       '<leader>U',
       ':Atone toggle<cr>',
       'n',
-      desc = 'Toggle undo tree',
+      desc = 'Toggle the undo  tree',
     },
   },
 }

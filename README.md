@@ -4,10 +4,8 @@
 <a href="https://dotfyle.com/s0cks/dot-nvim"><img src="https://dotfyle.com/s0cks/dot-nvim/badges/leaderkey?style=flat" /></a>
 <a href="https://dotfyle.com/s0cks/dot-nvim"><img src="https://dotfyle.com/s0cks/dot-nvim/badges/plugin-manager?style=flat" /></a>
 
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Install](#install)
 - [License](#license)

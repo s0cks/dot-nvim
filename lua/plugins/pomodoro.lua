@@ -9,6 +9,24 @@ return {
     'PomodoroForceBreak',
     'PomodoroUI',
   },
+  keys = {
+    {
+      '<leader>BS',
+      ':PomodoroStart<cr>',
+      { 'n', },
+      {
+        desc = "🍅 Start the pomodoro timer",
+      },
+    },
+    {
+      '<leader>Bs',
+      ':PomodoroStop<cr>',
+      { 'n', },
+      {
+        desc = "🍅 Stop the pomodoro timer",
+      },
+    },
+  },
   opts = {
     start_at_launch = false,
     work_duration = 25,

@@ -7,6 +7,9 @@ return {
     'nvzone/volt',
   },
   opts = {
+    notifications = {
+      enabled = false,
+    },
     keymap = {
       show_profile = '<leader>tri', -- Open profile with <leader>tp
     },

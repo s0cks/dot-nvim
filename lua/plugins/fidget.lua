@@ -5,7 +5,11 @@ return {
   dependencies = {
     'nvim-telescope/telescope.nvim',
   },
-  opts = {},
+  opts = {
+    notification = {
+      override_vim_notify = true,
+    },
+  },
   init = function()
     require('telescope').load_extension('fidget')
   end,

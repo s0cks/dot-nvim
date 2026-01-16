@@ -12,7 +12,7 @@ return {
     'j-hui/fidget.nvim',
   },
   build = 'cd app && npm install',
-  ft = { 'markdown' },
+  ft = { 'markdown', 'md' },
   init = function()
     vim.g.mkdp_filetypes = { 'markdown' }
     vim.api.nvim_create_autocmd('FileType', {

@@ -21,7 +21,6 @@ return {
   },
   init = function()
     require('telescope').load_extension('yank_history')
-
     local c = require('flexoki.palette').palette()
     vim.api.nvim_set_hl(0, 'YankyPut', {
       bg = c['pu'],
