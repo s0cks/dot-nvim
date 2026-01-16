@@ -6,6 +6,10 @@ M.path = vault
 function M.get_workspaces()
   local workspaces = {}
 
+  if not vim.fn.isdirectory(vault) == 1 then
+    return workspaces
+  end
+
   local stream = vim.fn.readdir(vault)
   if stream then
     for _, entry in ipairs(stream) do
@@ -15,6 +19,7 @@ function M.get_workspaces()
       })
     end
   end
+
   return workspaces
 end
 

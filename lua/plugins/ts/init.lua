@@ -2,6 +2,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    branch = "master",
     dependencies = {
       'OXY2DEV/markview.nvim',
     },
