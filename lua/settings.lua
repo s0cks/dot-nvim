@@ -28,6 +28,7 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
+vim.opt.mousescroll = 'ver:1,hor:0'
 vim.opt.scrolloff = 10
 vim.opt.confirm = true
 vim.opt.foldlevel = 99

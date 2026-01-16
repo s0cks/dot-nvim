@@ -17,7 +17,6 @@ return {
     },
     version = '^1.*',
     opts = require('plugins.blink.config'),
-    opts_extend = { 'sources.default' },
     init = function()
       local colors = require('theme.colors')
       local utils = require('theme.utils')

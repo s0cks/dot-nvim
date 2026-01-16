@@ -6,7 +6,7 @@ M.path = vault
 function M.get_workspaces()
   local workspaces = {}
 
-  if not vim.fn.isdirectory(vault) == 1 then
+  if vim.fn.isdirectory(vault) ~= 1 then
     return workspaces
   end
 

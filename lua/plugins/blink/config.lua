@@ -1,11 +1,21 @@
 ---@type blink.cmp.Config
 return {
-  keymap = { preset = 'default', ['<Enter>'] = { 'select_and_accept', 'fallback' } },
+  keymap = {
+    preset = 'default',
+    --- remap accept to C-Enter
+    ['<C-y>'] = nil,
+    ['<C-Enter>'] = {
+      'select_and_accept',
+      'fallback',
+    },
+  },
   appearance = {
     nerd_font_variant = 'mono',
   },
   completion = {
-    documentation = { auto_show = true },
+    documentation = {
+      auto_show = false,
+    },
     menu = {
       draw = {
         columns = { { 'kind_icon' }, { 'label', gap = 1 } },
@@ -49,15 +59,16 @@ return {
       'lsp',
       'path',
       'snippets',
-      'yank',
       'buffer',
+      'env',
+      -- 'nerdfont',
       'emoji',
       'gitmoji',
-      -- TODO(@s0cks): #1
-      -- 'nerdfont',
-      'env',
+      'yank',
     },
     providers = require('plugins.blink.providers'),
   },
-  fuzzy = { implementation = 'prefer_rust_with_warning' },
+  fuzzy = {
+    implementation = 'prefer_rust_with_warning',
+  },
 }
