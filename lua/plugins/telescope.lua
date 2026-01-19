@@ -22,6 +22,11 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require('telescope').setup({
+      defaults = require('theme.utils').get_telescope_theme(opts.defaults or {}),
+    })
+  end,
   keys = function()
     local builtin = require('telescope.builtin')
     local TELESCOPE_MAP_PREFIX = '<leader>f'

@@ -18,7 +18,6 @@ return {
     words = {},
     win = {},
     gitbrowse = {},
-    scratch = {},
     zen = {},
     terminal = require('plugins.snacks.terminal'),
     dashboard = require('plugins.snacks.dashboard'),
@@ -31,26 +30,6 @@ return {
       end,
       'n',
       desc = 'Enter zen mode',
-    },
-    {
-      '<leader>S',
-      group = 'Scratch',
-    },
-    {
-      '<leader>So',
-      function()
-        Snacks.scratch()
-      end,
-      'n',
-      desc = 'Toggle scratch buffer',
-    },
-    {
-      '<leader>Ss',
-      function()
-        Snacks.scratch.select()
-      end,
-      'n',
-      desc = 'Search scratch buffers',
     },
     {
       '<leader>flp',

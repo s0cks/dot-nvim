@@ -5,10 +5,10 @@ return {
     'kepano/flexoki-neovim',
     'nvim-tree/nvim-web-devicons',
     'rachartier/tiny-devicons-auto-colors.nvim',
+    'nvim-telescope/telescope.nvim',
   },
   opts = require('plugins.whichkey.config'),
   init = function()
-    local colors = require('theme.colors')
     require('theme.utils').set_global_hl_fg({
       WhichKeyNormal = 'bg',
       WhichKeyIconAzure = 'bl',

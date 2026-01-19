@@ -20,8 +20,8 @@ function M.set_global_hl(name, hl)
 end
 
 ---Set a global highlight to the specified fg color
----@param name string The name of the highlight
----@param color string The fg color of the highlight
+---@param name string|table The name of the highlight
+---@param color? string The fg color of the highlight
 function M.set_global_hl_fg(name, color)
   if type(name) == 'table' then
     for k, v in pairs(name) do
