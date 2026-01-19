@@ -7,26 +7,34 @@ return {
     'folke/snacks.nvim',
     'nvim-telescope/telescope.nvim',
     'kepano/flexoki-neovim',
+    'kkharji/sqlite.lua',
   },
-  opts = {},
+  opts = {
+    ring = {
+      storage = 'sqlite',
+    },
+    preserve_cursor_position = {
+      enabled = true,
+    },
+  },
   keys = {
     {
-      '<leader>P',
+      '<leader>Y',
       function()
-        require('telescope').extensions.yank_history.yank_history()
+        require('telescope').extensions.yank_history.yank_history(require('theme.utils').get_telescope_theme())
       end,
-      { 'n', 'x' },
+      'n',
       desc = 'Open yank history',
     },
   },
   init = function()
     require('telescope').load_extension('yank_history')
+
     local c = require('flexoki.palette').palette()
-    vim.api.nvim_set_hl(0, 'YankyPut', {
-      bg = c['pu'],
-    })
-    vim.api.nvim_set_hl(0, 'YankyYanked', {
-      bg = c['ma'],
+    local utils = require('theme.utils')
+    utils.set_global_hl_bg({
+      YankyPut = c['pu'],
+      YankyYanked = c['cy'],
     })
   end,
 }

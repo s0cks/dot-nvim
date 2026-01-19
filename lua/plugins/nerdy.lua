@@ -6,7 +6,7 @@ return {
     'folke/snacks.nvim',
   },
   cmd = 'Nerdy',
-  opts = { },
+  opts = {},
   init = function()
     require('telescope').load_extension('nerdy')
   end,
@@ -14,13 +14,13 @@ return {
     {
       '<leader>fnft',
       function()
-        require('telescope').extensions.nerdy.nerdy()
+        require('telescope').extensions.nerdy.nerdy(require('theme.utils').get_telescope_theme())
       end,
       { 'n' },
       {
-        silent = truejjjj,
+        silent = true,
         desc = 'Search for NerdFont character using Telescope 󰭎 ',
-      }
-    }
-  }
+      },
+    },
+  },
 }

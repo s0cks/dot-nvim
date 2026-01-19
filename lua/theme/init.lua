@@ -7,8 +7,5 @@ return {
   opts = {},
   init = function()
     vim.cmd([[colorscheme flexoki-dark]])
-    local colors = require('theme.colors')
-    local utils = require('theme.utils')
-    utils.set_global_hl_fg('Identifier', colors['pu'])
   end,
 }

@@ -1,12 +1,16 @@
 return {
   'aznhe21/actions-preview.nvim',
+  dependencies = {
+    'nvim-telescope/telescope.nvim',
+    'kepano/flexoki-neovim',
+  },
   opts = {
     backend = {
       'telescope',
       'snacks',
       'nui',
     },
-    telescope = vim.tbl_extend('force', require('telescope.themes').get_dropdown(), {
+    telescope = require('theme.utils').get_telescope_theme({
       make_value = nil,
       make_make_display = nil,
     }),

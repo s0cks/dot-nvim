@@ -2,7 +2,6 @@ local M = {}
 
 local finders = require('telescope.finders')
 local pickers = require('telescope.pickers')
-local themes = require('telescope.themes')
 local conf = require('telescope.config').values
 
 ---@class find_and_execute_opts
@@ -27,7 +26,7 @@ function M.find_and_execute(opts)
   local taskfile = require('taskfile')
 
   pickers
-    .new(themes.get_dropdown({}), {
+    .new(require('theme.utils').get_telescope_theme()), {
       prompt_title = opts.prompt,
       finder = finders.new_table({
         results = taskfile.list_all(),

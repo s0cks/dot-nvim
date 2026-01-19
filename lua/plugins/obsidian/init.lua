@@ -1,15 +1,10 @@
 local vault = require('plugins.obsidian.vault')
 return {
+  ---@type LazyPluginSpec
   {
-    ---@url https://github.com/obsidian-nvim/obsidian.nvim
-    ---@type LazyPluginSpec
     'obsidian-nvim/obsidian.nvim',
     version = '*',
-    lazy = true,
-    event = {
-      'BufReadPre ' .. vault.path .. '/*.md',
-      'BufNewFile ' .. vault.path .. '/*.md',
-    },
+    cmd = 'Obsidian',
     dependencies = {
       'nvim-lua/plenary.nvim',
     },

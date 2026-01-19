@@ -22,28 +22,20 @@ return {
       trail = '›',
     },
     fileformat_chars = {
-      unix = '↲',
+      unix = '',
       mac = '←',
       dos = '↙',
     },
     ignore = { filetypes = {}, buftypes = {} },
   },
   init = function()
-    vim.g._visual_whitespace_enabled = true
-    Snacks.toggle
-      .new(
-        ---@type snacks.toggle.Config
-        {
-          name = 'Visual Whitespace',
-          get = function()
-            return vim.g._visual_whitespace_enabled
-          end,
-          set = function(state)
-            require('visual-whitespace').toggle()
-            vim.g._visual_whitespace_enabled = state
-          end,
-        }
-      )
+    local toggles = require('toggles')
+    toggles
+      .new_buffer_toggle('visual-whitespace', 'Visual Whitespace', {
+        on_change = function(state)
+          require('visual-whitespace').toggle()
+        end,
+      })
       :map('<leader>Tvw')
   end,
 }

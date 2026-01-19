@@ -1,4 +1,20 @@
 {
+  "Function": {
+    "prefix": "func",
+    "body": [
+      "function $1()",
+      "$0",
+      "end",
+    ]
+  },
+  "Local Function": {
+    "prefix": "lfunc",
+    "body": [
+      "local function $1()",
+      "$0",
+      "end",
+    ]
+  },
   "LuaDoc url": {
     "prefix": "doc-url",
     "body": "---@url $1$0"
