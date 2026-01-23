@@ -56,5 +56,6 @@ local function map_git(keys, cmd, opts)
   })
 end
 
+map_git('p', 'push')
 map_git('l', 'log')
 map_git('s', '-c color.ui=always status | less -R')

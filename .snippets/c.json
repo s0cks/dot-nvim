@@ -1,0 +1,19 @@
+{
+  "Header Guard": {
+    "prefix": "header-guar",
+    "body": [
+      "#ifndef $1",
+      "#define $1",
+      "$0",
+      "#endif // $1"
+    ]
+  }
+  "Function": {
+    "prefix": "func",
+    "body": [
+      "function $1()",
+      "$0",
+      "end",
+    ]
+  }
+}

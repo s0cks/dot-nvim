@@ -6,7 +6,7 @@ local ignored_files = {
 }
 
 local function is_ignored(file)
-  for idx, value in ipairs(ignored_files) do
+  for _, value in ipairs(ignored_files) do
     if value == file then
       return true
     end
@@ -17,7 +17,7 @@ end
 local function discover_providers()
   local files = vim.fn.readdir(providers_dir, [[v:val =~ '\.lua$']])
   local results = {}
-  for idx, provider_file in ipairs(files) do
+  for _, provider_file in ipairs(files) do
     if not is_ignored(provider_file) then
       local provider_name = provider_file:sub(0, #provider_file - #'.lua')
       table.insert(results, provider_name)

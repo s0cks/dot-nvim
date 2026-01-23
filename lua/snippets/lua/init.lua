@@ -1,31 +1,11 @@
+local util = require('snippets.util')
+
 local ls = require('luasnip')
-local s = ls.snippet
 local sn = ls.snippet_node
-local d = ls.dynamic_node
 local t = ls.text_node
 
-local function postfix(trigger, cb, config, auto)
-  local default_config = {
-    trig = trigger,
-    snippetType = auto and 'autosnippet' or 'snippet',
-  }
-  return require('luasnip.extras.postfix').postfix(
-    vim.tbl_deep_extend('force', default_config, config),
-    d(1, function(_, parent)
-      local capture = parent.snippet.env.POSTFIX_MATCH
-      if #capture > 0 then
-        return cb(capture)
-      end
-    end)
-  )
-end
-
-local function auto_postfix(trigger, cb, config)
-  return postfix(trigger, cb, config, true)
-end
-
 local function if_type(var_type)
-  return auto_postfix('.if' .. var_type, function(capture)
+  return util.auto_postfix('.if' .. var_type, function(capture)
     return sn(nil, {
       t('if type(' .. capture .. ') == "' .. var_type .. '" then'),
       t({ '', '\t' }),
@@ -39,7 +19,7 @@ end
 
 return {
   --- Xeqtbl --> X = { .. }
-  auto_postfix('eqtbl', function(capture)
+  util.auto_postfix('eqtbl', function(capture)
     return sn(nil, {
       t(capture .. ' = {'),
       t({ '', '\t' }),
@@ -50,7 +30,7 @@ return {
     descr = 'Assign to new table',
   }),
   --- Xeqfunc --> X = function() end,
-  auto_postfix('eqfunc', function(capture)
+  util.auto_postfix('eqfunc', function(capture)
     return sn(nil, {
       t(capture .. ' = function()'),
       t({ '', '\t' }),
@@ -71,7 +51,7 @@ return {
   --- <X>.iffunction --> if type(X) == "function" then ... end
   if_type('function'),
   --- X.forkv --> for k,v in pairs(X) do ... end
-  auto_postfix('.forkv', function(capture)
+  util.auto_postfix('.forkv', function(capture)
     return sn(nil, {
       t('for k,v in pairs(' .. capture .. ') do'),
       t({ '', '\t' }),
@@ -82,7 +62,7 @@ return {
     descr = 'Iterate the key-value pairs of the table',
   }),
   --- X.foreach --> for _, n in ipairs(X) do ... end
-  auto_postfix('.foreach', function(capture)
+  util.auto_postfix('.foreach', function(capture)
     return sn(nil, {
       t('for idx, name in ipairs(' .. capture .. ') do'),
       t({ '', '\t' }),
@@ -91,5 +71,17 @@ return {
     })
   end, {
     descr = 'Do something if variable is a table.',
+  }),
+  util.auto_postfix('.class', function(capture)
+    return sn(nil, {
+      t({ '', 'local ' .. capture .. ' = {}' }),
+      t({ '', capture .. '.__index = ' .. capture }),
+      t({ '', '' }),
+      ls.insert_node(1),
+      t({ '', '' }),
+      t({ '', 'return ' .. capture }),
+    })
+  end, {
+    descr = 'Generate a lua class',
   }),
 }

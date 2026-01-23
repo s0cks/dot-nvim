@@ -1,4 +1,65 @@
 return {
+  ---@type LazyPluginSpec
+  {
+    'm-demare/hlargs.nvim',
+    version = '*',
+    event = 'VeryLazy',
+  },
+  {
+    'gisketch/triforce.nvim',
+    dependencies = {
+      'nvzone/volt',
+    },
+    opts = {
+      notifications = {
+        enabled = false,
+      },
+      keymap = {
+        show_profile = '<leader>tri', -- Open profile with <leader>tp
+      },
+    },
+  },
+  {
+    'uga-rosa/ccc.nvim',
+    cmd = {
+      'CccPick',
+      'CccConvert',
+      'CccHighlighterToggle',
+      'CccHighlighterEnable',
+      'CccHighlighterDisable',
+    },
+    opts = {},
+  },
+  {
+    'XXiaoA/atone.nvim',
+    cmd = 'Atone',
+    opts = {},
+    keys = {
+      {
+        '<leader>U',
+        '<cmd>Atone toggle<cr>',
+        'n',
+        desc = 'Toggle the undo  tree',
+      },
+    },
+  },
+  ---@type LazyPluginSpec
+  {
+    'windwp/nvim-autopairs',
+    version = '*',
+    event = 'InsertEnter',
+    opts = {},
+  },
+  {
+    'numToStr/Comment.nvim',
+    event = 'VeryLazy',
+    opts = {},
+  },
+  {
+    'gregorias/coerce.nvim',
+    tag = 'v4.1.0',
+    config = true,
+  },
   --- minty color utils
   ---@type LazyPluginSpec
   {

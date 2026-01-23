@@ -21,7 +21,7 @@ local function map_repl(keys, shell, opts)
     wez.spawn({
       shell,
     })
-  end, { desc = opts.desc or 'Open a REPL in Kitty' })
+  end, { desc = opts.desc })
 end
 
 map_repl('p', 'python', {

@@ -3,11 +3,7 @@ if not vault_dir then
   vault_dir = vim.fn.expand('~') .. '/Obsidian'
 end
 
-local M = {
-  path = vault_dir,
-}
-
-function M.get_workspaces()
+local function get_workspaces()
   local workspaces = {}
 
   if vim.fn.isdirectory(vault_dir) ~= 1 then
@@ -27,4 +23,26 @@ function M.get_workspaces()
   return workspaces
 end
 
-return M
+return {
+  ---@type LazyPluginSpec
+  {
+    'obsidian-nvim/obsidian.nvim',
+    version = '*',
+    cmd = 'Obsidian',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    opts = {
+      workspaces = get_workspaces(),
+      completion = {
+        blink = true,
+      },
+      picker = {
+        name = 'fzf-lua',
+      },
+      ui = {
+        ignore_conceal_warn = true,
+      },
+    },
+  },
+}

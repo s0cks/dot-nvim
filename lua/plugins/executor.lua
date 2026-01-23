@@ -1,21 +1,3 @@
--- local function load_presets()
---   local p = vim.fn.expand('%:p:h') .. '/executor-presets.json'
---   local file = io.open(p, 'r')
---   if not file then
---     error("couldn't open file: " .. p)
---   end
---
---   local content = file:read('*a')
---   file:close()
---
---   local success, decoded_json = pcall(vim.json.decode, content)
---   if not success then
---     error('failed to decode json: ' .. decoded_json)
---     return nil
---   end
---   return decoded_json
--- end
-
 local presets = {
   ['/'] = {
     'task default',
@@ -109,68 +91,49 @@ return {
 
   keys = function()
     local executor = require('executor')
+    local function map(keys, func, opts, mode)
+      if type(func) ~= 'function' then
+        if executor.commands[func] then
+          func = executor.commands[func]
+        end
+      end
+
+      return {
+        '<leader>ex' .. keys,
+        func,
+        mode or 'n',
+        opts or {},
+      }
+    end
 
     return {
       {
         '<leader>ex',
         group = 'Executor',
       },
-      {
-        '<leader>ex',
-        function()
-          executor.commands.toggle_detail()
-        end,
-        'n',
-        desc = 'Toggle executor details',
-      },
-      {
-        '<leader>exp',
-        function()
-          executor.commands.show_presets()
-        end,
-        'n',
-        desc = 'Show executor presets',
-      },
-      {
-        '<leader>exo',
-        function()
-          executor.commands.run_one_off()
-        end,
-        'n',
-        desc = 'Run executor w/ one off command',
-      },
-      {
-        '<leader>exr',
-        function()
-          executor.commands.run()
-        end,
-        'n',
-        desc = 'Run executor w/ previous command',
-      },
-      {
-        '<leader>exR',
-        function()
-          executor.commands.run_with_new_command()
-        end,
-        'n',
-        desc = 'Run executor w/ new command',
-      },
-      {
-        '<leader>ext',
-        function()
-          require('taskfile.picker').task_picker()
-        end,
-        'n',
-        desc = 'Execute Taskfile task using executor',
-      },
-      {
-        '<leader>exh',
-        function()
-          executor.commands.show_history()
-        end,
-        'n',
-        desc = 'Show executor history',
-      },
+      map('', 'toggle_detail', {
+        desc = 'Toggle Executor details',
+      }),
+      map('p', 'show_presets', {
+        desc = 'Show Executor presets',
+      }),
+      map('o', 'run_one_off', {
+        desc = 'Run Executor w/ one off command',
+      }),
+      map('r', 'run', {
+        desc = 'Run Executor w/ previous command',
+      }),
+      map('R', 'run_with_new_command', {
+        desc = 'Run Executor w/ new command',
+      }),
+      map('h', 'show_history', {
+        desc = 'Show Executor history',
+      }),
+      map('t', function()
+        require('taskfile.picker').task_picker()
+      end, {
+        desc = 'Executor Taskfile task using Executor',
+      }),
     }
   end,
 }

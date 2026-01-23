@@ -1,25 +1,33 @@
+local function map(key, func, opts, mode)
+  if type(func) ~= 'function' then
+    func = function()
+      require('gitportal')[func]()
+    end
+  end
+
+  return {
+    '<leader>G' .. key,
+    func,
+    mode or { 'n', 'v' },
+    opts or {},
+  }
+end
+
 ---@type LazyPluginSpec
 return {
   'trevorhauter/gitportal.nvim',
   version = '*',
-  opts = {},
   lazy = true,
   event = 'VeryLazy',
+  opts = {},
   keys = function()
-    local gp = require('gitportal')
     return {
-      {
-        '<leader>go',
-        gp.open_file_in_browser,
-        { 'n', 'v' },
+      map('o', 'open_file_in_browser', {
         desc = 'Open  GitHub link in browser',
-      },
-      {
-        '<leader>gc',
-        gp.copy_link_to_clipboard,
-        { 'n', 'v' },
+      }),
+      map('cp', 'copy_link_to_clipboard', {
         desc = 'Copy  GitHub link in to system clipboard',
-      },
+      }),
     }
   end,
 }

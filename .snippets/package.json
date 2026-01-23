@@ -12,6 +12,10 @@
       {
         "language": "editorconfig",
         "path": "./editorconfig.json"
+      },
+      {
+        "language": "c",
+        "path": "./c.json"
       }
     ]
   }

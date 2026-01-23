@@ -4,7 +4,7 @@
     "body": [
       "function $1()",
       "$0",
-      "end",
+      "end"
     ]
   },
   "Local Function": {
@@ -12,7 +12,7 @@
     "body": [
       "local function $1()",
       "$0",
-      "end",
+      "end"
     ]
   },
   "LuaDoc url": {
