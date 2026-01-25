@@ -18,6 +18,18 @@ return {
         vim.fn.getcwd() .. '/lua/.snippets',
         vim.fn.getcwd() .. '/lua/snippets',
       },
+      localKeys = {
+        {
+          filenameContains = { 'cc', 'cpp' },
+          LocalKeys = {
+            {
+              key = '<leader>co',
+              cmd = ":lua vim.notify('Hello World')",
+              modes = { 'n' },
+            },
+          },
+        },
+      },
     },
     config = function(_, opts)
       local ls = require('luasnip')

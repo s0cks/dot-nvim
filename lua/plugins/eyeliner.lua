@@ -19,7 +19,9 @@ return {
 
     -- buftypes for which eyeliner should be disabled
     -- e.g., disabled_buftypes = {"nofile"}
-    disabled_buftypes = {},
+    disabled_buftypes = {
+      'dashboard',
+    },
 
     -- add eyeliner to f/F/t/T keymaps;
     -- see section on advanced configuration for more information

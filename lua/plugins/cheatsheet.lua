@@ -2,7 +2,7 @@
 return {
   'doctorfree/cheatsheet.nvim',
   version = '*',
-  event = 'VeryLazy',
+  cmd = 'Cheatsheet',
   dependencies = {
     'nvim-telescope/telescope.nvim',
     'nvim-lua/popup.nvim',
@@ -36,6 +36,14 @@ return {
       },
     },
     include_only_installed_plugins = true,
+  },
+  keys = {
+    {
+      '<leader>Cs',
+      ':Cheatsheet<cr>',
+      'n',
+      desc = 'Open the cheatsheets window',
+    },
   },
   config = function(_, opts)
     local ctactions = require('cheatsheet.telescope.actions')

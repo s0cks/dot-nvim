@@ -4,38 +4,45 @@ return {
   'LudoPinelli/comment-box.nvim',
   event = 'VeryLazy',
   version = '*',
-  dependencies = {
-    'folke/which-key.nvim',
-  },
   opts = {},
-  keys = {
-    {
-      '<leader>cb',
-      group = 'Comment Box',
-    },
-    {
-      '<leader>cbtl',
-      '<cmd>CBllline<cr>',
-      { 'n', 'v' },
-      desc = 'Insert titled line box',
-    },
-    {
-      '<leader>cbl',
-      '<cmd>CBline<cr>',
-      { 'n', 'v' },
-      desc = 'Insert simple line box',
-    },
-    {
-      '<leader>cbm',
-      '<cmd>CBllbox14<cr>',
-      { 'n', 'v' },
-      desc = 'Insert marked box',
-    },
-    {
-      '<leader>cbd',
-      '<cmd>CBd<cr>',
-      { 'n', 'v' },
-      desc = 'Delete box',
-    },
-  },
+  keys = function()
+    local prefix = '<leader>Cb'
+    local map = function(key, func, opts)
+      opts = vim.tbl_deep_extend('force', {
+        modes = { 'n', 'v' },
+      }, opts)
+      if type(func) ~= 'function' then
+        --- TODO(@s0cks): check comment box for function
+      end
+
+      return {
+        prefix .. key,
+        func,
+        opts.modes,
+        desc = opts.desc,
+      }
+    end
+
+    return {
+      {
+        prefix,
+        group = 'Comment Box',
+      },
+      map('al', ':CBalbox<cr>', {
+        desc = 'Create a left aligned line box',
+      }),
+      map('tl', ':CBllline<cr>', {
+        desc = 'Insert titled line box',
+      }),
+      map('l', ':CBline<cr>', {
+        desc = 'Insert simple line box',
+      }),
+      map('m', ':CBllbox14<cr>', {
+        desc = 'Insert marked box',
+      }),
+      map('d', ':CBd<cr>', {
+        desc = 'Delete box',
+      }),
+    }
+  end,
 }

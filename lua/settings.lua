@@ -33,9 +33,12 @@ vim.opt.scrolloff = 10
 vim.opt.confirm = true
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
+
 vim.opt.foldcolumn = '1'
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldlevel = 99
+
 vim.opt.fillchars = { eob = ' ' }
 vim.opt.fillchars.foldstart = 'nf-fa-chevron_down'
 vim.opt.fillchars.foldstop = 'nf-fa-chevron_up'

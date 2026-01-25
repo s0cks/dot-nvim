@@ -6,6 +6,16 @@ return {
     preset = 'modern',
     transparent_bg = true,
     transparent_cursorline = true,
+    signs = {
+      left = '󰁍',
+      right = '󰁔',
+      diag = '',
+      arrow = '󰁅',
+      up_arrow = '󰁝',
+    },
+    blend = {
+      factor = 0.22,
+    },
     hi = {
       error = 'DiagnosticError',
       warn = 'DiagnosticWarn', -- Highlight group for warning messages
@@ -22,6 +32,8 @@ return {
       },
       enable_on_insert = true,
       enable_on_select = true,
+      override_open_float = true,
     },
   },
+  ---TODO(@s0cks): add toggles
 }

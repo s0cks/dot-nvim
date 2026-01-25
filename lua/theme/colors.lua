@@ -20,6 +20,14 @@ M.rainbow = {
   M['pu'],
 }
 
+M.visual = M['pu']
+M.insert = M['gr']
+M.delete = M['re']
+M.yank = M['ma']
+M.change = M['ye']
+M.format = M['bl']
+M.replace = M['or']
+
 local function fg_hl(fg)
   return hl(fg)
 end

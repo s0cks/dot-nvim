@@ -8,6 +8,7 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   opts = {
+    enable_builtin = true,
     picker = 'telescope',
   },
 }

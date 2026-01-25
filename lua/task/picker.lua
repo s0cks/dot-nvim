@@ -26,7 +26,7 @@ function M.find_and_execute(opts)
   local taskfile = require('taskfile')
 
   pickers
-    .new(require('theme.utils').get_telescope_theme()), {
+    .new(require('theme.utils').get_telescope_theme(), {
       prompt_title = opts.prompt,
       finder = finders.new_table({
         results = taskfile.list_all(),

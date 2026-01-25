@@ -27,14 +27,26 @@ function M.clone_and_add_to_rtp(repo, dir)
   vim.opt.rtp:prepend(dir)
 end
 
-function M.map_bft(ft, key, cb, desc)
+---@class s0cks.MapByFiletypeOpts
+---@field filetype? string The filetype to create mappings for
+---@field desc? string The description of the mapping
+
+--- Create a mapping based on filetype
+---@param key string The key to map
+---@param cb function The function to apply
+---@param opts? s0cks.MapByFiletypeOpts The options for the mapping
+function M.map_bft(key, cb, opts)
+  opts = vim.tbl_deep_extend('force', {
+    filetype = '*',
+    desc = '',
+  }, opts or {})
   local map = vim.keymap.set
   vim.api.nvim_create_autocmd('FileType', {
-    pattern = ft,
+    pattern = opts.filetype,
     callback = function()
       map('n', key, cb, {
         buffer = true,
-        desc = desc or '',
+        desc = opts.desc,
       })
     end,
   })

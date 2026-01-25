@@ -20,7 +20,7 @@ return {
   opts = {
     -- View details of the task run in a split, rather than a popup window.
     -- Set this to `false` to use a popup.
-    use_split = true,
+    use_split = false,
 
     -- Configure the split. These are ignored if you are using a popup.
     split = {
@@ -56,9 +56,9 @@ return {
 
     notifications = {
       -- Show a popup notification when a task is started.
-      task_started = false,
+      task_started = true,
       -- Show a popup notification when a task is completed.
-      task_completed = false,
+      task_completed = true,
       -- Border styles
       border = {
         padding = {
@@ -128,11 +128,6 @@ return {
       }),
       map('h', 'show_history', {
         desc = 'Show Executor history',
-      }),
-      map('t', function()
-        require('taskfile.picker').task_picker()
-      end, {
-        desc = 'Executor Taskfile task using Executor',
       }),
     }
   end,

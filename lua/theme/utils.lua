@@ -12,6 +12,21 @@ function M.get_telescope_theme(opts)
   )
 end
 
+function M.telescope_extension(name, opts)
+  opts = vim.tbl_deep_extend('force', {
+    func = name,
+  }, opts or {})
+  local extensions = require('telescope').extensions
+  if extensions[name] == nil then
+    return
+  end
+  local extension = extensions[name]
+  if extension[opts.func] == nil then
+    return
+  end
+  extension[opts.func](M.get_telescope_theme(opts))
+end
+
 ---Utility for setting a global highlight
 ---@param name string The name of the highlight
 ---@param hl vim.api.keyset.highlight

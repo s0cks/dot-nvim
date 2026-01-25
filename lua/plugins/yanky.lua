@@ -21,7 +21,7 @@ return {
     {
       '<leader>Y',
       function()
-        require('telescope').extensions.yank_history.yank_history(require('theme.utils').get_telescope_theme())
+        require('theme.utils').telescope_extension('yank_history')
       end,
       'n',
       desc = 'Open yank history',
@@ -29,12 +29,10 @@ return {
   },
   init = function()
     require('telescope').load_extension('yank_history')
-
-    local c = require('flexoki.palette').palette()
     local utils = require('theme.utils')
     utils.set_global_hl_bg({
-      YankyPut = c['pu'],
-      YankyYanked = c['cy'],
+      YankyPut = 'pu',
+      YankyYanked = 'ma',
     })
   end,
 }

@@ -1,26 +1,24 @@
+local signs = {
+  add = { text = '+' },
+  change = { text = '~' },
+  delete = { text = '-' },
+  topdelete = { text = '-' },
+  changedelete = { text = '-' },
+  untracked = { text = '?' },
+}
+
 ---@type LazyPluginSpec
 return {
   'lewis6991/gitsigns.nvim',
+  dependencies = {
+    'folke/snacks.nvim',
+  },
   opts = {
-    signs = {
-      add = { text = '' },
-      change = { text = '' },
-      delete = { text = '' },
-      topdelete = { text = '' },
-      changedelete = { text = '' },
-      untracked = { text = '' },
-    },
-    signs_staged = {
-      add = { text = '' },
-      change = { text = '' },
-      delete = { text = '' },
-      topdelete = { text = '' },
-      changedelete = { text = '' },
-      untracked = { text = '' },
-    },
-    signs_staged_enable = true,
+    signs = signs,
+    signs_staged = signs,
+    signs_staged_enable = false,
     signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-    numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+    numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
     linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
     watch_gitdir = {
@@ -50,18 +48,40 @@ return {
       col = 1,
     },
   },
-  keys = {
-    {
-      '<leader>sct',
-      function()
-        if vim.o.signcolumn ~= 'no' then
-          vim.o.signcolumn = 'no'
-        else
-          vim.o.signcolumn = 'auto'
-        end
-      end,
-      'n',
-      { desc = 'Toggle the sign column' },
-    },
-  },
+  keys = function()
+    local toggle_gs = function(mode)
+      return ':Gitsigns toggle_' .. mode .. '<cr>'
+    end
+
+    local function map(key, func, opts)
+      opts = vim.tbl_deep_extend('force', {
+        ---TODO(@s0cks): default opts?
+      }, opts or {})
+      return {
+        key,
+        func,
+        opts.mode or 'n',
+        desc = opts.desc or '',
+      }
+    end
+
+    return {
+      {
+        '<leader>Tgs',
+        group = 'Gitsigns Toggles',
+      },
+      map('<leader>Tgs', toggle_gs('signs'), {
+        desc = 'Toggle gitsigns',
+      }),
+      map('<leader>Tgsn', toggle_gs('numhl'), {
+        desc = 'Toggle gitsigns number highlight',
+      }),
+      map('<leader>Tgsl', toggle_gs('linehl'), {
+        desc = 'Toggle gitsigns line highlight',
+      }),
+      map('<leader>Tgswd', toggle_gs('word_diff'), {
+        desc = 'Toggle gitsigns word diff',
+      }),
+    }
+  end,
 }

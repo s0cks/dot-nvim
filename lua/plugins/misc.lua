@@ -6,6 +6,29 @@ return {
     event = 'VeryLazy',
   },
   {
+    'kylechui/nvim-surround',
+    version = '^3.0.0',
+    event = 'VeryLazy',
+    opts = {},
+  },
+  {
+    'tris203/precognition.nvim',
+    event = 'VeryLazy',
+    opts = {
+      startVisible = false,
+      showBlankVirtLine = false,
+      highlightColor = { link = 'Comment' },
+      disabled_fts = {
+        'dashboard',
+      },
+    },
+  },
+  {
+    'maelwalser/speed-motion.nvim',
+    cmd = 'SpeedMotion',
+    opts = {},
+  },
+  {
     '4DRIAN0RTIZ/complexity.nvim',
     cmd = 'ShowComplexity',
     opts = {
