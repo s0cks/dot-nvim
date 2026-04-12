@@ -21,7 +21,7 @@ return {
   cmd = 'Sudoku',
   version = '*',
   dependencies = {
-    'kepano/flexoki-neovim',
+    's0cks/flexoki.nvim',
   },
   opts = {
     -- TODO(@s0cks): fix highlights for theme

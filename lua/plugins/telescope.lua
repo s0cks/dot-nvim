@@ -7,6 +7,13 @@ return {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
     },
+    {
+      'mrjones2014/tldr.nvim',
+      version = '*',
+      opts = {
+        tldr_args = '--color always',
+      },
+    },
   },
   opts = {
     defaults = {
@@ -25,6 +32,11 @@ return {
   config = function(_, opts)
     require('telescope').setup({
       defaults = require('theme.utils').get_telescope_theme(opts.defaults or {}),
+      extensions = {
+        tldr = {
+          tldr_args = '--color always',
+        },
+      },
     })
   end,
   keys = function()
@@ -47,10 +59,8 @@ return {
         key,
         picker,
         opts.mode or { 'n' },
-        {
-          silent = true,
-          desc = opts.desc,
-        },
+        desc = opts.desc,
+        silent = true,
       }
     end
 
@@ -99,6 +109,9 @@ return {
       }),
       telescope_builtin('x', 'diagnostics', {
         desc = 'Search diagnostics using Telescope 󰭎',
+      }),
+      telescope_builtin('tldr', 'tldr', {
+        desc = 'Search tldr using Telescope 󰭎',
       }),
       telescope_builtin('d', 'lsp_declarations', {
         desc = 'Search declarations using Telescope 󰭎',

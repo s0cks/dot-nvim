@@ -2,7 +2,7 @@ return {
   'aznhe21/actions-preview.nvim',
   dependencies = {
     'nvim-telescope/telescope.nvim',
-    'kepano/flexoki-neovim',
+    's0cks/flexoki.nvim',
   },
   opts = {
     backend = {
@@ -20,14 +20,5 @@ return {
       },
     },
   },
-  keys = {
-    {
-      'gf',
-      function()
-        require('actions-preview').code_actions()
-      end,
-      { 'n', 'v' },
-      desc = 'Preview actions',
-    },
-  },
+  keys = {},
 }

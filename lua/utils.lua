@@ -52,4 +52,13 @@ function M.map_bft(key, cb, opts)
   })
 end
 
+--- Append a table to another table
+---@param dst table The dst table
+---@param src table The src table
+function M.append(dst, src)
+  for _, elem in ipairs(src) do
+    table.insert(dst, elem)
+  end
+end
+
 return M

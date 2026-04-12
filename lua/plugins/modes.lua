@@ -3,7 +3,7 @@ return {
   version = '*',
   event = 'VeryLazy',
   dependencies = {
-    'kepano/flexoki-neovim',
+    's0cks/flexoki.nvim',
   },
   oriority = 49,
   opts = function()
@@ -15,7 +15,7 @@ return {
         delete = colors.delete,
         change = colors.change, -- Optional param, defaults to delete
         format = colors.format,
-        insert = colors.insert,
+        insert = '',
         replace = colors.replace,
         select = colors.visual,
         visual = colors.visual,

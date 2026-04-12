@@ -3,9 +3,10 @@ return {
   'rebelot/heirline.nvim',
   version = '*',
   dependencies = {
-    'kepano/flexoki-neovim',
+    's0cks/flexoki.nvim',
     'lewis6991/gitsigns.nvim',
     'quentingruber/pomodoro.nvim',
+    'yamatsum/nvim-nonicons',
   },
   opts = function()
     return {
@@ -34,5 +35,9 @@ return {
         end,
       },
     }
+  end,
+  init = function()
+    local colors = require('theme.colors')
+    vim.api.nvim_set_hl(0, 'StatusLine', { fg = colors['paper'], bg = '', bold = false })
   end,
 }

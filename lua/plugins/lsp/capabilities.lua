@@ -1,16 +1,15 @@
 ---@param defaults? table The default capabilities
 return function(defaults)
-  local capabilities = defaults or {}
-  capabilities = vim.tbl_deep_extend('force', capabilities, vim.lsp.protocol.make_client_capabilities())
+  local caps = vim.tbl_deep_extend('force', defaults or {}, vim.lsp.protocol.make_client_capabilities() or {})
 
   local has_blink, blink = pcall(require, 'blink.cmp')
   if has_blink then
-    capabilities = blink.get_lsp_capabilities(capabilities, false)
-    capabilities.textDocument.foldingRange = {
+    caps = blink.get_lsp_capabilities(caps, false)
+    caps.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true,
     }
   end
 
-  return capabilities
+  return caps
 end

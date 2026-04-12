@@ -15,7 +15,7 @@ return {
   'y3owk1n/undo-glow.nvim',
   version = '*',
   dependencies = {
-    'kepano/flexoki-neovim',
+    's0cks/flexoki.nvim',
   },
   opts = {
     animation = {

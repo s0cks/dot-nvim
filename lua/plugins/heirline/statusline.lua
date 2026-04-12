@@ -25,7 +25,7 @@ local Scroll = {
     local i = math.floor((curr_line - 1) / lines * #self.states) + 1
     return self.states[i]
   end,
-  hl = { fg = colors['paper'] },
+  hl = colors['hl-bg'],
 }
 
 return {

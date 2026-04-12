@@ -23,7 +23,7 @@ return {
       transparent = true,
       auto_hide = true,
       offset = { x = 0, y = 0 },
-      padding = { top = 0, right = 1, bottom = 0, left = 1 },
+      padding = { top = 0, right = 1, bottom = 0, left = 0 },
       preview = {
         enabled = true,
         mode = 'current',

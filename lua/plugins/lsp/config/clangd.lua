@@ -5,7 +5,7 @@ return function()
   local capabilities = make_default_capabilities()
 
   return {
-    capabilities = capabilities,
+    caps = capabilities,
     settings = {},
     cmd = {
       '/usr/bin/clangd',

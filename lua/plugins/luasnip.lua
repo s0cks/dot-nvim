@@ -9,38 +9,10 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
     build = 'make install_jsregexp',
-    opts = {
-      snippet_paths = {
-        vim.fn.stdpath('config') .. '/snippets',
-        vim.fn.stdpath('config') .. '/lua/snippets',
-        vim.fn.getcwd() .. '/.vscode/snippets',
-        vim.fn.getcwd() .. '/.snippets',
-        vim.fn.getcwd() .. '/lua/.snippets',
-        vim.fn.getcwd() .. '/lua/snippets',
-      },
-      localKeys = {
-        {
-          filenameContains = { 'cc', 'cpp' },
-          LocalKeys = {
-            {
-              key = '<leader>co',
-              cmd = ":lua vim.notify('Hello World')",
-              modes = { 'n' },
-            },
-          },
-        },
-      },
-    },
-    config = function(_, opts)
-      local ls = require('luasnip')
-      require('luasnip.loaders.from_vscode').lazy_load({
-        paths = opts.snippet_paths,
-      })
-      require('luasnip.loaders.from_lua').load({
-        paths = opts.snippet_paths,
-      })
+    opts = function()
       local types = require('luasnip.util.types')
-      ls.config.set_config({
+      return {
+        localKeys = {},
         keep_roots = true,
         link_roots = true,
         link_children = true,
@@ -55,6 +27,29 @@ return {
               virt_text = { { '●', 'Comment' } },
             },
           },
+        },
+      }
+    end,
+    init = function()
+      local cwd = vim.fn.getcwd()
+      local cfg = vim.fn.stdpath('config')
+      require('luasnip.loaders.from_vscode').lazy_load({
+        paths = {
+          --- ~/.config/nvim/
+          cfg .. '/.vscode/snippets',
+          cfg .. '/.snippets',
+          --- cwd
+          cwd .. '/.vscode/snippets',
+          cwd .. '/.snippets',
+        },
+      })
+
+      require('luasnip.loaders.from_lua').lazy_load({
+        paths = {
+          --- ~/.config/nvim
+          cfg .. '/lua/snippets',
+          --- cwd
+          cwd .. '/lua/snippets',
         },
       })
     end,

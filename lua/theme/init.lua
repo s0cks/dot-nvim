@@ -1,6 +1,6 @@
 ---@return LazyPluginSpec
 return {
-  'kepano/flexoki-neovim',
+  's0cks/flexoki.nvim',
   name = 'flexoki',
   priority = 1000,
   lazy = false,

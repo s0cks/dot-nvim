@@ -18,19 +18,8 @@ return {
     words = {},
     win = {},
     gitbrowse = {},
-    zen = {},
-    terminal = require('plugins.snacks.terminal'),
-    dashboard = require('plugins.snacks.dashboard'),
   },
   keys = {
-    {
-      '<leader>Z',
-      function()
-        Snacks.zen()
-      end,
-      'n',
-      desc = 'Enter zen mode',
-    },
     {
       '<leader>flp',
       function()

@@ -54,6 +54,7 @@ end
 ---@class wez.cli.SpawnOpts
 ---@field cwd? string The current working directory
 ---@field mode? wez.cli.SpawnMode The mode to spawn the new process
+---@field class? string The class of the window
 
 ---@param cmd string|string[] The command
 ---@param opts? wez.cli.SpawnOpts
@@ -63,19 +64,19 @@ function M.spawn(cmd, opts)
     ---@as wez.cli.SpawnOpts
     {
       cwd = vim.fn.getcwd(),
-      mode = 'window',
     },
     opts or {}
   )
   local command = {
     'wezterm',
-    'cli',
-    'spawn',
+    'start',
+    '--always-new-process',
     '--cwd',
     opts.cwd,
   }
-  if opts.mode and opts.mode == 'window' then
-    table.insert(command, '--new-window')
+  if opts.class then
+    table.insert(command, '--class')
+    table.insert(command, opts.class)
   end
   table.insert(command, '--')
   if type(cmd) == 'table' then
@@ -96,7 +97,9 @@ function M.spawn(cmd, opts)
 end
 
 ---@class wez.cli.KojiOpts : wez.cli.SpawnOpts
-local default_koji_opts = {}
+local default_koji_opts = {
+  class = 'koji',
+}
 
 ---@param opts? wez.cli.KojiOpts
 function M.koji(opts)
@@ -107,7 +110,9 @@ function M.koji(opts)
 end
 
 ---@class wez.cli.SerieOpts : wez.cli.SpawnOpts
-local default_serie_opts = {}
+local default_serie_opts = {
+  class = 'serie',
+}
 
 ---@param opts? wez.cli.SerieOpts
 function M.serie(opts)
@@ -118,7 +123,9 @@ function M.serie(opts)
 end
 
 ---@class wez.cli.LazygitOpts : wez.cli.SpawnOpts
-local default_lazygit_opts = {}
+local default_lazygit_opts = {
+  class = 'lazygit',
+}
 
 ---@param opts? wez.cli.LazygitOpts
 function M.lazygit(opts)

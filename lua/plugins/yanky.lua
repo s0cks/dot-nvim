@@ -6,7 +6,7 @@ return {
   dependencies = {
     'folke/snacks.nvim',
     'nvim-telescope/telescope.nvim',
-    'kepano/flexoki-neovim',
+    's0cks/flexoki.nvim',
     'kkharji/sqlite.lua',
   },
   opts = {

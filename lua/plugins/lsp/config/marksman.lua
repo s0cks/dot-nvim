@@ -1,7 +1,7 @@
 return function()
   local make_default_capabilities = require('plugins.lsp.capabilities')
   return {
-    capabilities = make_default_capabilities(),
+    caps = make_default_capabilities(),
     cmd = {
       'marksman',
       'server',

@@ -62,7 +62,9 @@ return {
         prefix .. key,
         func,
         opts.modes,
-        desc = opts.desc,
+        {
+          desc = opts.desc,
+        },
       }
     end
 

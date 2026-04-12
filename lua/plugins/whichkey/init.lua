@@ -2,8 +2,8 @@ return {
   'folke/which-key.nvim',
   event = 'VeryLazy',
   dependencies = {
-    'kepano/flexoki-neovim',
-    'nvim-tree/nvim-web-devicons',
+    's0cks/flexoki.nvim',
+    'yamatsum/nvim-nonicons',
     'rachartier/tiny-devicons-auto-colors.nvim',
     'nvim-telescope/telescope.nvim',
   },

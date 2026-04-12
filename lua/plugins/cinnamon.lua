@@ -34,11 +34,11 @@ return {
     mapLSP('gd', vim.lsp.buf.definition)
     mapLSP('gD', vim.lsp.buf.declaration)
 
-    vim.api.nvim_create_autocmd('FileType', {
-      pattern = 'help',
-      callback = function()
-        vim.b.cinnamon_disable = true
-      end,
-    })
+    -- vim.api.nvim_create_autocmd('FileType', {
+    --   pattern = 'help',
+    --   callback = function()
+    --     vim.b.cinnamon_disable = true
+    --   end,
+    -- })
   end,
 }

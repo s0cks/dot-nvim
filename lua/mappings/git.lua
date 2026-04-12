@@ -15,6 +15,7 @@ map('n', '<leader>Glg', wez.lazygit(), {
 ---@field desc? string
 ---@field mode? string
 ---@field hold? boolean
+---@field class? string
 
 ---@alias map_git_cmd string|function
 
@@ -24,9 +25,16 @@ map('n', '<leader>Glg', wez.lazygit(), {
 local function map_git(keys, cmd, opts)
   opts = opts or {}
   if type(cmd) ~= 'function' then
+    local class = opts.class
     if type(cmd) == 'string' then
+      if not class then
+        class = 'git-' .. cmd
+      end
       cmd = 'git ' .. cmd
     elseif type(cmd) == 'table' then
+      if not class then
+        class = 'git' .. (#cmd > 0 and '-' .. tostring(cmd[1]) or '')
+      end
       cmd = 'git ' .. table.concat(cmd, ' ')
     end
 
@@ -42,7 +50,9 @@ local function map_git(keys, cmd, opts)
 
     cmd = function()
       print('spawning: ' .. table.concat(command, ' '))
-      wez.spawn(command)
+      wez.spawn(command, {
+        class = class,
+      })
     end
 
     map(opts.mode or 'n', '<leader>G' .. keys, cmd, {
@@ -58,4 +68,6 @@ end
 
 map_git('p', 'push')
 map_git('l', 'log')
-map_git('s', '-c color.ui=always status | less -R')
+map_git('s', '-c color.ui=always status | less -R', {
+  class = 'git-status',
+})

@@ -44,6 +44,11 @@ vim.opt.fillchars.foldstart = 'nf-fa-chevron_down'
 vim.opt.fillchars.foldstop = 'nf-fa-chevron_up'
 vim.opt.clipboard = 'unnamedplus'
 
+vim.opt.spell = true
+vim.opt.spelllang = {
+  'en_US',
+}
+
 vim.opt.listchars = {
   tab = '» ',
   trail = '·',

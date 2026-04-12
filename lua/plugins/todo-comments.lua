@@ -5,7 +5,7 @@ return {
   'folke/todo-comments.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'kepano/flexoki-neovim',
+    's0cks/flexoki.nvim',
   },
   config = function()
     local colors = require('theme.colors')

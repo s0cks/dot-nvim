@@ -29,7 +29,7 @@ return {
   --   --- @module 'blink.indent'
   --   --- @type blink.indent.Config
   --   dependencies = {
-  --     'kepano/flexoki-neovim',
+  -- 's0cks/flexoki.nvim',
   --   },
   --   opts = {
   --     static = {

@@ -1,12 +1,12 @@
 local map = vim.keymap.set
 local wez = require('wezterm-cli')
 
-map('n', '<BS><BS><BS>', ':qall!<CR>', {
+map('n', '<leader><BS><BS>', '<CMD>qall!<CR>', {
   noremap = true,
   silent = true,
   desc = 'Quit',
 })
-map('n', '<BS>', ':noh<cr>', {
+map('n', '<BS>', '<CMD>noh<CR>', {
   noremap = true,
   silent = true,
   desc = 'Clear current search',
@@ -19,30 +19,41 @@ map('n', '<leader>ls', function()
   })
 end)
 
+map('n', '<leader>tp', ':TypstPreview<cr>', {
+  silent = true,
+  desc = 'Open typst live preview',
+})
+
+map('n', '<D-a>', function()
+  vim.notify('Hello World')
+end, {
+  desc = 'Test super key',
+})
+
 -- ╭──────╮
 -- │ Lazy │
 -- ╰──────╯
-map('n', '<leader>L', ':Lazy', {
+map('n', '<leader>L', '<CMD>Lazy', {
   noremap = true,
   silent = true,
   desc = 'Open Lazy',
 })
-map('n', '<leader>LU', ':Lazy update<cr>', {
+map('n', '<leader>LU', '<CMD>Lazy update<CR>', {
   noremap = true,
   silent = true,
   desc = 'Update Lazy packages',
 })
-map('n', '<leader>LL', ':Lazy log<cr>', {
+map('n', '<leader>LL', '<CMD>Lazy log<CR>', {
   noremap = true,
   silent = true,
   desc = 'Open Lazy log',
 })
-map('n', '<leader>LC', ':Lazy check<cr>', {
+map('n', '<leader>LC', '<CMD>Lazy check<CR>', {
   noremap = true,
   silent = true,
   desc = 'Check Lazy packages',
 })
-map('n', '<leader>LX', ':Lazy clean<cr>', {
+map('n', '<leader>LX', '<CMD>Lazy clean<CR>', {
   noremap = true,
   silent = true,
   desc = 'Clean Lazy packages',

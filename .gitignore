@@ -1,6 +1,6 @@
 lazy-lock.json
 .vale/*
-
+.rumdl_cache
 
 !.gitignore
 !.gitattributes
