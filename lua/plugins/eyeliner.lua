@@ -1,5 +1,8 @@
 return {
   'jinh0/eyeliner.nvim',
+  dependencies = {
+    's0cks/flexoki.nvim',
+  },
   opts = {
     -- show highlights only after keypress
     highlight_on_key = true,
@@ -27,4 +30,9 @@ return {
     -- see section on advanced configuration for more information
     default_keymaps = true,
   },
+  init = function()
+    local palette = require('theme.colors')
+    vim.api.nvim_set_hl(0, 'EyelinerPrimary', { fg = palette['pu'], bold = true, underline = true })
+    vim.api.nvim_set_hl(0, 'EyelinerSecondary', { fg = palette['tx'], underline = true })
+  end,
 }

@@ -135,4 +135,17 @@ function M.lazygit(opts)
   end
 end
 
+---@class wez.cli.LazyDockerOpts : wez.cli.SpawnOpts
+local default_lazydocker_opts = {
+  class = 'lazydocker',
+}
+
+---@param opts? wez.cli.LazyDockerOpts
+function M.lazydocker(opts)
+  opts = vim.tbl_deep_extend('force', default_lazydocker_opts, opts or {})
+  return function()
+    M.spawn({ 'lazydocker' }, opts)
+  end
+end
+
 return M

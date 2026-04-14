@@ -12,23 +12,6 @@ return {
     opts = {},
   },
   {
-    'nvim-mini/mini.align',
-    version = '*',
-    opts = {},
-  },
-  {
-    'tris203/precognition.nvim',
-    event = 'VeryLazy',
-    opts = {
-      startVisible = false,
-      showBlankVirtLine = false,
-      highlightColor = { link = 'Comment' },
-      disabled_fts = {
-        'dashboard',
-      },
-    },
-  },
-  {
     'maelwalser/speed-motion.nvim',
     cmd = 'SpeedMotion',
     opts = {},
