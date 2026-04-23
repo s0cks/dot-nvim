@@ -18,6 +18,16 @@ map('n', '<leader>tp', ':TypstPreview<cr>', {
 map('n', '<leader>ld', wez.lazydocker(), {
   desc = 'Run lazydocker',
 })
+map('n', '<leader>n', wez.navi(), {
+  desc = 'Open navi',
+})
+
+map('n', '<leader>tldr', function()
+  local docs = vim.fn.input('tldr: ')
+  require('tldr').tldr(docs)
+end, {
+  desc = 'Open tealdeer',
+})
 
 require('mappings.git')
 require('mappings.repl')

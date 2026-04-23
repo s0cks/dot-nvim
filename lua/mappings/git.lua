@@ -1,14 +1,38 @@
 local map = vim.keymap.set
 local wez = require('wezterm-cli')
 
-map('n', '<leader>Gk', wez.koji(), {
+local git_prefix = '<leader>g'
+
+map('n', git_prefix .. 'k', wez.koji(), {
   desc = 'Open koji to create a conventional commit',
 })
-map('n', '<leader>Gcg', wez.serie(), {
+map('n', git_prefix .. 'rph', wez.serie(), {
   desc = 'Open serie to view the commit graph',
 })
-map('n', '<leader>Glg', wez.lazygit(), {
+map('n', git_prefix .. 'lg', wez.lazygit(), {
   desc = 'Run lazygit',
+})
+map('n', git_prefix .. 'bw', function()
+  vim.fn.jobstart('git browse-web', {
+    on_stdout = function() end,
+    on_exit = function()
+      local fidget = require('fidget')
+      fidget.notify('Repository opened', vim.log.levels.INFO)
+    end,
+  })
+end, {
+  desc = 'Open GitHub repository in browser',
+})
+map('n', git_prefix .. 'p', function()
+  vim.fn.jobstart('git push', {
+    on_stdout = function() end,
+    on_exit = function()
+      local fidget = require('fidget')
+      fidget.notify('Pushed changes', vim.log.levels.INFO)
+    end,
+  })
+end, {
+  desc = 'Push changes to git',
 })
 
 ---@class map_git_opts : snacks.terminal.Opts
@@ -23,7 +47,10 @@ map('n', '<leader>Glg', wez.lazygit(), {
 ---@param cmd map_git_cmd
 ---@param opts? map_git_opts
 local function map_git(keys, cmd, opts)
-  opts = opts or {}
+  opts = opts or {
+    desc = 'Run git ' .. cmd,
+  }
+
   if type(cmd) ~= 'function' then
     local class = opts.class
     if type(cmd) == 'string' then
@@ -49,24 +76,17 @@ local function map_git(keys, cmd, opts)
     }
 
     cmd = function()
-      print('spawning: ' .. table.concat(command, ' '))
       wez.spawn(command, {
         class = class,
       })
     end
-
-    map(opts.mode or 'n', '<leader>G' .. keys, cmd, {
-      desc = opts.desc or ('Run: ' .. table.concat(command, ' ')),
-    })
-    return
   end
 
-  map(opts.mode or 'n', '<leader>G' .. keys, cmd, {
+  map(opts.mode or 'n', git_prefix .. keys, cmd, {
     desc = opts.desc,
   })
 end
 
-map_git('p', 'push')
 map_git('l', 'log')
 map_git('s', '-c color.ui=always status | less -R', {
   class = 'git-status',

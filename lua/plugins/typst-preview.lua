@@ -11,5 +11,26 @@ return {
         vim.system({ 'xdg-open', pdf_path })
       end
     end, {})
+
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = { 'typst' },
+      callback = function()
+        local state = require('state.typst-preview')
+        local map = vim.keymap.set
+        local prefix = '<leader>typ'
+
+        map('n', prefix, function()
+          state:toggle()
+        end, {
+          desc = 'Toggle Typst Preview',
+        })
+
+        map('n', prefix .. 'X', function()
+          state:disable()
+        end, {
+          desc = 'Stop Typst Preview',
+        })
+      end,
+    })
   end,
 }

@@ -91,33 +91,14 @@ return {
       map_search('n', 'search_next', {
         desc = 'Search next',
       }),
-      map_search('N', 'search_previous', {
+      map_search('N', 'search_prev', {
         desc = 'Search previous',
       }),
       map_search('*', 'search_star', {
-        desc = 'Start search',
+        desc = 'Star search',
       }),
       map_search('#', 'search_hash', {
         desc = 'Hash search',
-      }),
-      map('gc', function()
-        --- preserve the cursor pos
-        local pos = vim.fn.getpos('.')
-        vim.schedule(function()
-          vim.fn.setpos('.', pos)
-        end)
-
-        return require('undo-glow').comment()
-      end, {
-        desc = 'Toggle comment',
-      }),
-      map('gc', 'comment_textobject', {
-        desc = 'Toggle textobject comment',
-        mode = 'o',
-      }),
-      map('gcc', 'comment_line', {
-        desc = 'Toggle line comment',
-        expr = true,
       }),
     }
   end,

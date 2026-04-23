@@ -7,6 +7,7 @@ M.Align = basic_components.Align
 
 M.Mode = require('plugins.heirline.components.mode')
 M.Git = require('plugins.heirline.components.git')
+M.PreviewStatuses = require('plugins.heirline.components.preview-statuses')
 M.Diagnostics = require('plugins.heirline.components.diagnostics')
 M.CurrentFile = require('plugins.heirline.components.current_file')
 M.Cursor = require('plugins.heirline.components.cursor')

@@ -61,7 +61,7 @@ end
 function M.spawn(cmd, opts)
   opts = vim.tbl_deep_extend(
     'force',
-    ---@as wez.cli.SpawnOpts
+    ---@type wez.cli.SpawnOpts
     {
       cwd = vim.fn.getcwd(),
     },
@@ -96,56 +96,77 @@ function M.spawn(cmd, opts)
   end
 end
 
----@class wez.cli.KojiOpts : wez.cli.SpawnOpts
-local default_koji_opts = {
-  class = 'koji',
-}
+---@param cmd string|table<string> The command to spawn
+---@param class? string The class of the spawned command
+---@return function
+local function spawn(cmd, class)
+  if not class then
+    if type(cmd) == 'string' then
+      class = cmd
+    elseif type(cmd) == 'table' then
+      class = cmd[1]
+    end
+  end
 
----@param opts? wez.cli.KojiOpts
-function M.koji(opts)
-  opts = vim.tbl_deep_extend('force', default_koji_opts, opts or {})
+  if type(cmd) ~= 'table' then
+    cmd = { cmd }
+  end
+
   return function()
-    M.spawn({ 'koji' }, opts)
+    return function()
+      M.spawn(cmd, {
+        class = class,
+      })
+    end
   end
 end
 
----@class wez.cli.SerieOpts : wez.cli.SpawnOpts
-local default_serie_opts = {
-  class = 'serie',
-}
+---@class wez.cli.GitOpts : wez.cli.SpawnOpts
+---@field hold? boolean
 
----@param opts? wez.cli.SerieOpts
-function M.serie(opts)
-  opts = vim.tbl_deep_extend('force', default_serie_opts, opts or {})
+---@alias wez.cli.GitCommand string|function|table<string>
+
+---@param cmd wez.cli.GitCommand
+---@param opts? wez.cli.GitOpts
+---@return function
+function M.spawn_git(cmd, opts)
+  opts = vim.tbl_deep_extend('force', {
+    class = 'git',
+  }, opts or {})
+  local class = opts.class
+  if type(cmd) == 'string' then
+    cmd = 'git ' .. cmd
+  elseif type(cmd) == 'table' then
+    if not class then
+      class = 'git' .. (#cmd > 0 and '-' .. tostring(cmd[1]) or '')
+    end
+    cmd = 'git ' .. table.concat(cmd, ' ')
+  end
+
+  if opts.hold then
+    cmd = cmd .. '; read -sk'
+  end
+
+  local command = {
+    '/usr/bin/zsh',
+    '-c',
+    cmd,
+  }
+
   return function()
-    M.spawn({ 'serie' }, opts)
+    M.spawn(command, {
+      class = class,
+    })
   end
 end
 
----@class wez.cli.LazygitOpts : wez.cli.SpawnOpts
-local default_lazygit_opts = {
-  class = 'lazygit',
-}
-
----@param opts? wez.cli.LazygitOpts
-function M.lazygit(opts)
-  opts = vim.tbl_deep_extend('force', default_lazygit_opts, opts or {})
-  return function()
-    M.spawn({ 'lazygit' }, opts)
-  end
-end
-
----@class wez.cli.LazyDockerOpts : wez.cli.SpawnOpts
-local default_lazydocker_opts = {
-  class = 'lazydocker',
-}
-
----@param opts? wez.cli.LazyDockerOpts
-function M.lazydocker(opts)
-  opts = vim.tbl_deep_extend('force', default_lazydocker_opts, opts or {})
-  return function()
-    M.spawn({ 'lazydocker' }, opts)
-  end
-end
+M.koji = spawn('koji')
+M.serie = spawn('serie')
+M.lazygit = spawn('lazygit')
+M.lazydocker = spawn('lazydocker')
+M.lazyssh = spawn('lazyssh')
+M.navi = spawn('navi')
+M.gitleaks = spawn('gitleaks')
+M.tealdeer = spawn('tldr; read -sk')
 
 return M

@@ -6,12 +6,6 @@ return {
     event = 'VeryLazy',
   },
   {
-    'kylechui/nvim-surround',
-    version = '^3.0.0',
-    event = 'VeryLazy',
-    opts = {},
-  },
-  {
     'maelwalser/speed-motion.nvim',
     cmd = 'SpeedMotion',
     opts = {},
@@ -67,18 +61,6 @@ return {
       },
     },
   },
-  ---@type LazyPluginSpec
-  {
-    'windwp/nvim-autopairs',
-    version = '*',
-    event = 'InsertEnter',
-    opts = {},
-  },
-  {
-    'numToStr/Comment.nvim',
-    event = 'VeryLazy',
-    opts = {},
-  },
   {
     'gregorias/coerce.nvim',
     tag = 'v4.1.0',
@@ -130,10 +112,10 @@ return {
       url = 'https://vtip.43z.one', -- 'https://vimiscool.tech/neotip',
     },
   },
-  ---@type LazyPluginSpec
-  {
-    'zbirenbaum/neodim',
-    event = 'LspAttach',
-    opts = {},
-  },
+  -- ---@type LazyPluginSpec
+  -- {
+  --   'zbirenbaum/neodim',
+  --   event = 'LspAttach',
+  --   opts = {},
+  -- },
 }

@@ -41,6 +41,7 @@ return {
   components.ExecutorStatus,
 
   components.Align,
+  components.PreviewStatuses,
   components.Pomodoro,
   components.LspStatus,
   components.Space,

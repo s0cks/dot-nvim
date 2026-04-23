@@ -7,7 +7,6 @@ Fix the following:
 - dotenv.nvim
 - helpview.nvim
 - marks.nvim
-- nvim-autopairs
 - yanky.nvim
 - autocomplete.nvim
 - automkdir.nvim
@@ -33,7 +32,6 @@ Install the following:
 - <https://github.com/vuki656/package-info.nvim>
 - <https://github.com/folke/ts-comments.nvim>
 - <https://github.com/gelguy/wilder.nvim>
-- <https://github.com/jake-stewart/multicursor.nvim>
 - <https://github.com/ggandor/leap.nvim>
 - <https://github.com/SmiteshP/nvim-navic>
 - <https://dotfyle.com/plugins/MaximilianLloyd/ascii.nvim>
