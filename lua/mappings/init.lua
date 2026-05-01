@@ -29,6 +29,16 @@ end, {
   desc = 'Open tealdeer',
 })
 
+map('v', 'cblll', '<CMD>CBllline<CR>', {
+  desc = 'Create a inline left-align line w/ CommentBox',
+})
+map({ 'n', 'v' }, 'cbl', '<CMD>CBline<CR>', {
+  desc = 'Create a line w/ CommentBox',
+})
+map('v', 'cbd', '<CMD>CBd<CR>', {
+  desc = 'Delete delete selection using CommentBox',
+})
+
 require('mappings.git')
 require('mappings.repl')
 require('mappings.lazy')

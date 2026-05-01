@@ -1,9 +1,7 @@
 ---@type LazyPluginSpec
 return {
   'soemre/commentless.nvim',
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter',
-  },
+  dependencies = {},
   cmd = 'Commentless',
   opts = {
     hide_following_blank_lines = true,

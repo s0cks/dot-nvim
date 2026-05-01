@@ -4,7 +4,6 @@ return {
   version = '*',
   dependencies = {
     'mfussenegger/nvim-dap',
-    'nvim-treesitter/nvim-treesitter',
   },
   event = 'VeryLazy',
   opts = {},

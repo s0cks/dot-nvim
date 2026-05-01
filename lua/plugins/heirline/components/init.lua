@@ -15,5 +15,6 @@ M.ExecutorStatus = require('plugins.heirline.components.executor')
 M.LspStatus = require('plugins.heirline.components.lsp')
 M.Pomodoro = require('plugins.heirline.components.pomodoro')
 M.Recording = require('plugins.heirline.components.recording')
+M.ProseStats = require('plugins.heirline.components.prose-stats')
 
 return M

@@ -41,5 +41,6 @@ local TypstPreview = {
 }
 
 return {
+  TypstPreview,
   MarkdownPreview,
 }

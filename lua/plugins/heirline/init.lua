@@ -7,6 +7,7 @@ return {
     'lewis6991/gitsigns.nvim',
     'quentingruber/pomodoro.nvim',
     'yamatsum/nvim-nonicons',
+    'skwee357/nvim-prose',
   },
   opts = function()
     return {

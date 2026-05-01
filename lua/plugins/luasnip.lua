@@ -6,7 +6,6 @@ return {
     -- install jsregexp (optional!).
     dependencies = {
       'rafamadriz/friendly-snippets',
-      'nvim-treesitter/nvim-treesitter',
     },
     build = 'make install_jsregexp',
     opts = function()

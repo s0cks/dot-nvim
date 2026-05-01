@@ -1,6 +1,6 @@
 ---@param defaults? table The default capabilities
 return function(defaults)
-  local caps = vim.tbl_deep_extend('force', defaults or {}, vim.lsp.protocol.make_client_capabilities() or {})
+  local caps = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), defaults or {})
 
   local has_blink, blink = pcall(require, 'blink.cmp')
   if has_blink then

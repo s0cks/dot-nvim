@@ -1,20 +1,22 @@
-local M = {}
+local default_capabilities = {
+  textDocument = {
+    semanticTokens = {
+      multilineTokenSupport = true,
+    },
+  },
+}
 
--- function M:make_config(overrides)
---   return {
---     cmd = { 'jsonnet-language-server' },
---     filetypes = { 'jsonnet', 'libsonnet' },
---     root_markers = { 'jsonnetfile.json', '.git' },
---   }
--- end
-function M:make_capabilities(overrides)
-  --- TODO: @s0cks implement
-  return overrides
+---@return vim.lsp.Config
+return function()
+  local make_default_capabilities = require('plugins.lsp.capabilities')
+  local capabilities = vim.tbl_deep_extend('force', default_capabilities, make_default_capabilities())
+
+  ---@type vim.lsp.Config
+  return {
+    capabilities = capabilities,
+    settings = {},
+    cmd = { 'jsonnet-language-server' },
+    filetypes = { 'jsonnet', 'libsonnet' },
+    root_markers = { '.git' },
+  }
 end
-
-function M:make_settings(settings)
-  --- TODO: @s0cks implement
-  return settings
-end
-
-return M

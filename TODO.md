@@ -13,7 +13,6 @@ Fix the following:
 - dotenv.nvim
 - helpview.nvim
 - marks.nvim
-- nvim-treesitter-endwise
 
 ## Plugins to install
 
@@ -38,18 +37,7 @@ Install the following:
 - <https://dotfyle.com/plugins/tamton-aquib/zone.nvim>
 - <https://dotfyle.com/plugins/stefanlogue/hydrate.nvim>
 - <https://dotfyle.com/plugins/cenk1cenk2/jq.nvim>
-
-### tree-sitter related
-
-- <https://dotfyle.com/plugins/kiyoon/treesitter-indent-object.nvim>
-- <https://dotfyle.com/plugins/nfrid/treesitter-utils>
-- <https://dotfyle.com/plugins/Mr-LLLLL/treesitter-outer>
-- <https://dotfyle.com/plugins/brianhuster/nvim-treesitter-endwise>
-- <https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context>
 - <https://dotfyle.com/plugins/Wansmer/sibling-swap.nvim>
-- <https://github.com/IndianBoy42/tree-sitter-just>
-- <https://github.com/RRethy/nvim-treesitter-endwise>
-- <https://github.com/kiyoon/treesitter-indent-object.nvim>
 
 ### Misc
 

@@ -46,7 +46,7 @@ vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.spell = true
 vim.opt.spelllang = {
-  'en_US',
+  'en_us',
 }
 
 vim.opt.listchars = {

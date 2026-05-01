@@ -82,6 +82,9 @@ return {
         lsp_format = 'fallback',
       },
       formatters = {
+        jsonnetfmt = {
+          '-i',
+        },
         clang_format = {
           prepend_args = {
             '--style=file',

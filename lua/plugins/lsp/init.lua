@@ -85,13 +85,25 @@ return {
         marksman = {},
         pyright = {},
         gopls = {},
+        jsonnet = {},
         hyprlang = {},
         css = {},
         typos_lsp = {},
         tinymist = {},
+        vale = {},
       },
     },
     config = function(_, opts)
+      vim.lsp.config('*', {
+        capabilities = {
+          textDocument = {
+            semanticTokens = {
+              multilineTokenSupport = true,
+            },
+          },
+        },
+        root_markers = { '.git' },
+      })
       for name, _ in pairs(opts.servers or {}) do
         local server_config = require('plugins.lsp.config.' .. name)
         vim.lsp.config(name, server_config())

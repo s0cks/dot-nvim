@@ -1,21 +1,109 @@
+local function create_command_with_prefix(prefix, command)
+  local cmd = {}
+  table.insert(cmd, prefix)
+
+  if type(command) == 'table' then
+    for _, c in ipairs(command) do
+      table.insert(cmd, c)
+    end
+  elseif command ~= nil then
+    table.insert(cmd, command)
+  end
+
+  return cmd
+end
+
+---@alias executor.RawPresetCommand
+---| string
+---| table<string>
+
+---@class executor.PresetCommand
+---@field cmd string The command to use
+---@field partial? boolean Whether or not this is a partial command
+---@field filetype? string The filetype it should be available for
+
+---@class executor.PresetOpts
+---@field partial? boolean Whether or not this is a partial command
+---@field filetype? string The filetype it should be available for
+
+---@param command executor.RawPresetCommand The command
+---@param opts executor.PresetOpts
+---@return executor.PresetCommand
+local function preset_command(command, opts)
+  opts = opts or {}
+
+  local cmd = ''
+  if type(command) == 'table' then
+    cmd = table.concat(command, ' ')
+  elseif type(command) ~= 'string' then
+    cmd = string(command)
+  end
+
+  return {
+    cmd = cmd,
+    partial = opts.partial,
+    filetype = opts.filetype,
+  }
+end
+
+---@class executor.PresetOpts
+local default_typst_preset_opts = {
+  filetype = 'typst',
+  partial = true,
+}
+
+---@param cmd? executor.RawPresetCommand The Typst command
+---@param opts? executor.PresetOpts
+---@return executor.PresetCommand
+local function typst_preset(cmd, opts)
+  opts = vim.tbl_deep_extend('force', default_typst_preset_opts, opts or {})
+  return preset_command(create_command_with_prefix('typst', cmd), opts)
+end
+
+---@class executor.PresetOpts
+local default_task_preset_opts = {
+  partial = true,
+}
+
+---@param cmd? executor.RawPresetCommand The Typst command
+---@param opts? executor.PresetOpts
+---@return executor.PresetCommand
+local function task_preset(cmd, opts)
+  opts = vim.tbl_deep_extend('force', default_task_preset_opts, opts or {})
+  return preset_command(create_command_with_prefix('task', cmd), opts)
+end
+
 local presets = {
   ['/'] = {
-    'task default',
-    {
-      partial = true,
-      cmd = 'task ',
-    },
+    --- Taskfile
+    task_preset(),
+    task_preset({ 'default' }),
+    --- Typst
+    typst_preset(),
+    typst_preset('compile'),
+    typst_preset({ 'compile', 'index.typ' }),
   },
 }
 
-local LogLevel = vim.log.levels
+local function map_executor(func)
+  return function()
+    local executor = require('executor')
+    if type(func) ~= 'function' then
+      if executor.commands[func] then
+        func = executor.commands[func]
+      end
+    end
+
+    func()
+  end
+end
 
 ---@type LazyPluginSpec
 return {
   's0cks/executor.nvim',
   dependencies = {
     'MunifTanjim/nui.nvim',
-    'j-hui/fidget.nvim',
+    'nvim-telescope/telescope.nvim',
   },
   opts = {
     -- View details of the task run in a split, rather than a popup window.
@@ -49,86 +137,49 @@ return {
         style = 'rounded',
       },
     },
-    -- Filter output from commands. See *filtering_output* below for more
-    output_filter = function(command, lines)
-      return lines
-    end,
-
-    notifications = {
-      -- Show a popup notification when a task is started.
-      task_started = true,
-      -- Show a popup notification when a task is completed.
-      task_completed = true,
-      -- Border styles
-      border = {
-        padding = {
-          top = 0,
-          bottom = 0,
-          left = 1,
-          right = 1,
-        },
-        style = 'rounded',
-      },
-    },
     statusline = nil,
     preset_commands = presets,
   },
-  init = function()
-    local fidget = require('fidget')
-    vim.api.nvim_create_autocmd('User', {
-      pattern = 'ExecutorRunStarted',
-      callback = function()
-        fidget.notify('Executor task started', LogLevel.INFO)
-      end,
-    })
-    vim.api.nvim_create_autocmd('User', {
-      pattern = 'ExecutorRunFinished',
-      callback = function()
-        fidget.notify('Executor task finished', LogLevel.INFO)
-      end,
-    })
-  end,
-
-  keys = function()
-    local executor = require('executor')
-    local function map(keys, func, opts, mode)
-      if type(func) ~= 'function' then
-        if executor.commands[func] then
-          func = executor.commands[func]
-        end
-      end
-
-      return {
-        '<leader>ex' .. keys,
-        func,
-        mode or 'n',
-        opts or {},
-      }
-    end
-
-    return {
-      {
-        '<leader>ex',
-        group = 'Executor',
-      },
-      map('', 'toggle_detail', {
-        desc = 'Toggle Executor details',
-      }),
-      map('p', 'show_presets', {
-        desc = 'Show Executor presets',
-      }),
-      map('o', 'run_one_off', {
-        desc = 'Run Executor w/ one off command',
-      }),
-      map('r', 'run', {
-        desc = 'Run Executor w/ previous command',
-      }),
-      map('R', 'run_with_new_command', {
-        desc = 'Run Executor w/ new command',
-      }),
-      map('h', 'show_history', {
-        desc = 'Show Executor history',
-      }),
-    }
-  end,
+  keys = {
+    {
+      '<leader>ex',
+      group = 'Executor',
+    },
+    {
+      '<leader>ex',
+      map_executor('toggle_detail'),
+      'n',
+      desc = ' Toggle executor details',
+    },
+    {
+      '<leader>exp',
+      map_executor('show_presets'),
+      'n',
+      desc = ' Show Executor presets',
+    },
+    {
+      '<leader>exo',
+      map_executor('run_one_off'),
+      'n',
+      desc = ' Run Executor w/ one off command',
+    },
+    {
+      '<leader>exr',
+      map_executor('run'),
+      'n',
+      desc = ' Run Executor w/ previous command',
+    },
+    {
+      '<leader>exn',
+      map_executor('run_with_new_command'),
+      'n',
+      desc = ' Run Executor w/ new command',
+    },
+    {
+      '<leader>exh',
+      map_executor('show_history'),
+      'n',
+      desc = ' Show Executor history',
+    },
+  },
 }

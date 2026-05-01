@@ -11,5 +11,6 @@ return {
     vim.api.nvim_set_hl(0, 'Search', { bg = palette['pu'] })
     vim.api.nvim_set_hl(0, 'IncSearch', { bg = palette['pu'] })
     vim.api.nvim_set_hl(0, 'CurSearch', { bg = palette['pu-2'] })
+    require('highlights')()
   end,
 }
