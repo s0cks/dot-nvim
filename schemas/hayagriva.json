@@ -1,0 +1,301 @@
+{
+  "type": "object",
+  "patternProperties": {
+    "^.*$": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The media type of the item, often determines the structure of references",
+          "enum": [
+            "article",
+            "chapter",
+            "entry",
+            "anthos",
+            "report",
+            "thesis",
+            "web",
+            "scene",
+            "artwork",
+            "patent",
+            "case",
+            "newspaper",
+            "legislation",
+            "manuscript",
+            "original",
+            "post",
+            "misc",
+            "performance",
+            "periodical",
+            "proceedings",
+            "book",
+            "blog",
+            "reference",
+            "conference",
+            "anthology",
+            "repository",
+            "thread",
+            "video",
+            "audio",
+            "exhibition"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the item"
+        },
+        "author": {
+          "description": "The person or persons responsible for the creation of the item",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "date": {
+          "description": "The date for when the item was published",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number",
+              "pattern": "^[0-9]{4}"
+            }
+          ]
+        },
+        "parent": {},
+        "abstract": {
+          "type": "string",
+          "description": "The abstract of an item"
+        },
+        "genre": {
+          "type": "string",
+          "description": "The type, class or subtype of the item"
+        },
+        "editor": {
+          "description": "The persons responsible for selecting and revising the content of the item",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "affiliated": {
+          "description": "The persons involved with the item that are not the editor or author",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "A role and list of persons associated with that role",
+            "properties": {
+              "role": {
+                "type": "string",
+                "description": "The role of the persons",
+                "enum": [
+                  "translator",
+                  "afterword",
+                  "foreword",
+                  "introduction",
+                  "annotator",
+                  "commentator",
+                  "holder",
+                  "compiler",
+                  "founder",
+                  "collaborator",
+                  "organizer",
+                  "cast-member",
+                  "composer",
+                  "producer",
+                  "executive-producer",
+                  "writer",
+                  "cinematography",
+                  "director",
+                  "illustrator",
+                  "narrator"
+                ]
+              },
+              "names": {
+                "description": "The names of the persons associated with the role",
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "call-member": {
+          "type": "string",
+          "description": "The number of the item in a library, institution, or collection. Use with archive."
+        },
+        "publisher": {
+          "description": "The publisher of the item",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The name of the publisher"
+                },
+                "location": {
+                  "type": "string",
+                  "description": "The location of the publisher"
+                }
+              }
+            }
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "location at which an entry is physically located or took place. For the location where an item was published, see publisher."
+        },
+        "organization": {
+          "type": "string",
+          "description": "Organization at/for which the item was produced"
+        },
+        "issue": {
+          "description": "For an item whose parent has multiple issues, indicates the position in the issue sequence. Also used to indicate the episode number for TV.",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "volume": {
+          "description": "For an item whose parent has multiple volumes/parts/seasons ... of which this item is one",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "volume-total": {
+          "type": "number",
+          "description": "Total number of volumes/parts/seasons this item consists of"
+        },
+        "chapter": {
+          "description": "The number of the chapter in the referenced work where this item can be found. When the chapter itself is the item being cited, which is common if it has its own non-numeric title, prefer using type: chapter for the entry while specifying the containing work's data as its parent.",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "edition": {
+          "description": "published version of an item",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "page-range": {
+          "description": "the range of pages within the parent this item occupies",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "time-range": {
+          "description": "the time range within the parent this item starts and ends at",
+          "type": "string"
+        },
+        "runtime": {
+          "description": "",
+          "type": "string"
+        },
+        "url": {
+          "description": "canonical public URL of the item, can have access date",
+          "type": "string"
+        },
+        "serial-number": {
+          "description": "Any serial number, including article numbers. If you have serial numbers of well-known schemes like doi, you should put them into the serial number as a dictionary like in the second example. Hayagriva will recognize and specially treat doi, isbn issn, pmid, pmcid, and arxiv. You can also include serial for the serial number when you provide other formats as well.",
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "doi": {
+                  "type": "string"
+                },
+                "isbn": {
+                  "type": "string"
+                },
+                "pmid": {
+                  "type": "string"
+                },
+                "pmcid": {
+                  "type": "string"
+                },
+                "arxiv": {
+                  "type": "string"
+                },
+                "serial": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "language": {
+          "type": "string",
+          "description": "language of the item"
+        },
+        "archive": {
+          "type": "string",
+          "description": "name of the institution/collection where the item is kept"
+        },
+        "archive-location": {
+          "type": "string",
+          "description": "location of the institution/collection where the item is kept"
+        },
+        "note": {
+          "type": "string",
+          "description": "short markup, decoration, or annotation to the item (e.g., to indicate items included in a review)."
+        }
+      }
+    }
+  },
+  "required": []
+}

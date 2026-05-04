@@ -61,4 +61,40 @@ function M.append(dst, src)
   end
 end
 
+---@alias AutocmdSpecEvents
+---| string
+---| table<string>
+
+---@class AutocmdSpec
+---@field [1] AutocmdSpecEvents test
+---@field [2] string test
+
+---@alias AutocmdSpecs
+---| AutocmdSpec
+---| table<AutocmdSpec>
+
+---@param specs? AutocmdSpecs
+function M.create_autocmds(specs)
+  local function augroup(name)
+    return vim.api.nvim_create_augroup(name, { clear = true })
+  end
+
+  if type(specs) ~= 'table' then
+    specs = { specs }
+  end
+
+  for _, spec in ipairs(specs) do
+    ---@type AutocmdSpecEvents
+    local autocmd_events = spec[1]
+    if type(autocmd_events) ~= 'table' then
+      autocmd_events = { tostring(autocmd_events) }
+    end
+
+    vim.api.nvim_create_autocmd(autocmd_events, {
+      group = augroup(spec[2]),
+      callback = spec[3],
+    })
+  end
+end
+
 return M

@@ -47,6 +47,10 @@ function M.split(cmd, opts)
   end
 end
 
+---@alias wez.cli.SpawnCommand
+---| string
+---| table<string>
+
 ---@alias wez.cli.SpawnMode
 ---| 'window'
 ---| 'tab'
@@ -55,8 +59,10 @@ end
 ---@field cwd? string The current working directory
 ---@field mode? wez.cli.SpawnMode The mode to spawn the new process
 ---@field class? string The class of the window
+---@field on_error? function(cmd: wez.cli.SpawnCommand, opts: wez.cli.SpawnOpts, data: string|nil)
+---@field on_finished? function(cmd: wez.cli.SpawnCommand)
 
----@param cmd string|string[] The command
+---@param cmd wez.cli.SpawnCommand
 ---@param opts? wez.cli.SpawnOpts
 function M.spawn(cmd, opts)
   opts = vim.tbl_deep_extend(
@@ -74,10 +80,20 @@ function M.spawn(cmd, opts)
     '--cwd',
     opts.cwd,
   }
+
+  local cls = 'wezterm'
   if opts.class then
-    table.insert(command, '--class')
-    table.insert(command, opts.class)
+    cls = opts.class
+  elseif not opts.class then
+    if type(cmd) == 'string' then
+      cls = cmd
+    elseif type(cmd) == 'table' then
+      cls = cmd[1]
+    end
   end
+
+  table.insert(command, '--class')
+  table.insert(command, cls)
   table.insert(command, '--')
   if type(cmd) == 'table' then
     for _, name in ipairs(cmd) do
@@ -87,12 +103,31 @@ function M.spawn(cmd, opts)
     table.insert(command, cmd)
   end
 
-  local out = vim.fn.system(command)
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { 'failed to run ' .. command .. '\n', 'ErrorMsg' },
-      { out, 'WarningMsg' },
-    }, true, {})
+  vim.fn.jobstart(command)
+end
+
+---@class wez.cli.SpawnShellOpts : wez.cli.SpawnOpts
+---@field hold? boolean Whether or not to require input before closing
+
+function M.spawn_shell(cmd, opts)
+  if opts.hold then
+    cmd = cmd .. '; read -sk'
+  end
+
+  local command = {
+    '/usr/bin/zsh',
+    '-c',
+    cmd,
+  }
+  return M.spawn(command, opts)
+end
+
+---@param opts? wez.cli.SpawnOpts
+function M.spawn_repl(repl, opts)
+  return function()
+    M.spawn({
+      repl,
+    }, opts or {})
   end
 end
 
@@ -100,18 +135,6 @@ end
 ---@param class? string The class of the spawned command
 ---@return function
 local function spawn(cmd, class)
-  if not class then
-    if type(cmd) == 'string' then
-      class = cmd
-    elseif type(cmd) == 'table' then
-      class = cmd[1]
-    end
-  end
-
-  if type(cmd) ~= 'table' then
-    cmd = { cmd }
-  end
-
   return function()
     return function()
       M.spawn(cmd, {
@@ -123,6 +146,17 @@ end
 
 ---@class wez.cli.GitOpts : wez.cli.SpawnOpts
 ---@field hold? boolean
+
+---@param cmd string|table<string> The command to spawn
+---@param opts? wez.cli.SpawnShellOpts
+---@return function
+local function spawn_shell(cmd, opts)
+  return function()
+    return function()
+      M.spawn_shell(cmd, opts or {})
+    end
+  end
+end
 
 ---@alias wez.cli.GitCommand string|function|table<string>
 
@@ -167,6 +201,9 @@ M.lazydocker = spawn('lazydocker')
 M.lazyssh = spawn('lazyssh')
 M.navi = spawn('navi')
 M.gitleaks = spawn('gitleaks')
-M.tealdeer = spawn('tldr; read -sk')
+M.tealdeer = spawn_shell('tldr', {
+  hold = true,
+})
+M.bottom = spawn('btm', 'bottom')
 
 return M

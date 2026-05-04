@@ -91,6 +91,7 @@ return {
         typos_lsp = {},
         tinymist = {},
         vale = {},
+        yamlls = {},
       },
     },
     config = function(_, opts)

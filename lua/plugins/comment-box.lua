@@ -43,6 +43,24 @@ return {
       map('d', ':CBd<cr>', {
         desc = 'Delete box',
       }),
+      {
+        'cblll',
+        '<CMD>CBllline<CR>',
+        'v',
+        desc = 'Create a inline left-align line w/ CommentBox',
+      },
+      {
+        'cbl',
+        '<CMD>CBline<CR>',
+        { 'n', 'v' },
+        desc = 'Create a line w/ CommentBox',
+      },
+      {
+        'cbd',
+        '<CMD>CBd<CR>',
+        { 'v' },
+        desc = 'Delete delete selection using CommentBox',
+      },
     }
   end,
 }

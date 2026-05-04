@@ -1,6 +1,4 @@
-local map = vim.keymap.set
-
-local function bind_lazy(keys, cmd, opts)
+local function lazy(keys, cmd, opts)
   local prefix = '<leader>l'
   opts = vim.tbl_deep_extend('force', {
     noremap = true,
@@ -13,21 +11,28 @@ local function bind_lazy(keys, cmd, opts)
     cmd = 'Lazy ' .. cmd
   end
 
-  map(opts.mode or 'n', prefix .. (keys or ''), '<CMD>' .. (cmd or 'Lazy') .. '<CR>', opts)
+  return {
+    prefix .. (keys or ''),
+    '<CMD>' .. (cmd or 'Lazy') .. '<CR>',
+    opts.mode or 'n',
+    desc = opts.desc,
+  }
 end
 
-bind_lazy('o', nil, {
-  desc = 'Open',
-})
-bind_lazy('l', ' log', {
-  desc = 'Open log',
-})
-bind_lazy('c', ' check', {
-  desc = 'Check packages',
-})
-bind_lazy('x', ' clean', {
-  desc = 'Clean packages',
-})
-bind_lazy('u', ' update', {
-  desc = 'Update packages',
-})
+return {
+  lazy('o', nil, {
+    desc = 'Open',
+  }),
+  lazy('l', 'log', {
+    desc = 'Open log',
+  }),
+  lazy('c', 'check', {
+    desc = 'Check packages',
+  }),
+  lazy('x', 'clean', {
+    desc = 'Clean packages',
+  }),
+  lazy('u', 'update', {
+    desc = 'Update packages',
+  }),
+}

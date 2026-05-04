@@ -40,6 +40,7 @@ return {
           --- cwd
           cwd .. '/.vscode/snippets',
           cwd .. '/.snippets',
+          cwd .. '/snippets/',
         },
       })
 

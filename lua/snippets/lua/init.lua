@@ -1,7 +1,11 @@
 local util = require('util.snippets')
 local ls = require('luasnip')
 local sn = ls.snippet_node
+local s = ls.snippet
 local t = ls.text_node
+local i = ls.insert_node
+local fmt = require('luasnip.extras.fmt').fmt
+local luastyle = require('util.snippets.comments').luastyle
 
 ---@alias s0cks.AutoPostfixIfCondition
 ---| '=='
@@ -39,7 +43,33 @@ local function auto_postfix_if_not(type, alias)
   })
 end
 
-return {
+local function init_local_table()
+  return s('local.table', {
+    t({ 'local ' }),
+    i(1, 'name'),
+    t({ ' = {', '\t' }),
+    i(0),
+    t({ '\t', '}' }),
+  }, {
+    descr = 'Create a local table',
+  })
+end
+
+local function init_local_func()
+  return s('local.func', {
+    t({ 'local ' }),
+    i(1, 'name'),
+    t({ ' = function()', '\t' }),
+    i(0),
+    t({ '\t', 'end' }),
+  }, {
+    descr = 'Create a local function',
+  })
+end
+
+local snippets = {
+  init_local_table(),
+  init_local_func(),
   --- X=table --> X = { .. },
   util.auto_postfix('=table', function(capture)
     return sn(nil, {
@@ -130,4 +160,18 @@ return {
   end, {
     descr = 'Generate a lua class',
   }),
+  luastyle.line_comment(),
+  luastyle.todo_comment(),
 }
+
+local function add_snippets(name)
+  for _, snippet in ipairs(require('snippets.lua.' .. name .. '_snippets')) do
+    table.insert(snippets, snippet)
+  end
+end
+
+add_snippets('win')
+add_snippets('buf')
+add_snippets('table')
+
+return snippets

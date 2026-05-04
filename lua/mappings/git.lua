@@ -1,3 +1,4 @@
+--- TODO(@s0cks): clean this file up
 local map = vim.keymap.set
 local wez = require('wezterm-cli')
 
@@ -65,26 +66,19 @@ local function map_git(keys, cmd, opts)
       cmd = 'git ' .. table.concat(cmd, ' ')
     end
 
-    if opts.hold then
-      cmd = cmd .. '; read -sk'
-    end
-
-    local command = {
-      '/usr/bin/zsh',
-      '-c',
-      cmd,
-    }
-
-    cmd = function()
-      wez.spawn(command, {
+    map(opts.mode or 'n', git_prefix .. keys, function()
+      wez.spawn_shell(cmd, {
         class = class,
+        opts.hold or false,
       })
-    end
+    end, {
+      desc = opts.desc,
+    })
+  else
+    map(opts.mode or 'n', git_prefix .. keys, cmd, {
+      desc = opts.desc,
+    })
   end
-
-  map(opts.mode or 'n', git_prefix .. keys, cmd, {
-    desc = opts.desc,
-  })
 end
 
 map_git('l', 'log')

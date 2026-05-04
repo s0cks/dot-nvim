@@ -1,0 +1,51 @@
+{
+  "New Autocmd": {
+    "prefix": "autocmd",
+    "body": [
+      "vim.api.nvim_create_autocmd(\"${1:event}\", {",
+      "  group = vim.api.nvim_create_augroup(\"${2:group}\", { clear = true }),",
+      "  callback = function(ev)",
+      "    ${0}",
+      "  end",
+      "})"
+    ]
+  },
+  "New Autocmd Group": {
+    "prefix": "augroup",
+    "body": [
+      "vim.api.nvim_create_augroup(\"${1:group}\", { clear = true })$0"
+    ]
+  },
+  "Current Win": {
+    "prefix": "currwin",
+    "body": "local win = vim.api.nvim_get_current_win()\n$0"
+  },
+  "Current Buf": {
+    "prefix": "currbuf",
+    "body": "local buf = vim.api.nvim_get_current_buf()\n$0"
+  },
+  "Win Call": {
+    "prefix": "wincall",
+    "body": [
+      "vim.api.nvim_win_call(${1:win}, function(win)",
+      "  ${0}",
+      "end)"
+    ]
+  },
+  "Buf Call": {
+    "prefix": "bufcall",
+    "body": [
+      "vim.api.nvim_buf_call(${1:buf}, function(buf)",
+      "  ${0}",
+      "end)"
+    ]
+  },
+  "Schedule": {
+    "prefix": "schedule",
+    "body": [
+      "vim.schedule(function()",
+      "  ${0}",
+      "end)"
+    ]
+  }
+}

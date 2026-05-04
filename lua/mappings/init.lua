@@ -1,44 +1,14 @@
-local map = vim.keymap.set
-local wez = require('wezterm-cli')
+---@param specs? table<LazyKeysSpec>
+local function map_all(specs)
+  local map = vim.keymap.set
+  for _, spec in ipairs(specs or {}) do
+    map(spec[3], spec[1], spec[2], {
+      desc = spec['desc'],
+    })
+  end
+end
 
-map('n', '<leader><BS><BS>', '<CMD>qall!<CR>', {
-  noremap = true,
-  silent = true,
-  desc = 'Quit',
-})
-map('n', '<BS>', '<CMD>noh<CR>', {
-  noremap = true,
-  silent = true,
-  desc = 'Clear current search',
-})
-map('n', '<leader>tp', ':TypstPreview<cr>', {
-  silent = true,
-  desc = 'Open typst live preview',
-})
-map('n', '<leader>ld', wez.lazydocker(), {
-  desc = 'Run lazydocker',
-})
-map('n', '<leader>n', wez.navi(), {
-  desc = 'Open navi',
-})
-
-map('n', '<leader>tldr', function()
-  local docs = vim.fn.input('tldr: ')
-  require('tldr').tldr(docs)
-end, {
-  desc = 'Open tealdeer',
-})
-
-map('v', 'cblll', '<CMD>CBllline<CR>', {
-  desc = 'Create a inline left-align line w/ CommentBox',
-})
-map({ 'n', 'v' }, 'cbl', '<CMD>CBline<CR>', {
-  desc = 'Create a line w/ CommentBox',
-})
-map('v', 'cbd', '<CMD>CBd<CR>', {
-  desc = 'Delete delete selection using CommentBox',
-})
-
+map_all(require('mappings.misc'))
 require('mappings.git')
-require('mappings.repl')
-require('mappings.lazy')
+map_all(require('mappings.repl'))
+map_all(require('mappings.lazy'))
