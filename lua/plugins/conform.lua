@@ -113,13 +113,6 @@ return {
       vim.api.nvim_create_user_command('Format', function()
         format_current_buffer()
       end, { desc = ' Format current buffer' })
-      vim.g.disable_autoformat = false
-      local toggles = require('toggles')
-      toggles
-        .new_buffer_toggle('disable_autoformat', 'AutoFormat', {
-          negated = true,
-        })
-        :map('<leader>Taf')
     end,
   },
 }

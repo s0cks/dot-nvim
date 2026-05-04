@@ -28,14 +28,4 @@ return {
     },
     ignore = { filetypes = {}, buftypes = {} },
   },
-  init = function()
-    local toggles = require('toggles')
-    toggles
-      .new_buffer_toggle('visual-whitespace', 'Visual Whitespace', {
-        on_change = function(state)
-          require('visual-whitespace').toggle()
-        end,
-      })
-      :map('<leader>Tvw')
-  end,
 }

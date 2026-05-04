@@ -35,5 +35,4 @@ return {
       override_open_float = true,
     },
   },
-  ---TODO(@s0cks): add toggles
 }
