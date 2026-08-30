@@ -4,6 +4,11 @@
     "vscode": "^1.11.0"
   },
   "contributes": {
-    "snippets": []
+    "snippets": [
+      {
+        "language": "gitcommit",
+        "path": "./gitcommit.json"
+      }
+    ]
   }
 }
