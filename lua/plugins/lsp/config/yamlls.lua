@@ -15,7 +15,7 @@ return function()
           enable = false,
           url = '',
         },
-        keyOrdering = true,
+        keyOrdering = false,
         hoverSchemaSource = true,
         format = {
           enable = true,

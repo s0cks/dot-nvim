@@ -76,6 +76,8 @@ return {
         ['markdown.scratch'] = { 'rumdl' },
         cpp = { 'clang-format' },
         ['cpp.scratch'] = { 'clang-format' },
+        zig = { 'zigfmt' },
+        ['zig.scratch'] = { 'zigfmt' },
       },
       format_on_save = format_on_save,
       default_format_opts = {

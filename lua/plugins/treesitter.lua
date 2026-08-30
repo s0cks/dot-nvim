@@ -11,5 +11,29 @@ return {
       -- parser_dir = vim.fn.stdpath("data") .. "/site/parser",
       -- query_dir = vim.fn.stdpath("data") .. "/site/queries",
     },
+    init = function()
+      vim.filetype.add({
+        extension = {
+          ebnf = 'ebnf',
+        },
+      })
+
+      local config = require('nvim-treesitter.parsers').get_parser_configs()
+      config.ebnf = {
+        install_info = {
+          url = 'https://github.com/RubixDev/ebnf.git',
+          files = {
+            'src/parser.c',
+          },
+          location = 'crates/tree-sitter-ebnf',
+          branch = 'main',
+        },
+        filetype = 'ebnf',
+      }
+    end,
+  },
+  {
+    'RubixDev/ebnf',
+    rtp = 'crates/tree-sitter-ebnf',
   },
 }

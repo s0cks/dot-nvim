@@ -77,6 +77,7 @@ return {
     },
     opts = {
       servers = {
+        ebnf = {},
         lua_ls = {},
         bashls = {},
         ts_ls = {},
@@ -88,10 +89,12 @@ return {
         jsonnet = {},
         hyprlang = {},
         css = {},
-        typos_lsp = {},
+        -- typos_lsp = {},
         tinymist = {},
         vale = {},
         yamlls = {},
+        dartls = {},
+        zls = {},
       },
     },
     config = function(_, opts)
@@ -105,6 +108,7 @@ return {
         },
         root_markers = { '.git' },
       })
+
       for name, _ in pairs(opts.servers or {}) do
         local server_config = require('plugins.lsp.config.' .. name)
         vim.lsp.config(name, server_config())
