@@ -1,3 +1,7 @@
+---@module
+---@author
+---@license
+
 ---Generate key mapping for Neogen
 ---@param key string The key to bind
 ---@param func string|function|table The function to bind
@@ -30,7 +34,7 @@ local function map(key, func, opts, mode)
     '<leader>ng' .. key,
     func,
     mode or 'n',
-    opts,
+    desc = opts.desc,
   }
 end
 

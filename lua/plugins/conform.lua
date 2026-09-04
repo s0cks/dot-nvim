@@ -48,19 +48,29 @@ local ft_to_fmt = {
   bash = 'shfmt',
   python = 'ruff_format',
   jsonnet = 'jsonnetfmt',
+  go = 'gofmt',
   css = 'stylelint',
   md = 'rumdl',
   markdown = 'rumdl',
   cpp = 'clang-format',
   zig = 'zigfmt',
+  meson = {
+    'meson',
+    'format',
+  },
 }
 
 local function getFormattersByFiletype()
   local results = {}
   for k in pairs(ft_to_fmt) do
-    local formatter = { ft_to_fmt[k] }
-    results[k] = formatter
-    results[k .. '.scratch'] = formatter
+    local formatter = ft_to_fmt[k]
+    if type(formatter) == 'string' then
+      results[k] = { formatter }
+      results[k .. '.scratch'] = { formatter }
+    elseif type(formatter) == 'table' then
+      results[k] = formatter
+      results[k .. '.scratch'] = formatter
+    end
   end
 
   return results

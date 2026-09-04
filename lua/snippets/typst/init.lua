@@ -2,7 +2,7 @@ local ls = require('luasnip')
 local s = ls.snippet
 local i = ls.insert_node
 local fmt = require('luasnip.extras.fmt').fmt
-local cstyle = require('util.snippets.comments.cstyle')
+local utils = require('utils')
 
 local function align_snippet(name, align)
   local body = [[
@@ -62,23 +62,20 @@ local function italic_snippet()
   )
 end
 
-return {
+local snippets = {
   align_snippet('center'),
   align_snippet('bottom'),
   align_snippet('left'),
   align_snippet('right'),
   align_snippet('bl', 'bottom + left'),
   align_snippet('br', 'bottom + right'),
-  heading_snippet(0),
-  heading_snippet(1),
-  heading_snippet(2),
-  heading_snippet(3),
-  heading_snippet(4),
-  heading_snippet(5),
-  heading_snippet(6),
   bold_snippet(),
   italic_snippet(),
-  cstyle.line_comment(),
-  cstyle.todo_comment(),
-  cstyle.block_comment(),
 }
+utils.append(snippets, require('util.snippets.comments.cstyle'))
+
+for l = 0, 6 do
+  table.insert(snippets, heading_snippet(l))
+end
+
+return snippets

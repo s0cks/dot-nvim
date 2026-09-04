@@ -27,7 +27,7 @@ return {
     desc = 'Run lazyssh',
   },
   {
-    '<leader>n',
+    '<leader>navi',
     wez.navi(),
     'n',
     desc = 'Run navi',
