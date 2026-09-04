@@ -4,7 +4,7 @@ local sn = ls.snippet_node
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
-local luastyle = require('util.snippets.comments.luastyle')
+local utils = require('utils')
 
 ---@alias s0cks.AutoPostfixIfCondition
 ---| '=='
@@ -159,9 +159,8 @@ local snippets = {
   end, {
     descr = 'Generate a lua class',
   }),
-  luastyle.line_comment(),
-  luastyle.todo_comment(),
 }
+utils.append(snippets, require('util.snippets.comments.luastyle'))
 
 local function add_snippets(name)
   for _, snippet in ipairs(require('snippets.lua.' .. name .. '_snippets')) do

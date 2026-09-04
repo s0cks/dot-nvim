@@ -1,8 +1,6 @@
 local M = {}
 local ls = require('luasnip')
-local sn = ls.snippet_node
 local d = ls.dynamic_node
-local t = ls.text_node
 local p = require('luasnip.extras.postfix')
 
 function M.postfix(trigger, cb, config, auto)
