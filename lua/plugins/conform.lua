@@ -33,7 +33,37 @@ local function clang_format_style()
     style = style .. ', TabWidth: ' .. shiftwidth
     style = style .. ', UseTabs: Always'
   end
+
   return style .. '}'
+end
+
+local ft_to_fmt = {
+  toml = 'tombi',
+  yaml = 'yamlfmt',
+  xml = 'xmlstarlet',
+  lua = 'stylua',
+  json = 'fixjson',
+  sh = 'shfmt',
+  zsh = 'shfmt',
+  bash = 'shfmt',
+  python = 'ruff_format',
+  jsonnet = 'jsonnetfmt',
+  css = 'stylelint',
+  md = 'rumdl',
+  markdown = 'rumdl',
+  cpp = 'clang-format',
+  zig = 'zigfmt',
+}
+
+local function getFormattersByFiletype()
+  local results = {}
+  for k in pairs(ft_to_fmt) do
+    local formatter = { ft_to_fmt[k] }
+    results[k] = formatter
+    results[k .. '.scratch'] = formatter
+  end
+
+  return results
 end
 
 return {
@@ -47,38 +77,7 @@ return {
     event = 'VeryLazy',
     opts = {
       notify_on_error = true,
-      formatters_by_ft = {
-        toml = { 'tombi' },
-        ['toml.scratch'] = { 'tombi' },
-        yaml = { 'yamlfmt' },
-        ['yaml.scratch'] = { 'yamlfmt' },
-        xml = { 'xmlstarlet' },
-        ['xml.scratch'] = { 'xmlstarlet' },
-        lua = { 'stylua' },
-        ['lua.scratch'] = { 'stylua' },
-        json = { 'fixjson' },
-        ['json.scratch'] = { 'fixjson' },
-        sh = { 'shfmt' },
-        ['sh.scratch'] = { 'shfmt' },
-        zsh = { 'shfmt' },
-        ['zsh.scratch'] = { 'shfmt' },
-        bash = { 'shfmt' },
-        ['bash.scratch'] = { 'shfmt' },
-        python = { 'ruff_format' },
-        ['python.scratch'] = { 'ruff_format' },
-        jsonnet = { 'jsonnetfmt' },
-        ['jsonnet.scratch'] = { 'jsonnetfmt' },
-        css = { 'stylelint' },
-        ['css.scratch'] = { 'stylelint' },
-        md = { 'rumdl' },
-        ['md.scratch'] = { 'rumdl' },
-        markdown = { 'rumdl' },
-        ['markdown.scratch'] = { 'rumdl' },
-        cpp = { 'clang-format' },
-        ['cpp.scratch'] = { 'clang-format' },
-        zig = { 'zigfmt' },
-        ['zig.scratch'] = { 'zigfmt' },
-      },
+      formatters_by_ft = getFormattersByFiletype(),
       format_on_save = format_on_save,
       default_format_opts = {
         lsp_format = 'fallback',
