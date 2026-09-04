@@ -35,6 +35,17 @@ map('n', git_prefix .. 'p', function()
 end, {
   desc = 'Push changes to git',
 })
+map('n', git_prefix .. 'pf', function()
+  vim.fn.jobstart('git push --force-with-lease', {
+    on_stdout = function() end,
+    on_exit = function()
+      local fidget = require('fidget')
+      fidget.notify('Pushed changes (forced)', vim.log.levels.WARN)
+    end,
+  })
+end, {
+  desc = 'Push changes to git (force-with-lease)',
+})
 
 ---@class map_git_opts : snacks.terminal.Opts
 ---@field desc? string

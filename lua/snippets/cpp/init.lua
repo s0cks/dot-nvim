@@ -1,5 +1,5 @@
 local utils = require('utils')
-local cstyle = require('util.snippets.comments').cstyle
+local cstyle = require('util.snippets.comments.cstyle')
 
 local ls = require('luasnip')
 local s = ls.snippet
@@ -28,4 +28,5 @@ local snippets = {
 }
 
 utils.append(snippets, require('util.snippets.iwyu'))
+
 return snippets

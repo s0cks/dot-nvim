@@ -1,0 +1,14 @@
+{
+  "CoAuthoredBy": {
+    "prefix": "coauthor-by",
+    "body": [
+      "Co-Authored-By: ${0}"
+    ]
+  },
+  "CoAuthoredByClaude": {
+    "prefix": "coauthor-claude",
+    "body": [
+      "Co-Authored-By: Claude <noreply@anthropic.com>"
+    ]
+  }
+}

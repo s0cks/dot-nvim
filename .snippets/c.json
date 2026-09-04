@@ -1,19 +1,31 @@
 {
+  "cpp-guard": {
+    "prefix": "cpp-guard",
+    "body": [
+      "#ifdef __cplusplus",
+      "extern \"C\" {",
+      "#endif // __cplusplus",
+      "$0",
+      "#ifdef __cplusplus",
+      "};",
+      "#endif // __cplusplus"
+    ]
+  },
   "Header Guard": {
-    "prefix": "header-guar",
+    "prefix": "header-guard",
     "body": [
       "#ifndef $1",
       "#define $1",
       "$0",
       "#endif // $1"
     ]
-  }
+  },
   "Function": {
     "prefix": "func",
     "body": [
       "function $1()",
       "$0",
-      "end",
+      "end"
     ]
   }
 }
