@@ -109,8 +109,11 @@ end
 ---@class wez.cli.SpawnShellOpts : wez.cli.SpawnOpts
 ---@field hold? boolean Whether or not to require input before closing
 
+--- Spawn a shell using wezterm
+---@param cmd string|table<string> The command to spawn
+---@param opts? wez.cli.SpawnShellOpts The shell options
 function M.spawn_shell(cmd, opts)
-  if opts.hold then
+  if opts and opts.hold then
     cmd = cmd .. '; read -sk'
   end
 
