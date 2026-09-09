@@ -34,6 +34,21 @@ return {
       log_level = 'DEBUG',
     },
     prompt_library = {
+      ['Author Mode'] = {
+        strategy = 'chat',
+        description = 'Open an editing session with the Gemma Author persona',
+        opts = {
+          adapter = 'gemma2',
+        },
+        prompts = {
+          {
+            role = 'system',
+            content = [[You are an AI author named "CodeCompanion" working within the Neovim text editor.\nFollow the user's requirements carefully and to the letter.\nUse the context and attachments the user provides.\n\nDO NOT include git diff formatting (+/- symbols) or line numbers inside the code block unless explicitly asked.\nDO NOT wrap your entire response in triple backticks.\n\nAll responses must be written in the English language.\n\nWhen given a task:\n\n1. Think step-by-step. For complex narrative or structural arc changes, describe your editorial plan first.\n2. Only include relevant prose chunks, avoid repeating unchanged paragraphs.\n3. Align all generated prose precisely with the themes, constraints, and negative rules found in provided style guides (like context/style_guide.md) or context files.\n4. Maintain a creative, focused, and non-judgmental presence, behaving as an expert human editor.\n5. End with a short suggestion for the next user turn.\n]],
+            opts = { visible = true },
+          },
+        },
+      },
+
       ['Generate Table-Driven Tests'] = {
         strategy = 'inline',
         description = 'Generate table-driven tests for the function under the cursor',
@@ -81,8 +96,39 @@ STRICT CONSTRAINTS:
         },
       },
     },
+    interactions = {
+      chat = {
+        opts = {
+          system_prompt = function(opts)
+            -- Check if the chat buffer is running your custom author adapter
+            if opts.adapter and opts.adapter.name == 'gemma2' then
+              return [[You are an AI author named "CodeCompanion" working within the Neovim text editor.
+Follow the user's requirements carefully and to the letter.
+Use the context and attachments the user provides.
+
+DO NOT include git diff formatting (+/- symbols) or line numbers inside the code block unless explicitly asked.
+DO NOT wrap your entire response in triple backticks.
+
+All responses must be written in the English language.
+
+When given a task:
+
+1. Think step-by-step. For complex narrative or structural arc changes, describe your editorial plan first.
+2. Only include relevant prose chunks, avoid repeating unchanged paragraphs.
+3. Align all generated prose precisely with the themes, constraints, and negative rules found in provided style guides (like context/style_guide.md) or context files.
+4. Maintain a creative, focused, and non-judgmental presence, behaving as an expert human editor.
+5. End with a short suggestion for the next user turn.]]
+            end
+
+            return opts.default_system_prompt
+          end,
+        },
+      },
+    },
     strategies = {
-      chat = { adapter = 'ollama' },
+      chat = {
+        adapter = 'ollama',
+      },
       inline = { adapter = 'ollama' },
       agent = { adapter = 'ollama' },
     },
@@ -90,29 +136,55 @@ STRICT CONSTRAINTS:
       chat = { show_tokens = true },
     },
     adapters = {
-      ollama = function()
-        return require('codecompanion.adapters').extend('ollama', {
-          env = {
-            model = 'qwen2.5-coder:7b-instruct-q4_K_M',
-          },
-          parameters = {
-            sync = true,
+      http = {
+        gemma2 = function()
+          return require('codecompanion.adapters').extend('ollama', {
+            name = 'gemma2',
+            env = {
+              model = 'gemma2:9b-instruct-q4_K_M',
+            },
             parameters = {
-              model = 'qwen2.5-coder:7b-instruct-q4_K_M',
-              options = {
-                num_ctx = 2048,
-                temperature = 0,
+              sync = true,
+              parameters = {
+                model = 'gemma2:9b-instruct-q4_K_M',
+                options = {
+                  num_ctx = 4096,
+                  temperature = 0.7,
+                },
               },
             },
-          },
-          schema = {
-            model = { default = 'qwen2.5-coder:7b-instruct-q4_K_M' },
-            num_ctx = {
-              default = 2048,
+            schema = {
+              model = { default = 'gemma2:9b-instruct-q4_K_M' },
+              num_ctx = {
+                default = 4096,
+              },
             },
-          },
-        })
-      end,
+          })
+        end,
+        ollama = function()
+          return require('codecompanion.adapters').extend('ollama', {
+            env = {
+              model = 'qwen2.5-coder:7b-instruct-q4_K_M',
+            },
+            parameters = {
+              sync = true,
+              parameters = {
+                model = 'qwen2.5-coder:7b-instruct-q4_K_M',
+                options = {
+                  num_ctx = 2048,
+                  temperature = 0,
+                },
+              },
+            },
+            schema = {
+              model = { default = 'qwen2.5-coder:7b-instruct-q4_K_M' },
+              num_ctx = {
+                default = 2048,
+              },
+            },
+          })
+        end,
+      },
     },
   },
 }

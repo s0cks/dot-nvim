@@ -83,7 +83,6 @@ return {
     opts = {},
     config = function(_, opts)
       require('taskfile').setup(opts or {})
-      --- TODO(@s0cks): implement
     end,
   },
   ---@url https://github.com/jsongerber/thanks.nvim

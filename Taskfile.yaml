@@ -1,0 +1,8 @@
+version: 3
+tasks:
+  build:
+    aliases:
+      - default
+    desc: Echo hello world
+    cmds:
+      - echo "Hello World"

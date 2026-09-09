@@ -90,6 +90,7 @@ return {
         hyprlang = {},
         css = {},
         -- typos_lsp = {},
+        taskfile = {},
         tinymist = {},
         vale = {},
         yamlls = {},
