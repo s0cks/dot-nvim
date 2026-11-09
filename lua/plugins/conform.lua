@@ -1,4 +1,4 @@
-local function on_formatted(err, edited)
+local function on_formatted(err, _)
   local fidget = require('fidget')
   if err then
     return fidget.notify('Failed to format: ' .. err, vim.log.levels.ERROR)
@@ -42,15 +42,21 @@ local ft_to_fmt = {
   yaml = 'yamlfmt',
   xml = 'xmlstarlet',
   lua = 'stylua',
-  json = 'fixjson',
+  json = 'prettier',
   sh = 'shfmt',
   zsh = 'shfmt',
   bash = 'shfmt',
   python = 'ruff_format',
   jsonnet = 'jsonnetfmt',
   go = 'gofmt',
-  css = 'stylelint',
+  css = 'prettier',
+  scss = 'prettier',
+  javascript = 'prettier',
+  typescript = 'prettier',
+  astro = 'prettier',
   md = 'rumdl',
+  hs = 'fourmolu',
+  hsc = 'fourmolu',
   markdown = 'rumdl',
   cpp = 'clang-format',
   zig = 'zigfmt',
@@ -124,13 +130,6 @@ return {
       vim.api.nvim_create_user_command('Format', function()
         format_current_buffer()
       end, { desc = ' Format current buffer' })
-      vim.g.disable_autoformat = false
-      local toggles = require('toggles')
-      toggles
-        .new_buffer_toggle('disable_autoformat', 'AutoFormat', {
-          negated = true,
-        })
-        :map('<leader>Taf')
     end,
   },
 }

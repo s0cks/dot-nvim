@@ -3,7 +3,7 @@ return {
   keymap = {
     preset = 'default',
     --- remap accept to C-Enter
-    ['<C-y>'] = nil,
+    ['<C-y>'] = false,
     ['<C-Enter>'] = {
       'select_and_accept',
       'fallback',

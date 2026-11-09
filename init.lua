@@ -4,6 +4,7 @@
 require('strings')
 require('settings')
 require('mappings')
+require('lsp')
 
 local utils = require('utils')
 -- Bootstrap lazy.vim

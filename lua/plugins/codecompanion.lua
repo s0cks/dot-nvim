@@ -28,6 +28,12 @@ return {
       '<cmd>CodeCompanionChat<cr>',
       desc = 'Open CodeCompanion chat',
     },
+    {
+      '<leader>cr',
+      '<cmd>CodeCompanion inline prompt="Prose Rewrite"<cr>',
+      mode = { 'n', 'v' },
+      desc = 'Prose Rewriter (v1.2)',
+    },
   },
   opts = {
     opts = {
@@ -81,7 +87,6 @@ STRICT CONSTRAINTS:
           {
             role = 'user',
             content = function(context)
-              -- Use the modern helper path location
               local code = require('codecompanion.helpers.code').get_code(context.start_line, context.end_line)
               return 'Analyze this targeted function layout and generate a comprehensive table-driven unit test suite for it:\n\n```'
                 .. context.filetype
@@ -95,12 +100,81 @@ STRICT CONSTRAINTS:
           },
         },
       },
+
+      ['Prose Rewrite'] = {
+        strategy = 'inline',
+        description = 'Rewrite selected paragraph using prose-rewriter-4b-v1.2',
+        opts = {
+          short_name = 'prose_rewrite',
+          adapter = {
+            name = 'prose_rewriter',
+          },
+          modes = { 'n', 'v' }, -- Allow execution in both normal and visual mode
+          auto_submit = true,
+          user_args = {
+            contains_code = false, -- Tells the editor this is natural text/prose
+          },
+          user_prompt = false,
+        },
+        prompts = {
+          {
+            role = 'source',
+            content = function(context)
+              -- Safely grabs visual block if active, otherwise falls back to current line/paragraph
+              local paragraph = table.concat(context.lines, '\n')
+              return '<|im_start|>source ' .. paragraph .. '<|im_end|> <|im_start|>edit match<|im_end|> <|im_start|>rewrite '
+            end,
+            opts = {
+              tag = 'replace',
+            },
+          },
+        },
+      },
+
+      ['Humanize Text'] = {
+        strategy = 'inline',
+        description = 'Rewrite comments or markdown docs to sound completely natural using open-humanizer-4b',
+        opts = {
+          short_name = 'humanize_text',
+          adapter = {
+            name = 'humanizer',
+          },
+          modes = { 'n', 'v' },
+          auto_submit = true,
+          user_args = {
+            contains_code = false,
+          },
+        },
+        prompts = {
+          {
+            role = 'system',
+            content = [[
+You are an expert human content editor. Your single task is to rewrite the provided text to make it sound entirely organic, fluent, and human-written. 
+STRICT CONSTRAINTS:
+1. Eliminate all standard AI tropes, unnatural transitions, repetitive syntax patterns, and structural stiffness.
+2. Maintain high technical precision and retain any critical names, code symbols, variables, or functions referenced within the text block.
+3. Respond ONLY with the revised, clean string of humanized text. Do not include introductory notes, conversational remarks, or concluding explanations.
+]],
+            opts = { visible = false },
+          },
+          {
+            role = 'user',
+            content = function(context)
+              local selected_text = table.concat(context.lines, '\n')
+              return 'Please rewrite and improve the flow of this content:\n\n' .. selected_text
+            end,
+            opts = {
+              visible = false,
+              tag = 'replace',
+            },
+          },
+        },
+      },
     },
     interactions = {
       chat = {
         opts = {
           system_prompt = function(opts)
-            -- Check if the chat buffer is running your custom author adapter
             if opts.adapter and opts.adapter.name == 'gemma2' then
               return [[You are an AI author named "CodeCompanion" working within the Neovim text editor.
 Follow the user's requirements carefully and to the letter.
@@ -133,13 +207,16 @@ When given a task:
       agent = { adapter = 'ollama' },
     },
     display = {
+      diff = {
+        enabled = true, -- Shows clear green/red text additions and removals
+      },
       chat = { show_tokens = true },
     },
     adapters = {
       http = {
         gemma2 = function()
           return require('codecompanion.adapters').extend('ollama', {
-            name = 'gemma2',
+            name = 'gemma1',
             env = {
               model = 'gemma2:9b-instruct-q4_K_M',
             },
@@ -181,6 +258,62 @@ When given a task:
               num_ctx = {
                 default = 2048,
               },
+            },
+          })
+        end,
+        prose_rewriter = function()
+          return require('codecompanion.adapters').extend('ollama', {
+            name = 'prose_rewriter',
+            handlers = {
+              -- Formats the message body structure to fit the strict v1.2 chat template
+              form_parameters = function(self, params, messages)
+                local paragraph = ''
+                for _, msg in ipairs(messages) do
+                  if msg.content then
+                    paragraph = msg.content
+                    break
+                  end
+                end
+
+                return {
+                  model = params.model,
+                  temperature = params.temperature,
+                  messages = {
+                    { role = 'source', content = paragraph },
+                    { role = 'edit', content = 'match' },
+                  },
+                }
+              end,
+            },
+            parameters = {
+              sync = true,
+              parameters = {
+                model = 'hf.co/chartreuse-verte/prose-rewriter-1.7b-v2.2:Q8_0',
+                temperature = 0.3,
+              },
+            },
+            schema = {
+              model = { default = 'hf.co/chartreuse-verte/prose-rewriter-1.7b-v2.2:Q8_0' },
+              temperature = { default = 0.3 },
+            },
+          })
+        end,
+        humanizer = function()
+          return require('codecompanion.adapters').extend('ollama', {
+            name = 'humanizer',
+            parameters = {
+              sync = true,
+              parameters = {
+                model = 'akhaliq/open-humanizer-4b', -- Needs to match your exact local Ollama model identifier
+                options = {
+                  num_ctx = 4096,
+                  temperature = 0.4, -- Slightly higher temp allows for more fluid prose structures
+                },
+              },
+            },
+            schema = {
+              model = { default = 'akhaliq/open-humanizer-4b' },
+              num_ctx = { default = 4096 },
             },
           })
         end,
