@@ -6,11 +6,6 @@ return {
     event = 'VeryLazy',
   },
   {
-    'maelwalser/speed-motion.nvim',
-    cmd = 'SpeedMotion',
-    opts = {},
-  },
-  {
     '4DRIAN0RTIZ/complexity.nvim',
     cmd = 'ShowComplexity',
     opts = {
@@ -21,20 +16,6 @@ return {
       },
       virt_prefix = '⮕ Complexity:', -- text prefix for virtual text
       virt_pos = 'eol', -- extmark position ("eol" or "overlay")
-    },
-  },
-  {
-    'gisketch/triforce.nvim',
-    dependencies = {
-      'nvzone/volt',
-    },
-    opts = {
-      notifications = {
-        enabled = false,
-      },
-      keymap = {
-        show_profile = '<leader>tri', -- Open profile with <leader>tp
-      },
     },
   },
   {
@@ -99,22 +80,4 @@ return {
       ignore_unauthenticated = false,
     },
   },
-  --- Tip - Neovim launch tip greeter
-  ---@url https://github.com/TobinPalmer/Tip.nvim
-  ---@type LazyPluginSpec
-  {
-    'TobinPalmer/Tip.nvim',
-    event = 'VimEnter',
-    opts = {
-      seconds = 5,
-      title = '💡 Tip!',
-      url = 'https://vtip.43z.one', -- 'https://vimiscool.tech/neotip',
-    },
-  },
-  -- ---@type LazyPluginSpec
-  -- {
-  --   'zbirenbaum/neodim',
-  --   event = 'LspAttach',
-  --   opts = {},
-  -- },
 }

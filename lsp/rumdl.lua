@@ -1,0 +1,5 @@
+return {
+  cmd = { 'rumdl', 'server' },
+  filetypes = { 'markdown' },
+  root_markers = { '.git' },
+}

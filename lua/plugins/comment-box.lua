@@ -11,9 +11,6 @@ return {
       opts = vim.tbl_deep_extend('force', {
         modes = { 'n', 'v' },
       }, opts)
-      if type(func) ~= 'function' then
-        --- TODO(@s0cks): check comment box for function
-      end
 
       return {
         prefix .. key,
